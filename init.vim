@@ -40,6 +40,9 @@ let g:ctrlp_max_files = 0       " No limit on number of files
 " Ignore files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
+" Gitgutter settings
+let g:gitgutter_preview_win_floating = 0
+
 " Blamer settings
 let g:blamer_enabled = 1
 let g:blamer_delay = 500
@@ -183,6 +186,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Close panes
+nnoremap <C-c> <C-w>c
 
 " Rebind cut operator to m since d does not copy
 nnoremap m d
