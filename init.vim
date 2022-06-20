@@ -2,17 +2,19 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'flazz/vim-colorschemes'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'vim-airline/vim-airline'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'preservim/nerdcommenter'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }  " Theme
+Plug 'vim-airline/vim-airline'  " Better status bar
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP interface
+Plug 'vim-python/python-syntax' " Better python syntax highlighting
+Plug 'ctrlpvim/ctrlp.vim'       " Fuzzy file seraching
+Plug 'preservim/nerdcommenter'  " Shortcuts for block commenting
 Plug 'airblade/vim-gitgutter'   " Git change highlighting
 Plug 'APZelos/blamer.nvim'      " Git blame similar to gitlens
+Plug 'svermeulen/vim-cutlass'   " Don't copy when deleting
+Plug 'svermeulen/vim-yoink'     " Yank history
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
-Plug 'xolox/vim-session'
+Plug 'xolox/vim-notes'          " Shortcuts to manage markdown note files
+Plug 'xolox/vim-session'        " Better session management
 Plug 'machakann/vim-highlightedyank' " Briefly highlight which text was yanked.
 Plug 'haya14busa/is.vim' " Automatically clear search highlights after you move your cursor.
 
@@ -30,18 +32,26 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+" Python Syntax settings
+let g:python_highlight_all = 1
+
 " CtrlP settings
 let g:ctrlp_max_files = 0       " No limit on number of files
 " Ignore files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
-" Git blame settings
+" Blamer settings
 let g:blamer_enabled = 1
 let g:blamer_delay = 500
 let g:blamer_show_in_visual_modes = 0
 let g:blamer_show_in_insert_modes = 0
 let g:blamer_date_format = '%m/%d/%y %H:%M'
 
+" Yoink settings
+let g:yoinkIncludeDeleteOperations = 1
+let g:yoinkSavePersistently = 1
+
+" Vim Session settings
 " Automatically save session at exit and load at startup
 let g:session_autoload = 'yes'
 let g:session_autosave = 'yes'
@@ -82,6 +92,9 @@ set mouse=a
 
 " Indentation
 set autoindent
+
+" Vim Session settings
+" Automatically save session at exit and load at startup
 set copyindent
 set expandtab
 filetype plugin indent on
@@ -108,12 +121,6 @@ autocmd BufNewFile,BufEnter,BufRead *.script set syntax=matlab filetype=matlab
 " Arcanist diffs
 autocmd BufNewFile,BufEnter,BufRead *new-commit set syntax=markdown
 autocmd BufNewFile,BufEnter,BufRead *differential-update-comments set syntax=markdown
-
-" Python self and cls syntax highlighting
-augroup python_syntax_extra
-    autocmd!
-    autocmd! Syntax python :syn keyword pythonDecorator self cls
-augroup END
 
 " Custom dictionary
 set spellfile=~/.config/nvim/en_us-custom.utf-8.add
@@ -150,12 +157,14 @@ autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 " Delete trailing white space in various languages
-func! DeleteTrailingWS()
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
-endfunc
-autocmd BufWrite * silent :call DeleteTrailingWS()
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " ---------- CUSTOM KEYBINDS ----------
 
@@ -175,6 +184,25 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Rebind cut operator to m since d does not copy
+nnoremap m d
+xnoremap m d
+
+nnoremap mm dd
+nnoremap M D
+
+" Yank and put binds for Yoink
+nmap <leader>yn <plug>(YoinkPostPasteSwapBack)
+nmap <leader>yp <plug>(YoinkPostPasteSwapForward)
+
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+
+nmap gp <plug>(YoinkPaste_gp)
+nmap gP <plug>(YoinkPaste_gP)
+
+nmap y <plug>(YoinkYankPreserveCursorPosition)
+xmap y <plug>(YoinkYankPreserveCursorPosition)
 
 " ---------- COC CONFIG ----------
 
