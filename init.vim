@@ -81,6 +81,9 @@ set dir=~/tmp
 set number
 set relativenumber
 
+" Mouse behavior
+set mouse=a
+
 " Tab options
 set tabstop=4
 " set softtabstop=4
@@ -90,14 +93,8 @@ autocmd FileType markdown setlocal ts=4 sw=4
 autocmd FileType python setlocal ts=4 sw=4
 autocmd FileType yaml setlocal ts=2 sw=2
 
-" Mouse behavior
-set mouse=a
-
 " Indentation
 set autoindent
-
-" Vim Session settings
-" Automatically save session at exit and load at startup
 set copyindent
 set expandtab
 filetype plugin indent on
@@ -111,6 +108,9 @@ if exists('+colorcolumn')
     set colorcolumn=80
 endif
 
+" Visual word wrapping
+set linebreak
+set breakat " "
 " Autowrap lines at 80 columns
 " set textwidth=79
 
