@@ -7,7 +7,11 @@ Plug 'vim-airline/vim-airline'  " Better status bar
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP interface
 Plug 'vim-python/python-syntax' " Better python syntax highlighting
 Plug 'jackguo380/vim-lsp-cxx-highlight' " Better C++ syntax highlighting
-Plug 'ctrlpvim/ctrlp.vim'       " Fuzzy file seraching
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'         " Fuzzy finder for searching for and in files
+Plug 'preservim/nerdtree'       " File tree
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/nerdcommenter'  " Shortcuts for block commenting
 Plug 'airblade/vim-gitgutter'   " Git change highlighting
 Plug 'APZelos/blamer.nvim'      " Git blame similar to gitlens
@@ -33,13 +37,9 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
+
 " Python Syntax settings
 let g:python_highlight_all = 1
-
-" CtrlP settings
-let g:ctrlp_max_files = 0       " No limit on number of files
-" Ignore files in .gitignore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " Gitgutter settings
 let g:gitgutter_preview_win_floating = 0
@@ -176,6 +176,10 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 nnoremap j gj
 nnoremap k gk
 
+" Tab navigation
+nnoremap <silent> tn :tabnew<cr>
+nnoremap <silent> tc :tabclose<cr>
+
 " Move split panes to left/bottom/top/right
 nnoremap <A-h> <C-W>H
 nnoremap <A-j> <C-W>J
@@ -191,6 +195,14 @@ nnoremap <C-l> <C-w>l
 " Close panes
 nnoremap <C-c> <C-w>c
 
+" File tree bind
+noremap <silent> <leader>n :NERDTreeFocus<CR>
+
+" Fzf binds
+nnoremap <silent> <c-p> :GFiles<CR>
+nnoremap <silent> <leader><c-p> :Files<CR>
+nnoremap <silent> <leader>f :Ag<CR>
+
 " Toggle git blame
 noremap <silent> <leader>gb :call BlamerToggle()<cr>
 
@@ -202,8 +214,8 @@ nnoremap mm dd
 nnoremap M D
 
 " Yank and put binds for Yoink
-nmap <leader>yn <plug>(YoinkPostPasteSwapBack)
-nmap <leader>yp <plug>(YoinkPostPasteSwapForward)
+nmap <leader>yp <plug>(YoinkPostPasteSwapBack)
+nmap <leader>yn <plug>(YoinkPostPasteSwapForward)
 
 nmap p <plug>(YoinkPaste_p)
 nmap P <plug>(YoinkPaste_P)
@@ -303,8 +315,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -403,3 +415,45 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
+
+" ---------- NERDTREE ----------
+
+let g:NERDTreeGitStatusWithFlags = 1
+" Highlight file names
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+" Git symbols that I like
+let g:NERDTreeGitStatusConcealBrackets = 1
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'*',
+                \ 'Staged'    :'+',
+                \ 'Untracked' :'u',
+                \ 'Renamed'   :'>',
+                \ 'Unmerged'  :'=',
+                \ 'Deleted'   :'x',
+                \ 'Dirty'     :'*',
+                \ 'Ignored'   :'i',
+                \ 'Clean'     :'c',
+                \ 'Unknown'   :'?',
+                \ }
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+" Highlight currently open buffer in NERDTree
+" autocmd BufEnter * call SyncTree() " for some reason this one causes NERDTree to open multiple times
+autocmd BufRead * call SyncTree()
