@@ -1,7 +1,8 @@
 {
     "suggest.autoTrigger": "trigger",
     "coc.preferences.formatOnSaveFiletypes": [
-        "python"
+        "python",
+        "json"
     ],
     "coc.preferences.willSaveHandlerTimeout": 1000,
     "pyright.disableDiagnostics": true,
@@ -39,5 +40,38 @@
         "ops",
         "-p",
         "scripts"
-    ]
+    ],
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cc",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".compiledb",
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "index": {
+                    "onChange": true,
+                    "threads": 4
+                },
+                "highlight": {
+                    "lsRanges": true
+                },
+                "compilationDatabaseDirectory": ".compiledb"
+            }
+        }
+    }
 }

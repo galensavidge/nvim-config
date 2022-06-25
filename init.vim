@@ -6,6 +6,7 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }  " Theme
 Plug 'vim-airline/vim-airline'  " Better status bar
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP interface
 Plug 'vim-python/python-syntax' " Better python syntax highlighting
+Plug 'jackguo380/vim-lsp-cxx-highlight' " Better C++ syntax highlighting
 Plug 'ctrlpvim/ctrlp.vim'       " Fuzzy file seraching
 Plug 'preservim/nerdcommenter'  " Shortcuts for block commenting
 Plug 'airblade/vim-gitgutter'   " Git change highlighting
@@ -44,7 +45,7 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:gitgutter_preview_win_floating = 0
 
 " Blamer settings
-let g:blamer_enabled = 1
+let g:blamer_enabled = 0
 let g:blamer_delay = 500
 let g:blamer_show_in_visual_modes = 0
 let g:blamer_show_in_insert_modes = 0
@@ -189,6 +190,9 @@ nnoremap <C-l> <C-w>l
 
 " Close panes
 nnoremap <C-c> <C-w>c
+
+" Toggle git blame
+noremap <silent> <leader>gb :call BlamerToggle()<cr>
 
 " Rebind cut operator to m since d does not copy
 nnoremap m d
