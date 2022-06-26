@@ -22,24 +22,45 @@ Plug 'xolox/vim-notes'          " Shortcuts to manage markdown note files
 Plug 'xolox/vim-session'        " Better session management
 Plug 'machakann/vim-highlightedyank' " Briefly highlight which text was yanked.
 Plug 'haya14busa/is.vim' " Automatically clear search highlights after you move your cursor.
+Plug 'unblevable/quick-scope'   " Highlight a unique letter in each word
 
 call plug#end()
 
 " Color scheme
 set t_Co=256            " 256 colors
 set cursorline
-colorscheme onehalfdark
-set background=dark
 " Set terminal colors
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
+colorscheme onehalfdark
+set background=dark
 
+" Airline settings
+let g:airline_extensions = ['coc', 'fzf', 'hunks', 'keymap', 'netrw', 'quickfix', 'term', 'whitespace',  'wordcount']
+let g:airline_theme='onehalfdark'
 
 " Python Syntax settings
 let g:python_highlight_all = 1
+
+" Fzf settings
+" let g:fzf_layout = { 'window': '15new' }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " Gitgutter settings
 let g:gitgutter_preview_win_floating = 0
@@ -56,15 +77,24 @@ let g:yoinkIncludeDeleteOperations = 1
 let g:yoinkSavePersistently = 1
 
 " Vim Session settings
+set sessionoptions-=buffers
+set sessionoptions-=curdir
 " Automatically save session at exit and load at startup
-let g:session_autoload = 'yes'
+let g:session_autoload = 'no'
 let g:session_autosave = 'yes'
-let g:session_autosave_to = 'default'
 let g:session_verbose_messages = 0
 
 " HighlightYanked settings
 let g:highlightedyank_highlight_duration = 250
 let g:highlightedyank_highlight_in_visual = 0
+
+" Quickscope settings
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+augroup qs_colors
+  autocmd!
+  autocmd ColorScheme * highlight QuickScopePrimary gui=underline cterm=underline
+  autocmd ColorScheme * highlight QuickScopeSecondary gui=underline cterm=underline
+augroup END
 
 " ---------- MISC VIM OPTIONS ----------
 
@@ -111,7 +141,6 @@ endif
 
 " Visual word wrapping
 set linebreak
-set breakat " "
 " Autowrap lines at 80 columns
 " set textwidth=79
 
