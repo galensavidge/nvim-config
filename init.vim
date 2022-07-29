@@ -17,6 +17,7 @@ Plug 'airblade/vim-gitgutter'   " Git change highlighting
 Plug 'APZelos/blamer.nvim'      " Git blame similar to gitlens
 Plug 'svermeulen/vim-cutlass'   " Don't copy when deleting
 Plug 'svermeulen/vim-yoink'     " Yank history
+Plug 'svermeulen/vim-subversive'     " Quick substitutions
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'          " Shortcuts to manage markdown note files
 Plug 'xolox/vim-session'        " Better session management
@@ -47,19 +48,20 @@ let g:python_highlight_all = 1
 
 " Fzf settings
 " let g:fzf_layout = { 'window': '15new' }
+" let g:fzf_nvim_statusline = 0
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
+  \ 'hl':      ['fg', 'Keyword'],
   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
+  \ 'hl+':     ['fg', 'Keyword'],
   \ 'info':    ['fg', 'PreProc'],
   \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
+  \ 'prompt':  ['fg', 'Function'],
+  \ 'pointer': ['fg', 'Function'],
   \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
+  \ 'spinner': ['fg', 'Function'],
   \ 'header':  ['fg', 'Comment'] }
 
 " Gitgutter settings
@@ -123,6 +125,7 @@ set smarttab
 autocmd FileType markdown setlocal ts=4 sw=4
 autocmd FileType python setlocal ts=4 sw=4
 autocmd FileType yaml setlocal ts=2 sw=2
+autocmd FileType proto setlocal ts=2 sw=2
 
 " Indentation
 set autoindent
@@ -204,16 +207,25 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " Move vertically by visual line (gets around super long lines)
 nnoremap j gj
 nnoremap k gk
+xnoremap j gj
+xnoremap k gk
 
 " Tab navigation
 nnoremap <silent> tn :tabnew<cr>
 nnoremap <silent> tc :tabclose<cr>
 
 " Move split panes to left/bottom/top/right
-nnoremap <A-h> <C-W>H
-nnoremap <A-j> <C-W>J
-nnoremap <A-k> <C-W>K
-nnoremap <A-l> <C-W>L
+nnoremap <A-h> <C-w>H
+nnoremap <A-j> <C-w>J
+nnoremap <A-k> <C-w>K
+nnoremap <A-l> <C-w>L
+
+" Split panes
+nnoremap <A-s> <C-w>s
+nnoremap <A-v> <C-w>v
+
+" Shortcut for equally splitting window sizes
+nnoremap <A-=> <C-w>=
 
 " Move between panes to left/bottom/top/right
 nnoremap <C-h> <C-w>h
@@ -225,11 +237,11 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-c> <C-w>c
 
 " File tree bind
-noremap <silent> <leader>n :NERDTreeFocus<CR>
+noremap <silent> <leader>nt :NERDTreeToggle<CR>
+noremap <silent> <leader>nf :NERDTreeFind<CR>
 
 " Fzf binds
-nnoremap <silent> <c-p> :GFiles<CR>
-nnoremap <silent> <leader><c-p> :Files<CR>
+nnoremap <silent> <c-p> :Files<CR>
 nnoremap <silent> <leader>f :Ag<CR>
 
 " Toggle git blame
@@ -254,6 +266,14 @@ nmap gP <plug>(YoinkPaste_gP)
 
 nmap y <plug>(YoinkYankPreserveCursorPosition)
 xmap y <plug>(YoinkYankPreserveCursorPosition)
+
+" Rebind visual mode put to not also yank
+xmap p <plug>(SubversiveSubstitute)
+xmap P <plug>(SubversiveSubstitute)
+
+" COC format keybinds
+nnoremap <silent> <leader>l :Format<cr>
+nnoremap <silent> <leader>o :OR<cr>
 
 " ---------- COC CONFIG ----------
 

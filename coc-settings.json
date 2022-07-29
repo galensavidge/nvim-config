@@ -1,10 +1,5 @@
 {
     "suggest.autoTrigger": "trigger",
-    "coc.preferences.formatOnSaveFiletypes": [
-        "python",
-        "json"
-    ],
-    "coc.preferences.willSaveHandlerTimeout": 1000,
     "pyright.disableDiagnostics": true,
     "python.formatting.provider": "yapf",
     "python.linting.flake8Enabled": true,
