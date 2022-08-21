@@ -31,5 +31,6 @@ export FZF_DEFAULT_OPTS='-m --height 50% --border'
 pip install isort
 ```
 8. Open neovim and install plugins:
+```
 :PlugInstall
 ```
