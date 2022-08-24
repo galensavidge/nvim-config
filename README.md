@@ -12,6 +12,7 @@ sudo apt-get install neovim
 3. Install required packages:
 ```bash
 sudo apt-get install ripgrep
+```
 4. Install Vim-Plug:
 ```bash
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
