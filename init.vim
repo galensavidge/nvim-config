@@ -7,6 +7,7 @@ Plug 'vim-airline/vim-airline'  " Better status bar
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " LSP interface
 Plug 'vim-python/python-syntax' " Better python syntax highlighting
 Plug 'jackguo380/vim-lsp-cxx-highlight' " Better C++ syntax highlighting
+Plug 'JuliaEditorSupport/julia-vim'  " Julia support
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'         " Fuzzy finder for searching for and in files
 Plug 'preservim/nerdtree'       " File tree
@@ -76,7 +77,7 @@ let g:blamer_date_format = '%m/%d/%y %H:%M'
 
 " Yoink settings
 let g:yoinkIncludeDeleteOperations = 1
-let g:yoinkSavePersistently = 1
+" let g:yoinkSavePersistently = 1
 
 " Vim Session settings
 set sessionoptions-=buffers
@@ -113,6 +114,7 @@ set dir=~/tmp
 " Numbering
 set number
 set relativenumber
+set signcolumn=yes
 
 " Mouse behavior
 set mouse=a
@@ -171,6 +173,11 @@ hi SpellBad cterm=underline
 " Set style for gVim
 hi SpellBad gui=undercurl
 
+" Julia syntax highlighting colors
+hi link juliaFunction Function
+hi link juliaFunctionDef juliaFunction
+hi link juliaFunctionCall juliaFunction
+
 " Better backspace
 set backspace=2
 
@@ -181,7 +188,7 @@ let mapleader = ","
 set splitright
 set splitbelow
 
-" Use system keyboard by default
+" Use system clipboard by default
 set clipboard=unnamedplus
 
 " Trigger autoread when files changes on disk
@@ -203,6 +210,8 @@ endfun
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " ---------- CUSTOM KEYBINDS ----------
+" Esc exits terminal
+" tnoremap <Esc> <C-\><C-n>
 
 " Move vertically by visual line (gets around super long lines)
 nnoremap j gj
@@ -219,6 +228,10 @@ nnoremap <A-h> <C-w>H
 nnoremap <A-j> <C-w>J
 nnoremap <A-k> <C-w>K
 nnoremap <A-l> <C-w>L
+" tnoremap <A-h> <C-\><C-N><C-w>h
+" tnoremap <A-j> <C-\><C-N><C-w>j
+" tnoremap <A-k> <C-\><C-N><C-w>k
+" tnoremap <A-l> <C-\><C-N><C-w>l
 
 " Split panes
 nnoremap <A-s> <C-w>s
@@ -242,7 +255,7 @@ noremap <silent> <leader>nf :NERDTreeFind<CR>
 
 " Fzf binds
 nnoremap <silent> <c-p> :Files<CR>
-nnoremap <silent> <leader>f :Ag<CR>
+nnoremap <silent> <leader>f :Rg<CR>
 
 " Toggle git blame
 noremap <silent> <leader>gb :call BlamerToggle()<cr>
@@ -277,8 +290,12 @@ nnoremap <silent> <leader>o :OR<cr>
 
 " ---------- COC CONFIG ----------
 
+" Custom colors for autocomplete suggestion box
+hi link CocSearch String
+hi link CocFloating PmenuSbar
+
 " Extension list
-let g:coc_global_extensions = ['coc-pyright', 'coc-json', 'coc-protobuf']
+let g:coc_global_extensions = ['coc-pyright', 'coc-json', 'coc-protobuf'] " , 'coc-julia']
 
 " Turn on semantic highlighting (experimental)
 let g:coc_default_semantic_highlight_groups = 1
@@ -302,21 +319,21 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+" if has("nvim-0.5.0") || has("patch-8.1.1564")
+"   " Recently vim can merge signcolumn and number column into one
+"   set signcolumn=number
+" else
+"   set signcolumn=yes
+" endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1):
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -330,9 +347,9 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+" Bind <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
