@@ -48,3 +48,5 @@ unittests
 venv
 vizzy
 true_anom
+testFailCount/!
+boresightangle/!

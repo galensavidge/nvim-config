@@ -92,7 +92,7 @@ let g:highlightedyank_highlight_duration = 250
 let g:highlightedyank_highlight_in_visual = 0
 
 " Quickscope settings
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 augroup qs_colors
   autocmd!
   autocmd ColorScheme * highlight QuickScopePrimary gui=underline cterm=underline
@@ -128,6 +128,7 @@ autocmd FileType markdown setlocal ts=4 sw=4
 autocmd FileType python setlocal ts=4 sw=4
 autocmd FileType yaml setlocal ts=2 sw=2
 autocmd FileType proto setlocal ts=2 sw=2
+autocmd FileType rst setlocal ts=3 sw=3
 
 " Indentation
 set autoindent
@@ -163,8 +164,9 @@ autocmd BufNewFile,BufEnter,BufRead *differential-update-comments set syntax=mar
 " Custom dictionary
 set spellfile=~/.config/nvim/en_us-custom.utf-8.add
 
-" Spell checking on git commits
+" Spell checking
 autocmd Syntax markdown setlocal spell spelllang=en_us
+autocmd Syntax rst setlocal spell spelllang=en_us
 autocmd Syntax gitcommit setlocal spell spelllang=en_us
 
 " Change spelling error highlighting

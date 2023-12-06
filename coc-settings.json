@@ -1,5 +1,7 @@
 {
     "suggest.autoTrigger": "trigger",
+    "suggest.insertMode": "insert",
+    "inlayHint.enable": false,
     "pyright.disableDiagnostics": true,
     "python.formatting.provider": "yapf",
     "python.linting.flake8Enabled": true,
@@ -69,7 +71,7 @@
             }
         },
         "julia": {
-            "command": "~/julia-1.8.0/bin/julia",
+            "command": "julia",
             "args" : ["--project=.", "--startup-file=no", "--history-file=no", "-e", "using LanguageServer; using Pkg; using Revise; import StaticLint; import SymbolServer; env_path = dirname(Pkg.Types.Context().env.project_file); server = LanguageServer.LanguageServerInstance(stdin, stdout, env_path, \"\"); server.runlinter = true; run(server);"],
             "filetypes": ["julia"]
         }
