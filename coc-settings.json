@@ -6,6 +6,7 @@
     "python.formatting.provider": "yapf",
     "python.linting.flake8Enabled": true,
     "pyright.organizeimports.provider": "isort",
+    "coc.source.vimtex.filetypes": ["tex", "plaintex", "latex", "rst"],
     "python.sortImports.args": [
         // sorts according to https://google.github.io/styleguide/pyguide.html#22-imports
         // all imports should be on a new line

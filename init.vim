@@ -297,7 +297,7 @@ hi link CocSearch String
 hi link CocFloating PmenuSbar
 
 " Extension list
-let g:coc_global_extensions = ['coc-pyright', 'coc-json', 'coc-protobuf'] " , 'coc-julia']
+let g:coc_global_extensions = ['coc-pyright', 'coc-json', 'coc-protobuf', 'coc-vimtex'] " , 'coc-julia']
 
 " Turn on semantic highlighting (experimental)
 let g:coc_default_semantic_highlight_groups = 1
