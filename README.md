@@ -12,7 +12,8 @@ chmod u+x ~/appimages/nvim.appimage
 2. Clone the repo into the neovim settings folder (default `~/.config/nvim`).
 3. Install required packages:
 ```bash
-sudo apt-get install ripgrep
+sudo apt-get update
+sudo apt-get install ripgrep fd-find
 ```
 4. Install Vim-Plug:
 ```bash
@@ -37,3 +38,6 @@ pip install isort
 ```
 :PlugInstall
 ```
+
+## Font
+Fira Mono: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraMono.zip
