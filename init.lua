@@ -98,7 +98,7 @@ vim.keymap.set('n', '<C-p>', ts.find_files, {})
 vim.keymap.set('n', '<leader>f', ts.live_grep, {})
 vim.keymap.set('n', '<leader>b', ts.buffers, {})
 vim.keymap.set('n', '<leader>h', ts.help_tags, {})
-vim.keymap.set('n', '<leader>p', ':Telescope neoclip<cr>', { silent = true})
+vim.keymap.set('n', '<leader>p', require('telescope').extensions.neoclip.plus, {})
 
  -- Project/session management
 require("persisted").setup({
@@ -106,11 +106,6 @@ require("persisted").setup({
   autoload = true,
 })
 require('telescope').load_extension("persisted")
-
- -- Clipboard grep config
-require('neoclip').setup({
-  default_register = {'"', '+', '*'},
-})
 
  ---------- MISC SETTINGS ----------
 local opt = vim.opt
