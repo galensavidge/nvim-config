@@ -38,6 +38,15 @@ require("lazy").setup({
     config = true,
     priority = 90,
   },
+  { -- Cutlass
+    "svermeulen/vim-cutlass",
+  },
+  { -- Neoclip
+    "AckslD/nvim-neoclip.lua",
+    dependencies = { 
+      'nvim-telescope/telescope.nvim',
+    },
+  },
 })
 
 -- Set color theme
@@ -54,12 +63,6 @@ require('lualine').setup {
 }
 
  ---------- CUSTOM KEYBINDS ----------
- -- Esc exits terminal
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
-
- -- Close panes
-vim.keymap.set({'n', 'x'}, '<C-c>', '<C-w>c')
-
  -- Move vertically by visual line (gets around super long lines)
 vim.keymap.set({'n', 'x'}, 'j', 'gj')
 vim.keymap.set({'n', 'x'}, 'k', 'gk')
@@ -76,9 +79,18 @@ vim.keymap.set('n', '<A-j>', '<C-w>J')
 vim.keymap.set('n', '<A-k>', '<C-w>K')
 vim.keymap.set('n', '<A-l>', '<C-w>L')
 
+ -- Close panes
+vim.keymap.set({'n', 'x'}, '<C-c>', '<C-w>c')
+
  -- Tab navigation
 vim.keymap.set('n', 'tn', ':tabnew<cr>', { silent = true })
 vim.keymap.set('n', 'tc', ':tabclose<cr>', { silent = true })
+
+ -- Cut keybind
+vim.keymap.set({'n', 'x'}, 'm', 'd')
+vim.keymap.set('n', 'mm', 'dd')
+vim.keymap.set('n', 'M', 'D')
+vim.keymap.set({'n', 'x'}, '<leader>m', 'm')
 
 -- Set file grep config
 local ts = require('telescope.builtin')
@@ -86,6 +98,7 @@ vim.keymap.set('n', '<C-p>', ts.find_files, {})
 vim.keymap.set('n', '<leader>f', ts.live_grep, {})
 vim.keymap.set('n', '<leader>b', ts.buffers, {})
 vim.keymap.set('n', '<leader>h', ts.help_tags, {})
+vim.keymap.set('n', '<leader>p', ':Telescope neoclip<cr>', { silent = true})
 
  -- Project/session management
 require("persisted").setup({
@@ -93,4 +106,37 @@ require("persisted").setup({
   autoload = true,
 })
 require('telescope').load_extension("persisted")
+
+ -- Clipboard grep config
+require('neoclip').setup({
+  default_register = {'"', '+', '*'},
+})
+
+ ---------- MISC SETTINGS ----------
+local opt = vim.opt
+opt.autoindent = true
+opt.autoread = true
+opt.backup = false
+opt.clipboard = "unnamedplus" -- Use system clipboard by default
+opt.cursorline = true
+opt.expandtab = true
+opt.hlsearch = true
+opt.incsearch = true
+opt.number = true
+opt.path:append '**'
+opt.relativenumber = true
+opt.scrolloff = 5
+opt.shiftwidth = 4
+opt.spellfile = '~/.config/nvim/en_us-custom.utf-8.add'
+opt.splitbelow = true -- Open new split panes to right and below
+opt.splitright = true
+opt.smartcase = true
+opt.smartindent = true
+opt.softtabstop = 4
+opt.swapfile = false
+opt.tabstop = 4
+opt.textwidth = 80
+opt.wildmenu = true
+opt.wrap = true
+opt.writebackup = false
 
