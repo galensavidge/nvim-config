@@ -28,10 +28,10 @@ require("lazy").setup({
   { -- Telescope
     "nvim-telescope/telescope.nvim",
     tag = '0.1.5',
-    dependencies = { 
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
-    }, 
+    },
   },
   { -- Persisted
     "olimorris/persisted.nvim",
@@ -43,7 +43,10 @@ require("lazy").setup({
   },
   { -- Neoclip
     "AckslD/nvim-neoclip.lua",
-    dependencies = { 
+    config = function()
+        require('neoclip').setup()
+    end,
+    dependencies = {
       'nvim-telescope/telescope.nvim',
     },
   },
@@ -79,6 +82,9 @@ vim.keymap.set('n', '<A-j>', '<C-w>J')
 vim.keymap.set('n', '<A-k>', '<C-w>K')
 vim.keymap.set('n', '<A-l>', '<C-w>L')
 
+ -- Shortcut for equally splitting window sizes
+vim.keymap.set({'n', 'x'}, '<A-=>', '<C-w>=')
+
  -- Close panes
 vim.keymap.set({'n', 'x'}, '<C-c>', '<C-w>c')
 
@@ -91,6 +97,7 @@ vim.keymap.set({'n', 'x'}, 'm', 'd')
 vim.keymap.set('n', 'mm', 'dd')
 vim.keymap.set('n', 'M', 'D')
 vim.keymap.set({'n', 'x'}, '<leader>m', 'm')
+vim.keymap.set('x', 'p', 'P')  -- Prevent yank on put in visual mode
 
 -- Set file grep config
 local ts = require('telescope.builtin')
@@ -107,27 +114,64 @@ require("persisted").setup({
 })
 require('telescope').load_extension("persisted")
 
+ -- Set spell check
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"},
+{
+  pattern = {"*.rst", "*.md", "*COMMIT*"},
+  callback = function(ev)
+    vim.opt.spell = true
+    vim.opt.spelllang = 'en_us'
+  end
+})
+
+ -- Set tab length by file type
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"},
+{
+  pattern = {"*.rst"},
+  callback = function(ev)
+    vim.opt.tabstop = 3
+  end
+})
+
+ -- Strip trailing whitespace
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = {"*"},
+    callback = function()
+      local nvim_create_autocmd = vim.fn.getpos(".")
+      pcall(function() vim.cmd [[%s/\s\+$//e]] end)
+      vim.fn.setpos(".", save_cursor)
+    end,
+})
+
  ---------- MISC SETTINGS ----------
 local opt = vim.opt
 opt.autoindent = true
 opt.autoread = true
 opt.backup = false
+opt.breakindent = true
+opt.breakindentopt = "shift:2"
 opt.clipboard = "unnamedplus" -- Use system clipboard by default
 opt.cursorline = true
 opt.expandtab = true
 opt.hlsearch = true
+opt.ignorecase = true
 opt.incsearch = true
+opt.mouse = 'a'
 opt.number = true
 opt.path:append '**'
 opt.relativenumber = true
 opt.scrolloff = 5
-opt.shiftwidth = 4
+opt.selection = "old"
+opt.shiftround = true
+opt.shiftwidth = 0 -- Use value of tabstop
+opt.spell = false
 opt.spellfile = '~/.config/nvim/en_us-custom.utf-8.add'
+opt.spelllang = 'en_us'
 opt.splitbelow = true -- Open new split panes to right and below
 opt.splitright = true
 opt.smartcase = true
 opt.smartindent = true
-opt.softtabstop = 4
+opt.softtabstop = -1 -- Use value of tabstop
 opt.swapfile = false
 opt.tabstop = 4
 opt.textwidth = 80
