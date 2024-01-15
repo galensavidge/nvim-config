@@ -71,4 +71,14 @@ require("lazy").setup({
       require("inc_rename").setup()
     end,
   },
+  { -- LSP-progress
+    'linrongbin16/lsp-progress.nvim',
+    config = function()
+      require('lsp-progress').setup()
+    end
+  },
+  { -- LSP-timeout
+    "hinell/lsp-timeout.nvim",
+    dependencies={ "neovim/nvim-lspconfig" }
+  },
 })

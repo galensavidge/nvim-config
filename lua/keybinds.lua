@@ -107,5 +107,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>l', function()
       vim.lsp.buf.format { async = true }
     end, opts)
+    vim.keymap.set('n', '<leader>s', ts.lsp_dynamic_workspace_symbols)
   end,
 })

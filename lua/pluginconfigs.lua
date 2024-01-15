@@ -1,3 +1,15 @@
+ -- Status line
+require("lualine").setup({
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'filename'},
+    lualine_c = {'branch', 'diff', 'diagnostics'},
+    lualine_x = {require('lsp-progress').progress, 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+})
+
  -- Project/session management
 require("persisted").setup({
   use_git_branch = true,
