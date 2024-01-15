@@ -62,4 +62,7 @@ require("lazy").setup({
   { -- Lspconfig
     'neovim/nvim-lspconfig',
   },
+  { -- Python-syntax
+    'vim-python/python-syntax',
+  },
 })
