@@ -13,3 +13,6 @@ require('gitsigns').setup()
 
  -- Leap motions
 require('leap').create_default_mappings(true)
+
+ -- Set up language servers
+require('lspconfig').pyright.setup({})

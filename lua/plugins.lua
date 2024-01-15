@@ -58,5 +58,8 @@ require("lazy").setup({
   },
   { -- Leap
     'ggandor/leap.nvim',
-  }
+  },
+  { -- Lspconfig
+    'neovim/nvim-lspconfig',
+  },
 })

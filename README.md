@@ -15,9 +15,9 @@ chmod u+x ~/appimages/nvim.appimage
 sudo apt-get update
 sudo apt-get install ripgrep fd-find xclip
 ```
-4. Install Node.js for coc-nvim:
+4. Install language servers:
 ```bash
-curl -sL install-node.vercel.app/lts | sudo bash
+pip3 install pyright
 ```
 5. Place the following lines in `~./bashrc`:
 ```
