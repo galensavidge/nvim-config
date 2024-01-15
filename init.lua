@@ -8,5 +8,3 @@ require('keybinds')
 require('options')
 require('pluginconfigs')
 require('autocmds')
-
-

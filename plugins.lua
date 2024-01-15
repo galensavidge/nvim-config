@@ -56,4 +56,7 @@ require("lazy").setup({
   { -- Diffview
     'sindrets/diffview.nvim',
   },
+  { -- Leap
+    'ggandor/leap.nvim',
+  }
 })

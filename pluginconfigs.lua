@@ -10,3 +10,6 @@ require("virt-column").setup()
 
  -- Git integration (show hunks, stage hunks, blame)
 require('gitsigns').setup()
+
+ -- Leap motions
+require('leap').create_default_mappings(true)
