@@ -32,3 +32,6 @@ require('lspconfig').clangd.setup({})
 
  -- Better Python syntax highlighting
 vim.g.python_highlight_all = true
+
+ -- Code outline
+require('plugins.outline')

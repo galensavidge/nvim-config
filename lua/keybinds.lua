@@ -102,7 +102,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set("n", "<leader>rn", function()
       return ":IncRename " .. vim.fn.expand("<cword>")
     end, { expr = true, silent = true })
-    vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<leader>l', function()
       vim.lsp.buf.format { async = true }
@@ -110,3 +110,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>s', ts.lsp_dynamic_workspace_symbols)
   end,
 })
+
+ -- Code outline
+vim.keymap.set('n', '<leader>o', '<cmd>Outline<CR>')
