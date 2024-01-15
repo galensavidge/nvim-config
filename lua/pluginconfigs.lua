@@ -16,6 +16,7 @@ require('leap').create_default_mappings(true)
 
  -- Set up language servers
 require('lspconfig').pyright.setup({})
+require('lspconfig').clangd.setup({})
 
  -- Better Python syntax highlighting
 vim.g.python_highlight_all = true

@@ -13,11 +13,12 @@ chmod u+x ~/appimages/nvim.appimage
 3. Install required packages:
 ```bash
 sudo apt-get update
-sudo apt-get install ripgrep fd-find xclip
+sudo apt-get install ripgrep fd-find xclip clangd
 ```
-4. Install language servers:
+4. Set up language servers:
 ```bash
 pip3 install pyright
+sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
 ```
 5. Place the following lines in `~./bashrc`:
 ```

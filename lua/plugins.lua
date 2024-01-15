@@ -65,4 +65,10 @@ require("lazy").setup({
   { -- Python-syntax
     'vim-python/python-syntax',
   },
+  { -- Inc-rename
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+    end,
+  },
 })
