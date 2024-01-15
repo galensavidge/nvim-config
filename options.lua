@@ -1,0 +1,36 @@
+
+local opt = vim.opt
+opt.autoindent = true
+opt.autoread = true
+opt.backup = false
+opt.breakindent = true
+opt.breakindentopt = "shift:2"
+opt.clipboard = "unnamedplus" -- Use system clipboard by default
+opt.colorcolumn = '80'
+opt.cursorline = true
+opt.expandtab = true
+opt.hlsearch = true
+opt.ignorecase = true
+opt.incsearch = true
+opt.mouse = 'a'
+opt.number = true
+opt.path:append '**'
+opt.relativenumber = true
+opt.scrolloff = 5
+opt.selection = "old"
+opt.shiftround = true
+opt.shiftwidth = 0 -- Use value of tabstop
+opt.spell = false
+opt.spellfile = '~/.config/nvim/en_us-custom.utf-8.add'
+opt.spelllang = 'en_us'
+opt.splitbelow = true -- Open new split panes to right and below
+opt.splitright = true
+opt.smartcase = true
+opt.smartindent = true
+opt.softtabstop = -1 -- Use value of tabstop
+opt.swapfile = false
+opt.tabstop = 4
+opt.textwidth = 80
+opt.wildmenu = true
+opt.wrap = true
+opt.writebackup = false
