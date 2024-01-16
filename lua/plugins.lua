@@ -27,12 +27,6 @@ require('lazy').setup({
     main = 'ibl',
     opts = {},
   },
-  { -- Neoscroll
-    'karb94/neoscroll.nvim',
-    config = function ()
-      require('neoscroll').setup {}
-    end
-  },
   { -- Telescope
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',
@@ -100,5 +94,9 @@ require('lazy').setup({
   { -- Telescope-file-browser
     'nvim-telescope/telescope-file-browser.nvim',
     dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' }
+  },
+  { -- Comment
+    'numToStr/Comment.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
 })

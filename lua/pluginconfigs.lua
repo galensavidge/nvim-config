@@ -13,11 +13,6 @@ require('lualine').setup({
  -- Show indented blocks visually
 require('ibl').setup()
 
- -- Smooth scrolling
-require('neoscroll').setup({
-  easing_function = 'sine'
-})
-
  -- Project/session management
 require('persisted').setup({
   use_git_branch = true,
@@ -46,3 +41,20 @@ require('plugins.outline')
 
  -- File browser
 require('telescope').load_extension('file_browser')
+
+ -- Commenting
+require('Comment').setup({
+  ignore = '^$', -- Ignore empty lines
+  toggler = {
+      line = '<leader>ct', -- Line-comment toggle keymap
+  },
+  opleader = {
+      line = '<leader>cc', -- Line-comment keymap
+      block = '<leader>cb', -- Block-comment keymap
+  },
+  ---Enable keybindings
+  mappings = {
+      basic = true,
+      extra = false,
+  },
+})
