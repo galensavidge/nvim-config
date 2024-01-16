@@ -81,7 +81,7 @@ require('lazy').setup({
     'hinell/lsp-timeout.nvim',
     dependencies={ 'neovim/nvim-lspconfig' }
   },
-  {
+  { -- Outline
     'hedyhli/outline.nvim',
     cmd = { 'Outline', 'OutlineOpen' },
     lazy = true,

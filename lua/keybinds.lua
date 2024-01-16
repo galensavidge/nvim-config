@@ -77,6 +77,8 @@ vim.keymap.set('n', '<leader>td', gs.toggle_deleted)
 
 vim.keymap.set({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 
+vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', { silent = true })
+
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
