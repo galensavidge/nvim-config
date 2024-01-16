@@ -63,6 +63,7 @@ require('lazy').setup({
   },
   { -- Leap
     'ggandor/leap.nvim',
+    dependencies = { 'tpope/vim-repeat' },
   },
   { -- Lspconfig
     'neovim/nvim-lspconfig',
@@ -91,8 +92,16 @@ require('lazy').setup({
     cmd = { 'Outline', 'OutlineOpen' },
     lazy = true,
   },
-  { -- Coq-nvim
-    'ms-jpq/coq_nvim',
+  { -- Nvim-cmp
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
+    },
   },
   { -- Telescope-file-browser
     'nvim-telescope/telescope-file-browser.nvim',
