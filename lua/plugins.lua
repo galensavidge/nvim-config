@@ -111,4 +111,8 @@ require('lazy').setup({
     'numToStr/Comment.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
+  { -- Trim
+    "cappyzawa/trim.nvim",
+    opts = {},
+  },
 })

@@ -23,13 +23,3 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"},
     vim.opt.tabstop = 3
   end
 })
-
- -- Strip trailing whitespace
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern = {"*"},
-    callback = function()
-      local nvim_create_autocmd = vim.fn.getpos(".")
-      pcall(function() vim.cmd [[%s/\s\+$//e]] end)
-      vim.fn.setpos(".", save_cursor)
-    end,
-})

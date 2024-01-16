@@ -27,9 +27,9 @@ require('virt-column').setup()
 require('gitsigns').setup()
 
  -- Leap motions (need to unbind some things set by cutlass first)
-vim.keymap.del('n', 's')
-vim.keymap.del('n', 'S')
-vim.keymap.del('x', '"_s')
+vim.keymap.del('n', 's', {silent = true})
+vim.keymap.del('n', 'S', {silent = true})
+vim.keymap.del('x', '"_s', {silent = true})
 require('leap').create_default_mappings()
 
  -- Set up language servers
