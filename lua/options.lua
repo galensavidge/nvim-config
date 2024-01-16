@@ -31,6 +31,7 @@ opt.softtabstop = -1 -- Use value of tabstop
 opt.swapfile = false
 opt.tabstop = 4
 opt.textwidth = 80
+opt.timeoutlen = 400
 opt.wildmenu = true
 opt.wrap = true
 opt.writebackup = false

@@ -30,8 +30,10 @@ require('gitsigns').setup()
 require('leap').create_default_mappings(true)
 
  -- Set up language servers
-require('lspconfig').pyright.setup({})
-require('lspconfig').clangd.setup({})
+local lsp = require('lspconfig')
+local coq = require('coq')
+lsp.pyright.setup(coq.lsp_ensure_capabilities({}))
+lsp.clangd.setup(coq.lsp_ensure_capabilities({}))
 
  -- Better Python syntax highlighting
 vim.g.python_highlight_all = true

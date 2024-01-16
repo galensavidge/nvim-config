@@ -13,7 +13,7 @@ chmod u+x ~/appimages/nvim.appimage
 3. Install required packages:
 ```bash
 sudo apt-get update
-sudo apt-get install ripgrep fd-find xclip clangd
+sudo apt-get install ripgrep fd-find xclip clangd python3-venv
 ```
 4. Set up language servers:
 ```bash

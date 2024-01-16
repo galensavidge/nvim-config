@@ -91,6 +91,9 @@ require('lazy').setup({
     cmd = { 'Outline', 'OutlineOpen' },
     lazy = true,
   },
+  { -- Coq-nvim
+    'ms-jpq/coq_nvim',
+  },
   { -- Telescope-file-browser
     'nvim-telescope/telescope-file-browser.nvim',
     dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' }
