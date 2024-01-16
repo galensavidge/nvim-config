@@ -10,6 +10,14 @@ require('lualine').setup({
   },
 })
 
+ -- Show indented blocks visually
+require('ibl').setup()
+
+ -- Smooth scrolling
+require('neoscroll').setup({
+  easing_function = 'sine'
+})
+
  -- Project/session management
 require('persisted').setup({
   use_git_branch = true,

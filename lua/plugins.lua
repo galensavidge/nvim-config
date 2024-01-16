@@ -22,6 +22,17 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
+  { -- Indent-blankline
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {},
+  },
+  { -- Neoscroll
+    'karb94/neoscroll.nvim',
+    config = function ()
+      require('neoscroll').setup {}
+    end
+  },
   { -- Telescope
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',
