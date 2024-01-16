@@ -1,6 +1,5 @@
-
 -- Set `mapleader` before lazy so mappings are correct
-vim.g.mapleader = ","
+vim.g.mapleader = ','
 
 require('plugins')
 require('styling')

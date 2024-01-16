@@ -101,8 +101,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts)
     vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set("n", "<leader>rn", function()
-      return ":IncRename " .. vim.fn.expand("<cword>")
+    vim.keymap.set('n', '<leader>rn', function()
+      return ':IncRename ' .. vim.fn.expand('<cword>')
     end, { expr = true, silent = true })
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
@@ -115,3 +115,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
  -- Code outline
 vim.keymap.set('n', '<leader>o', '<cmd>Outline<CR>')
+
+ -- File browser
+vim.keymap.set('n', '<leader>d', ':Telescope file_browser<CR>',
+  { silent = true })

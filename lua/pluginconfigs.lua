@@ -1,5 +1,5 @@
  -- Status line
-require("lualine").setup({
+require('lualine').setup({
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'filename'},
@@ -11,14 +11,14 @@ require("lualine").setup({
 })
 
  -- Project/session management
-require("persisted").setup({
+require('persisted').setup({
   use_git_branch = true,
   autoload = true,
 })
-require('telescope').load_extension("persisted")
+require('telescope').load_extension('persisted')
 
  -- Better color column
-require("virt-column").setup()
+require('virt-column').setup()
 
  -- Git integration (show hunks, stage hunks, blame)
 require('gitsigns').setup()
@@ -35,3 +35,6 @@ vim.g.python_highlight_all = true
 
  -- Code outline
 require('plugins.outline')
+
+ -- File browser
+require('telescope').load_extension('file_browser')
