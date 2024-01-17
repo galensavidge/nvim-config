@@ -84,3 +84,10 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Normal    | `,l`            | Auto-format buffer                            |
 | Normal    | `,o`            | Show code outline sidebar using LSP symbols   |
 | Normal    | `,ca`           | Execute code actions                          |
+| Insert    | `<Tab>/<C-Space>` | Manually trigger autocomplete               |
+| Insert    | `<C-e>`         | Close autocomplete window                     |
+| Insert    | `<Tab>`         | Select next autocomplete suggestion           |
+| Insert    | `<S-Tab>`       | Select previous autocomplete suggestion       |
+| Insert    | `<CR>`          | Confirm selected autocomplete suggestion      |
+| Insert    | `<C-l>`         | Expand snippet or jump forward within snippet |
+| Insert    | `<C-h>`         | Jump backward within snippet                  |

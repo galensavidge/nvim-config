@@ -45,6 +45,10 @@ lsp.clangd.setup({capabilities = capabilities})
  -- Set up completion
 require('plugins.cmp')
 
+ -- Load extra snippets from friendly-snippets
+require('luasnip').log.set_loglevel('debug')
+require('luasnip.loaders.from_vscode').lazy_load({})
+
  -- Better Python syntax highlighting
 vim.g.python_highlight_all = true
 
