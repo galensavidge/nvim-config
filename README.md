@@ -43,18 +43,14 @@ Fira Mono: (FiraMono Download)
 | Normal    | `<A-{h/j/k/l}>` | Move split pane to the {left/bottom/top/right}|
 | N, X      | `<A-=>`         | Set split panes to equal sizes                |
 | N, X      | `<C-c>`         | Close pane                                    |
-| --------- | --------------- | --------------------------------------------- |
 | Normal    | `tn`            | Make new tab                                  |
 | Normal    | `tc`            | Close tab                                     |
-| --------- | --------------- | --------------------------------------------- |
 | N, X      | `m`             | Cut                                           |
 | Normal    | `M`             | Cut to the right of cursor                    |
 | Normal    | `mm`            | Cut line                                      |
-| --------- | --------------- | --------------------------------------------- |
 | Normal    | `,ct`           | Toggle comment on the current line            |
 | N, X      | `,cc`           | Single-line comment leader keymap             |
 | N, X      | `,cb`           | Block comment leader keymap                   |
-| --------- | --------------- | --------------------------------------------- |
 | Normal    | `<C-p>`         | Fuzzy search file names                       |
 | Normal    | `,f`            | Grep for text in files                        |
 | Normal    | `,d`            | Open file browser                             |
@@ -64,7 +60,6 @@ Fira Mono: (FiraMono Download)
 | Normal    | `,p`            | Fuzzy search clipboard history                |
 | Normal    | `,s`            | Fuzzy search LSP symbols                      |
 | Normal    | `,ts`           | Fuzzy search Telescope search pickers         |
-| --------- | --------------- | --------------------------------------------- |
 | Normal    | `{[/]}c`        | {Previous/Next} git hunk                      |
 | Normal    | `,hs`           | Stage git hunk                                |
 | Normal    | `,hr`           | Reset git hunk                                |
@@ -77,7 +72,6 @@ Fira Mono: (FiraMono Download)
 | Normal    | `,td`           | Toggle showing deleted lines on/off           |
 | O, X      | `ih`            | Select git hunk                               |
 | Normal    | `,gd`           | Open git diff view page of all changed files  |
-| --------- | --------------- | --------------------------------------------- |
 | Normal    | `K`             | Hover LSP symbol                              |
 | Normal    | `gd`            | Go to LSP symbol definition                   |
 | Normal    | `gD`            | Go to LSP symbol declaration                  |
@@ -88,4 +82,3 @@ Fira Mono: (FiraMono Download)
 | Normal    | `,l`            | Auto-format buffer                            |
 | Normal    | `,o`            | Show code outline sidebar using LSP symbols   |
 | Normal    | `,ca`           | Execute code actions                          |
-| --------- | --------------- | --------------------------------------------- |
