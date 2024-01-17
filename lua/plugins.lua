@@ -22,6 +22,12 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
+  { -- Minintro
+    "eoh-bse/minintro.nvim",
+    opts = { color = "#989898" },
+    config = true,
+    lazy = false
+  },
   { -- Indent-blankline
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
