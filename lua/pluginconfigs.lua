@@ -20,6 +20,9 @@ require('persisted').setup({
 })
 require('telescope').load_extension('persisted')
 
+ -- Better fuzzy finder sorting
+require('telescope').load_extension('zf-native')
+
  -- Better color column
 require('virt-column').setup()
 

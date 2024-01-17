@@ -43,6 +43,9 @@ vim.keymap.set('n', '<leader>b', ts.buffers, {})  -- Search buffers
 vim.keymap.set('n', '<leader>h', ts.help_tags, {})  -- Search help tags
  -- Search clipboard history
 vim.keymap.set('n', '<leader>p', require('telescope').extensions.neoclip.plus)
+vim.keymap.set('n', '<leader>z', function()
+  ts.spell_suggest(require('telescope.themes').get_cursor({}))
+end)
 vim.keymap.set('n', '<leader>ts', ts.builtin, {})  -- Search pickers
 
  -- Git integration

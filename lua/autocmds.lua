@@ -1,25 +1,24 @@
  -- Set spell check
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"},
+vim.api.nvim_create_autocmd('FileType',
 {
-  pattern = {"*.rst", "*.md", "*COMMIT*"},
-  callback = function(ev)
-    vim.opt.spell = true
-    vim.opt.spelllang = 'en_us'
-  end
+  pattern = { 'html', 'markdown', 'text' },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
 })
 
  -- Set tab length by file type
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"},
+vim.api.nvim_create_autocmd('FileType',
 {
-  pattern = {"*.lua"},
+  pattern = { 'lua' },
   callback = function(ev)
-    vim.opt.tabstop = 2
+    vim.opt_local.tabstop = 2
   end
 })
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"},
+vim.api.nvim_create_autocmd('FileType',
 {
-  pattern = {"*.rst"},
+  pattern = { 'rst' },
   callback = function(ev)
-    vim.opt.tabstop = 3
+    vim.opt_local.tabstop = 3
   end
 })

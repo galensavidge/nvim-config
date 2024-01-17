@@ -41,6 +41,10 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter',
     },
   },
+  { -- Telescope-zf-native
+    'natecraddock/telescope-zf-native.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim' },
+  },
   { -- Persisted
     'olimorris/persisted.nvim',
     config = true,
