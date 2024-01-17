@@ -5,7 +5,8 @@ local has_words_before = function()
 end
 
 local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true),
+                        mode, true)
 end
 
 local cmp = require('cmp')
@@ -26,15 +27,19 @@ cmp.setup({
     -- { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
-    }, {
-      { name = 'buffer' },
+    { name = 'path' },
+    { name = 'calc' },
+    -- { name = 'cmdline' },
+    { name = 'buffer' },
   }),
   mapping = cmp.mapping.preset.insert({
     ['<C-A-k>'] = cmp.mapping.scroll_docs(-4),
     ['<C-A-j>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+     -- Accept currently selected item. Set `select` to `false` to only confirm
+     -- explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
      -- Map tab to next completion item
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -45,7 +50,9 @@ cmp.setup({
       elseif has_words_before() then
         cmp.complete()
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        -- The fallback function sends a already mapped key. In this case, it's
+        -- probably `<Tab>`.
+        fallback()
       end
     end, { "i", "s" }),
 

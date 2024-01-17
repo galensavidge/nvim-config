@@ -27,6 +27,12 @@ require('lazy').setup({
     main = 'ibl',
     opts = {},
   },
+  { -- Hlsearch
+    'nvimdev/hlsearch.nvim',
+    config = function()
+      require('hlsearch').setup()
+    end,
+  },
   { -- Telescope
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',
@@ -101,6 +107,7 @@ require('lazy').setup({
       'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-vsnip',
       'hrsh7th/vim-vsnip',
+      'hrsh7th/cmp-calc',
     },
   },
   { -- Telescope-file-browser
