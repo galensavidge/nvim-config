@@ -30,8 +30,7 @@ pip install isort
 ```
 
 ## Font
-Fira Mono: (FiraMono Download)
-[https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraMono.zip]
+Fira Mono: (FiraMono Download)[https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraMono.zip]
 
 ## Keybinds
 
