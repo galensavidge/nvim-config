@@ -36,6 +36,9 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 
 | Mode      | Keys            | Action                                        |
 | --------- | --------------- | --------------------------------------------- |
+| N, X      | `s`             | Begin leap search forward                     |
+| N, X      | `S`             | Begin leap search backward                    |
+| N, X      | `gs`            | Begin leap search in other splits             |
 | Normal    | `<A-s>`         | Split horizontally                            |
 | Normal    | `<A-v>`         | Split vertically                              |
 | Normal    | `<C-{h/j/k/l}>` | Move between panes to {left/bottom/top/right} |
