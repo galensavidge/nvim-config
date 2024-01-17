@@ -119,7 +119,11 @@ require('lazy').setup({
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
   { -- Trim
-    "cappyzawa/trim.nvim",
+    'cappyzawa/trim.nvim',
     opts = {},
+  },
+  { -- Vim-notes
+    'xolox/vim-notes',
+    dependencies = { 'xolox/vim-misc' },
   },
 })

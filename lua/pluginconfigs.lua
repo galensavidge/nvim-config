@@ -30,6 +30,7 @@ require('gitsigns').setup()
 vim.keymap.del('n', 's', {silent = true})
 vim.keymap.del('n', 'S', {silent = true})
 vim.keymap.del('x', '"_s', {silent = true})
+vim.keymap.del('x', '"_S', {silent = true})
 require('leap').create_default_mappings()
 
  -- Set up language servers

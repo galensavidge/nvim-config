@@ -13,7 +13,7 @@ chmod u+x ~/appimages/nvim.appimage
 3. Install required packages:
 ```bash
 sudo apt-get update
-sudo apt-get install ripgrep fd-find xclip clangd python3-venv
+sudo apt-get install ripgrep fd-find xclip clangd python3-venv markdown
 ```
 4. Set up language servers:
 ```bash
@@ -31,4 +31,3 @@ pip install isort
 
 ## Font
 Fira Mono: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraMono.zip
-
