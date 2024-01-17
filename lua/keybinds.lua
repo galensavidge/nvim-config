@@ -37,11 +37,13 @@ vim.keymap.set('x', 'p', 'P')  -- Prevent yank on put in visual mode
 
  -- Set file grep config
 local ts = require('telescope.builtin')
-vim.keymap.set('n', '<C-p>', ts.find_files, {})
-vim.keymap.set('n', '<leader>f', ts.live_grep, {})
-vim.keymap.set('n', '<leader>b', ts.buffers, {})
-vim.keymap.set('n', '<leader>h', ts.help_tags, {})
+vim.keymap.set('n', '<C-p>', ts.find_files, {})  -- Search file names
+vim.keymap.set('n', '<leader>f', ts.live_grep, {})  -- Search for text in files
+vim.keymap.set('n', '<leader>b', ts.buffers, {})  -- Search buffers
+vim.keymap.set('n', '<leader>h', ts.help_tags, {})  -- Search help tags
+ -- Search clipboard history
 vim.keymap.set('n', '<leader>p', require('telescope').extensions.neoclip.plus)
+vim.keymap.set('n', '<leader>ts', ts.builtin, {})  -- Search pickers
 
  -- Git integration
 local gs = require('gitsigns')
