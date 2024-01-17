@@ -1,3 +1,13 @@
+ -- Highlight yanked text in normal mode
+vim.api.nvim_create_autocmd('TextYankPost',
+{
+  callback = function()
+    if not vim.v.event.visual then
+      require('vim.highlight').on_yank()
+    end
+  end,
+})
+
  -- Set spell check
 vim.api.nvim_create_autocmd('FileType',
 {
