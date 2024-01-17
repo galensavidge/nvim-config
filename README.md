@@ -47,7 +47,7 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | N, X      | `<C-c>`         | Close pane                                    |
 | Normal    | `tn`            | Make new tab                                  |
 | Normal    | `tc`            | Close tab                                     |
-| N, X      | `m`             | Cut                                           |
+| N, X      | `m`             | Cut selection                                 |
 | Normal    | `M`             | Cut to the right of cursor                    |
 | Normal    | `mm`            | Cut line                                      |
 | Normal    | `,ct`           | Toggle comment on the current line            |
