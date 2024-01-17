@@ -22,3 +22,12 @@ vim.api.nvim_create_autocmd('FileType',
     vim.opt_local.tabstop = 3
   end
 })
+
+ -- Close outline before saving session to prevent issues
+vim.api.nvim_create_autocmd({ 'User' },
+{
+  pattern = 'PersistedSavePre',
+  callback = function()
+    require('outline').close()
+  end,
+})
