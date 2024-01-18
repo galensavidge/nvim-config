@@ -47,8 +47,9 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter',
     },
   },
-  { -- Telescope-zf-native
-    'natecraddock/telescope-zf-native.nvim',
+  { -- Telescope-fzf-native
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
     dependencies = { 'nvim-telescope/telescope.nvim' },
   },
   { -- Persisted
@@ -83,6 +84,10 @@ require('lazy').setup({
   },
   { -- Lspconfig
     'neovim/nvim-lspconfig',
+  },
+  { -- Null-ls
+    'jose-elias-alvarez/null-ls.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
   { -- Python-syntax
     'vim-python/python-syntax',

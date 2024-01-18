@@ -21,7 +21,7 @@ require('persisted').setup({
 require('telescope').load_extension('persisted')
 
  -- Better fuzzy finder sorting
-require('telescope').load_extension('zf-native')
+require('telescope').load_extension('fzf')
 
  -- Better color column
 require('virt-column').setup()
@@ -39,15 +39,35 @@ require('leap').create_default_mappings()
  -- Set up language servers
 local lsp = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-lsp.pyright.setup({capabilities = capabilities})
+lsp.pyright.setup({
+  capabilities = capabilities,
+  settings = {},
+})
 lsp.clangd.setup({capabilities = capabilities})
+
+ -- Change how diagnostics are displayed
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = false,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})
+
+ -- Set up code auto-formatting
+local null_ls = require('null-ls')
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.completion.spell,
+    null_ls.builtins.formatting.yapf,
+    null_ls.builtins.diagnostics.flake8,
+  },
+})
 
  -- Set up completion
 require('plugins.cmp')
-
- -- Load extra snippets from friendly-snippets
-require('luasnip').log.set_loglevel('debug')
-require('luasnip.loaders.from_vscode').lazy_load({})
 
  -- Better Python syntax highlighting
 vim.g.python_highlight_all = true

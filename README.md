@@ -13,7 +13,8 @@ chmod u+x ~/appimages/nvim.appimage
 3. Install required packages:
 ```bash
 sudo apt-get update
-sudo apt-get install ripgrep fd-find xclip clangd python3-venv markdown
+sudo apt-get install ripgrep fd-find xclip clangd python3-venv markdown cmake
+gcc yapf flake8
 ```
 4. Set up language servers:
 ```bash
@@ -55,12 +56,14 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | N, X      | `,cb`           | Block comment leader keymap                   |
 | Normal    | `<C-p>`         | Fuzzy search file names                       |
 | Normal    | `,f`            | Grep for text in files                        |
+| Insert    | `,f`            | Grep for selected text in files               |
 | Normal    | `,d`            | Open file browser                             |
 | Normal    | `,z`            | Fuzzy search spelling suggestions             |
 | Normal    | `,b`            | Fuzzy search buffers                          |
 | Normal    | `,h`            | Fuzzy search help tags                        |
 | Normal    | `,p`            | Fuzzy search clipboard history                |
 | Normal    | `,s`            | Fuzzy search LSP symbols                      |
+| Normal    | `,e`            | Fuzzy search diagnostics                      |
 | Normal    | `,ts`           | Fuzzy search Telescope search pickers         |
 | Normal    | `{[/]}c`        | {Previous/Next} git hunk                      |
 | Normal    | `,hs`           | Stage git hunk                                |
@@ -83,6 +86,9 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Normal    | `,gr`           | Show LSP symbol references                    |
 | Normal    | `,l`            | Auto-format buffer                            |
 | Normal    | `,o`            | Show code outline sidebar using LSP symbols   |
+| Normal    | `[e`            | Jump to previous diagnostic                   |
+| Normal    | `]e`            | Jump to next diagnostic                       |
+| Normal    | `<leader>E`     | Show the diagnostic under the cursor          |
 | Normal    | `,ca`           | Execute code actions                          |
 | Insert    | `<Tab>/<C-Space>` | Manually trigger autocomplete               |
 | Insert    | `<C-e>`         | Close autocomplete window                     |

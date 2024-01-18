@@ -39,13 +39,16 @@ vim.keymap.set('x', 'p', 'P')  -- Prevent yank on put in visual mode
 local ts = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', ts.find_files, {})  -- Search file names
 vim.keymap.set('n', '<leader>f', ts.live_grep, {})  -- Search for text in files
+vim.keymap.set('x', '<leader>f', ts.grep_string, {})  -- Grep selected text
 vim.keymap.set('n', '<leader>b', ts.buffers, {})  -- Search buffers
 vim.keymap.set('n', '<leader>h', ts.help_tags, {})  -- Search help tags
  -- Search clipboard history
 vim.keymap.set('n', '<leader>p', require('telescope').extensions.neoclip.plus)
+ -- Search spelling suggestions
 vim.keymap.set('n', '<leader>z', function()
   ts.spell_suggest(require('telescope.themes').get_cursor({}))
 end)
+vim.keymap.set('n', '<leader>e', ts.diagnostics, {})  -- Search diagnostics
 vim.keymap.set('n', '<leader>ts', ts.builtin, {})  -- Search pickers
 
  -- Git integration
@@ -114,7 +117,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>l', function()
       vim.lsp.buf.format { async = true }
     end, opts)
-    vim.keymap.set('n', '<leader>s', ts.lsp_dynamic_workspace_symbols)
+    vim.keymap.set('n', '<leader>s', ts.lsp_dynamic_workspace_symbols, opts)
+    vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']e', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<leader><S-e>', vim.diagnostic.open_float, opts)
   end,
 })
 
