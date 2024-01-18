@@ -37,15 +37,6 @@ opt.wildmenu = true
 opt.wrap = true
 opt.writebackup = false
 
- -- Change how diagnostics are displayed
-vim.diagnostic.config({
-  virtual_text = false,
-  signs = false,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = false,
-})
-
  -- Set git-diff highlight groups to something better looking
 vim.cmd([[
   highlight clear DiffAdd
