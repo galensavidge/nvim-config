@@ -45,15 +45,6 @@ lsp.pyright.setup({
 })
 lsp.clangd.setup({capabilities = capabilities})
 
- -- Change how diagnostics are displayed
-vim.diagnostic.config({
-  virtual_text = false,
-  signs = false,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = false,
-})
-
  -- Set up code auto-formatting
 local null_ls = require('null-ls')
 null_ls.setup({
