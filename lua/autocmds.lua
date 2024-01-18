@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd({ 'User' },
   end,
 })
 
- -- Use internal formatting for bindings like gq.
+ -- Make sure the auto-formatter doesn't override bindings like gq
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     vim.bo[args.buf].formatexpr = nil

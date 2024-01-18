@@ -143,7 +143,6 @@ require('lazy').setup({
   },
   { -- Trim
     'cappyzawa/trim.nvim',
-    opts = {},
   },
   { -- Vim-notes
     'xolox/vim-notes',

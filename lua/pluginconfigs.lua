@@ -36,6 +36,15 @@ vim.keymap.del('x', '"_s', {silent = true})
 vim.keymap.del('x', '"_S', {silent = true})
 require('leap').create_default_mappings()
 
+ -- Change how diagnostics are displayed
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = false,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})
+
  -- Set up language servers
 local lsp = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -84,4 +93,12 @@ require('Comment').setup({
       basic = true,
       extra = false,
   },
+})
+
+ -- Whitespace trimming
+require('trim').setup({
+  trim_on_write = true,
+  trim_trailing = true,
+  trim_last_line = false,
+  trim_first_line = false,
 })
