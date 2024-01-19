@@ -2,40 +2,45 @@
 vim.keymap.set({'n', 'x'}, 'j', 'gj')
 vim.keymap.set({'n', 'x'}, 'k', 'gk')
 
+-- Keep automatically inserted indentation when switching back to normal mode
+vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })
+vim.keymap.set('n', 'O', 'Ox<backspace>', { silent = true })
+vim.keymap.set('i', '<cr>', '<cr>x<backspace>', { silent = true })
+
 -- Split panes
 vim.keymap.set('n', '<A-s>', '<C-w>s')
 vim.keymap.set('n', '<A-v>', '<C-w>v')
 
- -- Move between panes to left/bottom/top/right
+-- Move between panes to left/bottom/top/right
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
 
- -- Move split panes to left/bottom/top/right
+-- Move split panes to left/bottom/top/right
 vim.keymap.set('n', '<A-h>', '<C-w>H')
 vim.keymap.set('n', '<A-j>', '<C-w>J')
 vim.keymap.set('n', '<A-k>', '<C-w>K')
 vim.keymap.set('n', '<A-l>', '<C-w>L')
 
- -- Shortcut for equally splitting window sizes
+-- Shortcut for equally splitting window sizes
 vim.keymap.set({'n', 'x'}, '<A-=>', '<C-w>=')
 
- -- Close panes
+-- Close panes
 vim.keymap.set({'n', 'x'}, '<C-c>', '<C-w>c')
 
- -- Tab navigation
+-- Tab navigation
 vim.keymap.set('n', 'tn', ':tabnew<cr>', { silent = true })
 vim.keymap.set('n', 'tc', ':tabclose<cr>', { silent = true })
 
- -- Cut keybind
+-- Cut keybind
 vim.keymap.set({'n', 'x'}, 'm', 'd')
 vim.keymap.set('n', 'mm', 'dd')
 vim.keymap.set('n', 'M', 'D')
 vim.keymap.set({'n', 'x'}, '<leader>m', 'm')
 vim.keymap.set('x', 'p', 'P')  -- Prevent yank on put in visual mode
 
- -- Set file grep config
+-- Set file grep config
 local ts = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', ts.find_files, {})  -- Search file names
 vim.keymap.set('n', '<leader>f', ts.live_grep, {})  -- Search for text in files
@@ -102,7 +107,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-     -- vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help, opts)
+    -- vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
     vim.keymap.set('n', '<leader>wl', function()
@@ -124,9 +129,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
- -- Code outline
+-- Code outline
 vim.keymap.set('n', '<leader>o', '<cmd>Outline<CR>')
 
- -- File browser
+-- File browser
 vim.keymap.set('n', '<leader>d', ':Telescope file_browser<CR>',
   { silent = true })
