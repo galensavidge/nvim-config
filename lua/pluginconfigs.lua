@@ -37,7 +37,7 @@ vim.keymap.del('x', '"_S', {silent = true})
 require('leap').create_default_mappings()
 
 -- Set up language servers
-require('lspconfig.lua')
+require('plugins.lspconfig')
 
 -- Set up completion
 require('plugins.cmp')
