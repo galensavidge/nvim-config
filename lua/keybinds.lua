@@ -40,6 +40,23 @@ vim.keymap.set('n', 'M', 'D')
 vim.keymap.set({'n', 'x'}, '<leader>m', 'm')
 vim.keymap.set('x', 'p', 'P')  -- Prevent yank on put in visual mode
 
+-- Commenting
+require('Comment').setup({
+  ignore = '^$', -- Ignore empty lines
+  toggler = {
+      line = '<leader>ct', -- Line-comment toggle keymap
+  },
+  opleader = {
+      line = '<leader>cc', -- Line-comment keymap
+      block = '<leader>cb', -- Block-comment keymap
+  },
+  -- Enable keybindings
+  mappings = {
+      basic = true,
+      extra = false,
+  },
+})
+
 -- Set file grep config
 local ts = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', ts.find_files, {})  -- Search file names

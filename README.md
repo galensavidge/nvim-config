@@ -21,6 +21,15 @@ gcc yapf flake8
 pip3 install pyright
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
 ```
+(Optional) Install Julia:
+```bash
+curl -fsSL https://install.julialang.org | sh
+```
+Then in the Julia REPL package manager:
+```julia
+add LanguageServer
+```
+
 5. Place the following lines in `~./bashrc`:
 ```
 alias v='~/appimages/nvim.appimage'

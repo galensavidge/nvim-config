@@ -1,4 +1,4 @@
- -- General vim options
+-- General vim options
 local opt = vim.opt
 opt.autoindent = true
 opt.autoread = true
@@ -37,14 +37,11 @@ opt.wildmenu = true
 opt.wrap = true
 opt.writebackup = false
 
- -- Set git-diff highlight groups to something better looking
-vim.cmd([[
-  highlight clear DiffAdd
-  highlight DiffAdd ctermbg=10 guibg=#1d3613
-  highlight clear DiffDelete
-  highlight DiffDelete ctermfg=15 guibg=#3b1212
-  highlight clear DiffChange
-  highlight DiffChange guibg=#054a3c
-  highlight clear DiffText
-  highlight DiffText cterm=bold ctermbg=9 guibg=#076e59
-]])
+-- Change how diagnostics are displayed
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = false,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})
