@@ -65,7 +65,7 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | N, X      | `,cb`           | Block comment leader keymap                   |
 | Normal    | `<C-p>`         | Fuzzy search file names                       |
 | Normal    | `,f`            | Grep for text in files                        |
-| Insert    | `,f`            | Grep for selected text in files               |
+| Normal    | `,w`            | Grep list of occurrences of word under cursor |
 | Normal    | `,d`            | Open file browser                             |
 | Normal    | `,z`            | Fuzzy search spelling suggestions             |
 | Normal    | `,b`            | Fuzzy search buffers                          |

@@ -61,7 +61,7 @@ require('Comment').setup({
 local ts = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', ts.find_files, {})  -- Search file names
 vim.keymap.set('n', '<leader>f', ts.live_grep, {})  -- Search for text in files
-vim.keymap.set('x', '<leader>f', ts.grep_string, {})  -- Grep selected text
+vim.keymap.set('n', '<leader>w', ts.grep_string, {})  -- Grep word under cursor
 vim.keymap.set('n', '<leader>b', ts.buffers, {})  -- Search buffers
 vim.keymap.set('n', '<leader>h', ts.help_tags, {})  -- Search help tags
  -- Search clipboard history
