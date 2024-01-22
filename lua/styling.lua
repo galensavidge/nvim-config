@@ -11,6 +11,7 @@ require('lualine').setup {
 vim.cmd([[
   highlight clear Statement
   highlight link Statement Constant
+  highlight link Boolean Constant
 ]])
 
 -- Set git-diff highlight groups to something better looking

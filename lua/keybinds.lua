@@ -71,6 +71,7 @@ vim.keymap.set('n', '<leader>z', function()
   ts.spell_suggest(require('telescope.themes').get_cursor({}))
 end)
 vim.keymap.set('n', '<leader>e', ts.diagnostics, {})  -- Search diagnostics
+vim.keymap.set('n', '<leader>gb', ts.git_branches, {})  -- Search git banches
 vim.keymap.set('n', '<leader>ts', ts.builtin, {})  -- Search pickers
 
  -- Git integration
@@ -108,6 +109,7 @@ vim.keymap.set('n', '<leader>td', gs.toggle_deleted)
 vim.keymap.set({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 
 vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gf', ':DiffviewFileHistory<CR>', { silent = true })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
