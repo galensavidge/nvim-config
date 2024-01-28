@@ -109,4 +109,5 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Insert    | `<C-h>`         | Jump backward within snippet                  |
 | Insert    | `<C-k>`         | Accept Codeium AI suggestion                  |
 | Insert    | `<C-n>`         | Next Codeium AI suggestion                    |
+| Insert    | `<C-p>`         | Previous Codeium AI suggestion                |
 | Insert    | `<C-x>`         | Clear Codeium AI suggestion                   |
