@@ -92,6 +92,9 @@ require('lazy').setup({
   { -- Python-syntax
     'vim-python/python-syntax',
   },
+  { -- Julia-vim
+    'julialang/julia-vim'
+  },
   { -- Inc-rename
     'smjonas/inc-rename.nvim',
     config = function()
@@ -132,6 +135,17 @@ require('lazy').setup({
     -- install jsregexp (optional!).
     build = 'make install_jsregexp',
     dependencies = { 'rafamadriz/friendly-snippets' },
+  },
+  {
+    "Exafunction/codeium.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      require("codeium").setup({
+      })
+    end
   },
   { -- Telescope-file-browser
     'nvim-telescope/telescope-file-browser.nvim',
