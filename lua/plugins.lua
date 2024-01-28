@@ -46,6 +46,7 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
+    lazy = true,
   },
   { -- Telescope-fzf-native
     'nvim-telescope/telescope-fzf-native.nvim',
@@ -74,6 +75,7 @@ require('lazy').setup({
   },
   { -- Gitsigns
     'lewis6991/gitsigns.nvim',
+    lazy = true,
   },
   { -- Diffview
     'sindrets/diffview.nvim',
@@ -100,6 +102,7 @@ require('lazy').setup({
     config = function()
       require('inc_rename').setup()
     end,
+    lazy = true,
   },
   { -- LSP-progress
     'linrongbin16/lsp-progress.nvim',
@@ -137,19 +140,12 @@ require('lazy').setup({
     dependencies = { 'rafamadriz/friendly-snippets' },
   },
   {
-    "Exafunction/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-    config = function()
-      require("codeium").setup({
-      })
-    end
+    'Exafunction/codeium.vim',
   },
   { -- Telescope-file-browser
     'nvim-telescope/telescope-file-browser.nvim',
-    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' }
+    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
+    lazy = true,
   },
   { -- Comment
     'numToStr/Comment.nvim',

@@ -107,3 +107,6 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Insert    | `<CR>`          | Confirm selected autocomplete suggestion      |
 | Insert    | `<C-l>`         | Expand snippet or jump forward within snippet |
 | Insert    | `<C-h>`         | Jump backward within snippet                  |
+| Insert    | `<C-k>`         | Accept Codeium AI suggestion                  |
+| Insert    | `<C-n>`         | Next Codeium AI suggestion                    |
+| Insert    | `<C-x>`         | Clear Codeium AI suggestion                   |

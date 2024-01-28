@@ -154,3 +154,17 @@ vim.keymap.set('n', '<leader>o', '<cmd>Outline<CR>')
 -- File browser
 vim.keymap.set('n', '<leader>d', ':Telescope file_browser<CR>',
   { silent = true })
+
+-- Codeium AI
+vim.keymap.set('i', '<C-k>', function()
+    return vim.fn['codeium#Accept']()
+  end, { expr = true, silent = true })
+vim.keymap.set('i', '<C-n>', function()
+    return vim.fn['codeium#CycleCompletions'](1)
+  end, { expr = true, silent = true })
+vim.keymap.set('i', '<C-p>', function()
+    return vim.fn['codeium#CycleCompletions'](-1)
+  end, { expr = true, silent = true })
+vim.keymap.set('i', '<C-x>', function()
+    return vim.fn['codeium#Clear']()
+  end, { expr = true, silent = true })
