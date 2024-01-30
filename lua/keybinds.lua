@@ -168,3 +168,18 @@ vim.keymap.set('i', '<C-p>', function()
 vim.keymap.set('i', '<C-x>', function()
     return vim.fn['codeium#Clear']()
   end, { expr = true, silent = true })
+
+-- Debugging
+vim.keymap.set('n', '<leader>db', require('dap').toggle_breakpoint)
+vim.keymap.set('n', '<leader>dB', function()
+  return require('dap').set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end)
+vim.keymap.set('n', '<leader>dc', require('dap').continue)
+vim.keymap.set('n', '<leader>di', require('dap').step_into)
+vim.keymap.set('n', '<leader>do', require('dap').step_over)
+vim.keymap.set('n', '<leader>dO', require('dap').step_out)
+vim.keymap.set('n', '<leader>dr', require('dap').repl.toggle)
+vim.keymap.set('n', '<leader>dl', require('dap').run_last)
+vim.keymap.set('n', '<leader>dx', require('dap').terminate)
+-- Toggle DAP UI
+vim.keymap.set('n', '<leader>du', require('dapui').toggle)

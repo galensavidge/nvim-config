@@ -139,12 +139,15 @@ require('lazy').setup({
     build = 'make install_jsregexp',
     dependencies = { 'rafamadriz/friendly-snippets' },
   },
-  {
+  { -- Codeium
     'Exafunction/codeium.vim',
   },
   { -- Telescope-file-browser
     'nvim-telescope/telescope-file-browser.nvim',
-    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'nvim-lua/plenary.nvim',
+    },
     lazy = true,
   },
   { -- Comment
@@ -157,5 +160,13 @@ require('lazy').setup({
   { -- Vim-notes
     'xolox/vim-notes',
     dependencies = { 'xolox/vim-misc' },
+  },
+  { -- Nvim-dap
+    'mfussenegger/nvim-dap',
+    dependencies = {
+      'rcarriga/nvim-dap-ui',
+      'theHamsta/nvim-dap-virtual-text',
+      'mfussenegger/nvim-dap-python',
+    },
   },
 })

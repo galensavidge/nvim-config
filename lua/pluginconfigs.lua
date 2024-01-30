@@ -58,3 +58,9 @@ require('trim').setup({
   trim_last_line = false,
   trim_first_line = false,
 })
+
+-- Disable Codeium default bindings
+vim.g.codeium_disable_bindings = true
+
+-- Debugging configuration
+require('plugins.dap')

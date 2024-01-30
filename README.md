@@ -9,13 +9,16 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     --output-dir ~/appimages
 chmod u+x ~/appimages/nvim.appimage
 ```
+
 2. Clone the repo into the neovim settings folder (default `~/.config/nvim`).
+
 3. Install required packages:
 ```bash
 sudo apt-get update
 sudo apt-get install ripgrep fd-find xclip clangd python3-venv markdown cmake
 gcc yapf flake8
 ```
+
 4. Set up language servers:
 ```bash
 pip3 install pyright
@@ -34,9 +37,19 @@ add LanguageServer
 ```
 alias v='~/appimages/nvim.appimage'
 ```
+
 6. Python setup:
 ```bash
 pip install isort
+```
+
+7. Set up debuggers:
+```bash
+cd ~
+mkdir .virtualenvs
+cd .virtualenvs
+python -m venv debugpy
+debugpy/bin/python -m pip install debugpy
 ```
 
 ## Font
@@ -111,3 +124,19 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Insert    | `<C-n>`         | Next Codeium AI suggestion                    |
 | Insert    | `<C-p>`         | Previous Codeium AI suggestion                |
 | Insert    | `<C-x>`         | Clear Codeium AI suggestion                   |
+| Insert    | `,db`           | Toggle breakpoint                             |
+| Insert    | `,dB`           | Set conditional breakpoint                    |
+| Insert    | `,dc`           | Start/continue debugger                       |
+| Insert    | `,di`           | Debugger step into                            |
+| Insert    | `,do`           | Debugger step over                            |
+| Insert    | `,dO`           | Debugger step out                             |
+| Insert    | `,dr`           | Debugger toggle REPL                          |
+| Insert    | `,dl`           | Rerun last debugging session                  |
+| Insert    | `,dx`           | Terminate debugger                            |
+| Insert    | `,du`           | Toggle debugger UI                            |
+| DAP UI    | `e`             | Edit action                                   |
+| DAP UI    | `<CR>`          | Expand action                                 |
+| DAP UI    | `o`             | Open action                                   |
+| DAP UI    | `d`             | Remove action                                 |
+| DAP UI    | `r`             | REPL action                                   |
+| DAP UI    | `t`             | Toggle action                                 |
