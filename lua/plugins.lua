@@ -102,7 +102,6 @@ require('lazy').setup({
     config = function()
       require('inc_rename').setup()
     end,
-    lazy = true,
   },
   { -- LSP-progress
     'linrongbin16/lsp-progress.nvim',
@@ -129,6 +128,9 @@ require('lazy').setup({
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-calc',
     },
+  },
+  { -- Lspkind
+    'onsails/lspkind.nvim',
   },
   { -- LuaSnip
     'L3MON4D3/LuaSnip',

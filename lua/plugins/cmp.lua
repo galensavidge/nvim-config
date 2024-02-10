@@ -26,6 +26,7 @@ end
 
 local luasnip = require('luasnip')
 local cmp = require('cmp')
+local lspkind = require('lspkind')
 
 cmp.setup({
   completion = { keyword_length = 1, autocomplete = false },
@@ -35,6 +36,7 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
+
   sources = cmp.config.sources({
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
@@ -43,6 +45,27 @@ cmp.setup({
     -- { name = 'cmdline' },
     { name = 'buffer' },
   }),
+
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol',
+
+      -- prevent the popup from showing more than provided characters (e.g 50
+      -- will not show more than 50 characters)
+      maxwidth = 50,
+
+      -- when popup menu exceed maxwidth, the truncated part would show
+      -- ellipsis_char instead (must define maxwidth first)
+      ellipsis_char = '...',
+
+      -- The function below will be called before any actual modifications from
+      -- lspkind so that you can provide more controls on popup customization.
+      -- (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+      before = function (entry, vim_item)
+        return vim_item
+      end
+    }),
+  },
 
   mapping = merge_keymaps({}, {
     ['<C-A-k>'] = cmp.mapping.scroll_docs(-4),
