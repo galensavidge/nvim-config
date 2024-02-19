@@ -49,7 +49,7 @@ vim.g.python_highlight_all = true
 require('plugins.outline')
 
 -- File browser
-require('telescope').load_extension('file_browser')
+require('plugins.triptych')
 
 -- Whitespace trimming
 require('trim').setup({
@@ -60,7 +60,8 @@ require('trim').setup({
 })
 
 -- Disable Codeium default bindings
-vim.g.codeium_disable_bindings = true
+-- vim.g.codeium_disable_bindings = true
+--
 
 -- Debugging configuration
 require('plugins.dap')

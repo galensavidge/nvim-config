@@ -152,8 +152,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.keymap.set('n', '<leader>o', '<cmd>Outline<CR>')
 
 -- File browser
-vim.keymap.set('n', '<leader>d', ':Telescope file_browser<CR>',
-  { silent = true })
+vim.keymap.set('n', '<leader>F', ':Triptych<CR>', { silent = true })
 
 -- Codeium AI
 vim.keymap.set('i', '<C-k>', function()

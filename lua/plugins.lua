@@ -141,16 +141,17 @@ require('lazy').setup({
     build = 'make install_jsregexp',
     dependencies = { 'rafamadriz/friendly-snippets' },
   },
-  { -- Codeium
-    'Exafunction/codeium.vim',
-  },
-  { -- Telescope-file-browser
-    'nvim-telescope/telescope-file-browser.nvim',
+  -- { -- Codeium
+  --   'Exafunction/codeium.vim',
+  -- },
+
+  { -- Triptych
+    'simonmclean/triptych.nvim',
+    event = 'VeryLazy',
     dependencies = {
-      'nvim-telescope/telescope.nvim',
-      'nvim-lua/plenary.nvim',
+      'nvim-lua/plenary.nvim', -- required
+      'nvim-tree/nvim-web-devicons', -- optional
     },
-    lazy = true,
   },
   { -- Comment
     'numToStr/Comment.nvim',
