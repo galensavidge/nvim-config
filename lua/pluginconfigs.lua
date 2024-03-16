@@ -66,3 +66,8 @@ require('trim').setup({
 -- Debugging configuration
 require('plugins.dap')
 require('telescope').load_extension('dap')
+
+-- Snippet runner configuration
+require('sniprun').setup({
+  -- your options
+})

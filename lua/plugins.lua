@@ -184,4 +184,9 @@ require('lazy').setup({
       'nvim-telescope/telescope.nvim',
     },
   },
+  { -- Sniprun
+    'michaelb/sniprun',
+    branch = 'master',
+    build = 'sh install.sh',
+  },
 })

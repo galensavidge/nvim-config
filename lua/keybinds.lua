@@ -78,21 +78,21 @@ vim.keymap.set('n', '<leader>bp',
 vim.keymap.set('n', '<leader>ts', ts.builtin, {})  -- Search pickers
 
  -- File find and replace
-vim.keymap.set('n', '<leader>r', require("spectre").toggle,
-  { desc = "Toggle Spectre" })
+vim.keymap.set('n', '<leader>r', require('spectre').toggle,
+  { desc = 'Toggle Spectre' })
 vim.keymap.set('n', '<leader>R',
   function()
-    require("spectre").open_visual({select_word=true})
+    require('spectre').open_visual({select_word=true})
   end,
-  { desc = "Search current word" })
+  { desc = 'Search current word' })
 vim.keymap.set('n', '<leader>rf',
-  require("spectre").open_file_search,
-  { desc = "Search on current file" })
+  require('spectre').open_file_search,
+  { desc = 'Search on current file' })
 vim.keymap.set('n', '<leader>Rf',
   function()
-    require("spectre").open_file_search({select_word=true})
+    require('spectre').open_file_search({select_word=true})
   end,
-  { desc = "Search on current file" })
+  { desc = 'Search on current file' })
 
  -- Git integration
 local gs = require('gitsigns')
@@ -191,7 +191,7 @@ vim.keymap.set('i', '<C-x>', function()
 -- Debugging
 vim.keymap.set('n', '<leader>db', require('dap').toggle_breakpoint)
 vim.keymap.set('n', '<leader>dB', function()
-  return require('dap').set_breakpoint(vim.fn.input("Breakpoint condition: "))
+  return require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
 end)
 vim.keymap.set('n', '<leader>dc', require('dap').continue)
 vim.keymap.set('n', '<leader>di', require('dap').step_into)
@@ -202,3 +202,13 @@ vim.keymap.set('n', '<leader>dl', require('dap').run_last)
 vim.keymap.set('n', '<leader>dx', require('dap').terminate)
 -- Toggle DAP UI
 vim.keymap.set('n', '<leader>du', require('dapui').toggle)
+
+ -- Run snippet
+vim.keymap.set('n', '<leader>S', require('sniprun').run,
+{ desc = 'Run snippet' })
+vim.keymap.set('x', '<leader>S', function() require('sniprun').run('v') end,
+{ desc = 'Run snippet' }) -- Not working!
+vim.keymap.set({'n', 'x'}, '<leader>sr', require('sniprun').reset,
+{ desc = 'Reset snippet runner' })
+vim.keymap.set({'n', 'x'}, '<leader>sx', require('sniprun.display').close_all,
+{ desc = 'Close snippet runner' })
