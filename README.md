@@ -84,6 +84,7 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Normal    | `,b`            | Fuzzy search buffers                          |
 | Normal    | `,h`            | Fuzzy search help tags                        |
 | Normal    | `,p`            | Fuzzy search clipboard history                |
+| Normal    | `,u`            | Fuzzy search undo history tree                |
 | Normal    | `,s`            | Fuzzy search LSP symbols                      |
 | Normal    | `,e`            | Fuzzy search diagnostics                      |
 | Normal    | `,gb`           | Fuzzy search git branches                     |

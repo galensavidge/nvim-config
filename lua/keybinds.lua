@@ -70,6 +70,8 @@ vim.keymap.set('n', '<leader>p', require('telescope').extensions.neoclip.plus)
 vim.keymap.set('n', '<leader>z', function()
   ts.spell_suggest(require('telescope.themes').get_cursor({}))
 end)
+ -- Search undo tree
+vim.keymap.set('n', '<leader>u', require('telescope').extensions.undo.undo, {})
 vim.keymap.set('n', '<leader>e', ts.diagnostics, {})  -- Search diagnostics
 vim.keymap.set('n', '<leader>gb', ts.git_branches, {})  -- Search git banches
  -- Search breakpoints
