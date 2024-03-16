@@ -74,6 +74,23 @@ vim.keymap.set('n', '<leader>e', ts.diagnostics, {})  -- Search diagnostics
 vim.keymap.set('n', '<leader>gb', ts.git_branches, {})  -- Search git banches
 vim.keymap.set('n', '<leader>ts', ts.builtin, {})  -- Search pickers
 
+ -- File find and replace
+vim.keymap.set('n', '<leader>r', require("spectre").toggle,
+  { desc = "Toggle Spectre" })
+vim.keymap.set('n', '<leader>R',
+  function()
+    require("spectre").open_visual({select_word=true})
+  end,
+  { desc = "Search current word" })
+vim.keymap.set('n', '<leader>rf',
+  require("spectre").open_file_search,
+  { desc = "Search on current file" })
+vim.keymap.set('n', '<leader>Rf',
+  function()
+    require("spectre").open_file_search({select_word=true})
+  end,
+  { desc = "Search on current file" })
+
  -- Git integration
 local gs = require('gitsigns')
 vim.keymap.set('n', ']c', function()

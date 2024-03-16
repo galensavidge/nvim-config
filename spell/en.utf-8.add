@@ -33,3 +33,10 @@ setuptools
 std
 unittests
 venv
+LSP
+autocomplete
+REPL
+UI
+keymap
+neovim
+repo

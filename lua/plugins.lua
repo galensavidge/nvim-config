@@ -53,6 +53,12 @@ require('lazy').setup({
     build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
     dependencies = { 'nvim-telescope/telescope.nvim' },
   },
+  { -- Spectre
+    'nvim-pack/nvim-spectre',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
   { -- Persisted
     'olimorris/persisted.nvim',
     config = true,

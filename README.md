@@ -88,11 +88,16 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Normal    | `,e`            | Fuzzy search diagnostics                      |
 | Normal    | `,gb`           | Fuzzy search git branches                     |
 | Normal    | `,ts`           | Fuzzy search Telescope search pickers         |
+| Normal    | `,r`            | Toggle find/replace window for all files      |
+| Normal    | `,R`            | Find word under cursor in all files           |
+| Normal    | `,rf`           | Toggle find/replace window for current file   |
+| Normal    | `,Rf`           | Find word under cursor in current file        |
 | Normal    | `{[/]}c`        | {Previous/Next} git hunk                      |
 | Normal    | `,hs`           | Stage git hunk                                |
 | Normal    | `,hr`           | Reset git hunk                                |
 | Normal    | `,hS`           | Stage all git hunks in buffer                 |
 | Normal    | `,hR`           | Reset all git hunks in buffer                 |
+| Normal    | `,hu`           | Undo staging git hunk                         |
 | Normal    | `,hp`           | Preview git hunk                              |
 | Normal    | `,hb`           | Show git blame for last change on this line   |
 | Normal    | `,tb`           | Toggle git blame for current line on/off      |
