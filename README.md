@@ -87,6 +87,7 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Normal    | `,s`            | Fuzzy search LSP symbols                      |
 | Normal    | `,e`            | Fuzzy search diagnostics                      |
 | Normal    | `,gb`           | Fuzzy search git branches                     |
+| Normal    | `,bp`           | Fuzzy search DAP breakpoints                  |
 | Normal    | `,ts`           | Fuzzy search Telescope search pickers         |
 | Normal    | `,r`            | Toggle find/replace window for all files      |
 | Normal    | `,R`            | Find word under cursor in all files           |

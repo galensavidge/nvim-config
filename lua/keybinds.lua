@@ -72,6 +72,9 @@ vim.keymap.set('n', '<leader>z', function()
 end)
 vim.keymap.set('n', '<leader>e', ts.diagnostics, {})  -- Search diagnostics
 vim.keymap.set('n', '<leader>gb', ts.git_branches, {})  -- Search git banches
+ -- Search breakpoints
+vim.keymap.set('n', '<leader>bp',
+  require('telescope').extensions.dap.list_breakpoints, {})
 vim.keymap.set('n', '<leader>ts', ts.builtin, {})  -- Search pickers
 
  -- File find and replace

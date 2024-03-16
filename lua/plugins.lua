@@ -178,4 +178,10 @@ require('lazy').setup({
       'mfussenegger/nvim-dap-python',
     },
   },
+  { -- Telescope-dap
+    'nvim-telescope/telescope-dap.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+    },
+  },
 })

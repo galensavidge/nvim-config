@@ -65,3 +65,4 @@ require('trim').setup({
 
 -- Debugging configuration
 require('plugins.dap')
+require('telescope').load_extension('dap')
