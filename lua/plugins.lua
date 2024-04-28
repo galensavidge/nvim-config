@@ -18,8 +18,17 @@ require('lazy').setup({
     'rafamadriz/neon',
     priority = 100,
   },
+  { -- Dressing
+    'stevearc/dressing.nvim',
+    opts = {},
+  },
   { -- Lualine
     'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+  { -- Bufferline
+    'akinsho/bufferline.nvim',
+    version = "*",
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   { -- Minintro
@@ -41,7 +50,7 @@ require('lazy').setup({
   },
   { -- Telescope
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
+    tag='0.1.6',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
@@ -119,9 +128,9 @@ require('lazy').setup({
       require('lsp-progress').setup()
     end
   },
-  { -- LSP-timeout
-    'hinell/lsp-timeout.nvim',
-    dependencies={ 'neovim/nvim-lspconfig' }
+  { -- Nvim-treesitter-context
+    'nvim-treesitter/nvim-treesitter-context',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
   { -- Outline
     'hedyhli/outline.nvim',
@@ -131,6 +140,7 @@ require('lazy').setup({
   { -- Nvim-cmp
     'hrsh7th/nvim-cmp',
     dependencies = {
+      'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
@@ -144,28 +154,19 @@ require('lazy').setup({
   },
   { -- LuaSnip
     'L3MON4D3/LuaSnip',
-    -- follow latest release.
-    -- version = 'v2.*', -- Replace <CurrentMajor> by the latest released major
-                         -- (first number of latest release)
-    -- install jsregexp (optional!).
     build = 'make install_jsregexp',
     dependencies = { 'rafamadriz/friendly-snippets' },
   },
-  -- { -- Codeium
-  --   'Exafunction/codeium.vim',
-  -- },
-
   { -- Triptych
     'simonmclean/triptych.nvim',
     event = 'VeryLazy',
     dependencies = {
-      'nvim-lua/plenary.nvim', -- required
-      'nvim-tree/nvim-web-devicons', -- optional
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
     },
   },
   { -- Comment
-    'numToStr/Comment.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    'terrortylor/nvim-comment',
   },
   { -- Trim
     'cappyzawa/trim.nvim',
@@ -180,6 +181,7 @@ require('lazy').setup({
       'rcarriga/nvim-dap-ui',
       'theHamsta/nvim-dap-virtual-text',
       'mfussenegger/nvim-dap-python',
+      'nvim-neotest/nvim-nio',
     },
   },
   { -- Telescope-dap

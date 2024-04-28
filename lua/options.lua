@@ -9,9 +9,11 @@ opt.clipboard = "unnamedplus" -- Use system clipboard by default
 opt.colorcolumn = '80'
 opt.cursorline = true
 opt.expandtab = true
+opt.hidden = false
 opt.hlsearch = true
 opt.ignorecase = true
 opt.incsearch = true
+opt.lazyredraw = true
 opt.mouse = 'a'
 opt.number = true
 opt.path:append '**'

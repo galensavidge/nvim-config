@@ -13,6 +13,16 @@ require('lualine').setup({
 -- Show indented blocks visually
 require('ibl').setup()
 
+-- Telescope config
+require('telescope').setup({
+  path_display = {
+    'truncate',
+    filename_first = {
+      reverse_directories = false
+    }
+  }
+})
+
 -- Project/session management
 require('persisted').setup({
   use_git_branch = true,
@@ -41,6 +51,13 @@ require('leap').create_default_mappings()
 
 -- Set up language servers
 require('plugins.lspconfig')
+
+-- Set up treesitter context
+require'treesitter-context'.setup{
+  enable = true,
+  line_numbers = true,
+  mode = 'topline',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+}
 
 -- Set up completion
 require('plugins.cmp')

@@ -1,7 +1,8 @@
 require('outline').setup({
   outline_window = {
-    -- Percentage or integer of columns
-    width = 25,
+    -- Width in number of columns
+    width = 30,
+    relative_width = false,
 
     -- Auto close the outline window if goto_location is triggered and not for
     -- peek_location

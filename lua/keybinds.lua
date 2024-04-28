@@ -1,6 +1,10 @@
  -- Move vertically by visual line (gets around super long lines)
-vim.keymap.set({'n', 'x'}, 'j', 'gj')
-vim.keymap.set({'n', 'x'}, 'k', 'gk')
+vim.keymap.set({'n', 'x'}, 'j', 'gj', { silent = true })
+vim.keymap.set({'n', 'x'}, 'k', 'gk', { silent = true })
+
+-- Move to the beginning and end of lines
+vim.keymap.set({'n', 'x'}, 'H', '^', { silent = true })
+vim.keymap.set({'n', 'x'}, 'L', '$', { silent = true })
 
 -- Keep automatically inserted indentation when switching back to normal mode
 vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })
@@ -8,53 +12,46 @@ vim.keymap.set('n', 'O', 'Ox<backspace>', { silent = true })
 vim.keymap.set('i', '<cr>', '<cr>x<backspace>', { silent = true })
 
 -- Split panes
-vim.keymap.set('n', '<A-s>', '<C-w>s')
-vim.keymap.set('n', '<A-v>', '<C-w>v')
+vim.keymap.set('n', '<A-s>', '<C-w>s', { silent = true })
+vim.keymap.set('n', '<A-v>', '<C-w>v', { silent = true })
 
 -- Move between panes to left/bottom/top/right
-vim.keymap.set('n', '<C-h>', '<C-w>h')
-vim.keymap.set('n', '<C-j>', '<C-w>j')
-vim.keymap.set('n', '<C-k>', '<C-w>k')
-vim.keymap.set('n', '<C-l>', '<C-w>l')
+vim.keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
 
 -- Move split panes to left/bottom/top/right
-vim.keymap.set('n', '<A-h>', '<C-w>H')
-vim.keymap.set('n', '<A-j>', '<C-w>J')
-vim.keymap.set('n', '<A-k>', '<C-w>K')
-vim.keymap.set('n', '<A-l>', '<C-w>L')
+vim.keymap.set('n', '<A-h>', '<C-w>H', { silent = true })
+vim.keymap.set('n', '<A-j>', '<C-w>J', { silent = true })
+vim.keymap.set('n', '<A-k>', '<C-w>K', { silent = true })
+vim.keymap.set('n', '<A-l>', '<C-w>L', { silent = true })
 
 -- Shortcut for equally splitting window sizes
-vim.keymap.set({'n', 'x'}, '<A-=>', '<C-w>=')
+vim.keymap.set({'n', 'x'}, '<A-=>', '<C-w>=', { silent = true })
 
 -- Close panes
-vim.keymap.set({'n', 'x'}, '<C-c>', '<C-w>c')
+vim.keymap.set({'n', 'x'}, '<C-c>', '<C-w>c', { silent = true })
 
 -- Tab navigation
-vim.keymap.set('n', 'tn', ':tabnew<cr>', { silent = true })
-vim.keymap.set('n', 'tc', ':tabclose<cr>', { silent = true })
+vim.keymap.set('n', '<A-t>', ':tabnew<cr>', { silent = true })
+vim.keymap.set('n', '<A-c>', ':tabclose<cr>', { silent = true })
 
 -- Cut keybind
-vim.keymap.set({'n', 'x'}, 'm', 'd')
-vim.keymap.set('n', 'mm', 'dd')
-vim.keymap.set('n', 'M', 'D')
-vim.keymap.set({'n', 'x'}, '<leader>m', 'm')
-vim.keymap.set('x', 'p', 'P')  -- Prevent yank on put in visual mode
+vim.keymap.set({'n', 'x'}, 'm', 'd', { silent = true })
+vim.keymap.set('n', 'mm', 'dd', { silent = true })
+vim.keymap.set('n', 'M', 'D', { silent = true })
+vim.keymap.set({'n', 'x'}, '<leader>m', 'm', { silent = true })
+vim.keymap.set('x', 'p', 'P' , { silent = true }) -- Prevent yank on put in visual mode
 
--- Commenting
-require('Comment').setup({
-  ignore = '^$', -- Ignore empty lines
-  toggler = {
-      line = '<leader>ct', -- Line-comment toggle keymap
-  },
-  opleader = {
-      line = '<leader>cc', -- Line-comment keymap
-      block = '<leader>cb', -- Block-comment keymap
-  },
-  -- Enable keybindings
-  mappings = {
-      basic = true,
-      extra = false,
-  },
+-- Comment toggling
+require('nvim_comment').setup({
+  marker_padding = true,
+  comment_empty = false,
+  create_mappings = true,
+  line_mapping = "gcc",
+  operator_mapping = "gc",
+  comment_chunk_text_object = "ic",
 })
 
 -- Set file grep config
@@ -171,24 +168,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Code outline
-vim.keymap.set('n', '<leader>o', '<cmd>Outline<CR>')
+vim.keymap.set('n', '<A-o>', function()
+  local outline = require('outline')
+  if outline.is_open() then
+    outline.focus_toggle()
+  else
+    outline.toggle()
+  end
+end, { silent = true})
 
 -- File browser
 vim.keymap.set('n', '<leader>F', ':Triptych<CR>', { silent = true })
-
--- Codeium AI
-vim.keymap.set('i', '<C-k>', function()
-    return vim.fn['codeium#Accept']()
-  end, { expr = true, silent = true })
-vim.keymap.set('i', '<C-n>', function()
-    return vim.fn['codeium#CycleCompletions'](1)
-  end, { expr = true, silent = true })
-vim.keymap.set('i', '<C-p>', function()
-    return vim.fn['codeium#CycleCompletions'](-1)
-  end, { expr = true, silent = true })
-vim.keymap.set('i', '<C-x>', function()
-    return vim.fn['codeium#Clear']()
-  end, { expr = true, silent = true })
 
 -- Debugging
 vim.keymap.set('n', '<leader>db', require('dap').toggle_breakpoint)

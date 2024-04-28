@@ -40,3 +40,5 @@ UI
 keymap
 neovim
 repo
+differencing
+whitespace

@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd({ 'User' },
 {
   pattern = 'PersistedSavePre',
   callback = function()
-    require('outline').close()
+    vim.cmd('tabd OutlineClose')
   end,
 })
 

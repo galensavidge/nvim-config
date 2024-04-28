@@ -59,6 +59,8 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 
 | Mode      | Keys            | Action                                        |
 | --------- | --------------- | --------------------------------------------- |
+| N, X      | `H`             | Move to first non-whitespace char on line     |
+| N, X      | `L`             | Move to last non-whitespace char on line      |
 | N, X      | `s`             | Begin leap search forward                     |
 | N, X      | `S`             | Begin leap search backward                    |
 | N, X      | `gs`            | Begin leap search in other splits             |
@@ -68,14 +70,14 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Normal    | `<A-{h/j/k/l}>` | Move split pane to the {left/bottom/top/right}|
 | N, X      | `<A-=>`         | Set split panes to equal sizes                |
 | N, X      | `<C-c>`         | Close pane                                    |
-| Normal    | `tn`            | Make new tab                                  |
-| Normal    | `tc`            | Close tab                                     |
+| Normal    | `<A-t>`         | Make new tab                                  |
+| Normal    | `<A-c>`         | Close tab                                     |
 | N, X      | `m`             | Cut selection                                 |
 | Normal    | `M`             | Cut to the right of cursor                    |
 | Normal    | `mm`            | Cut line                                      |
-| Normal    | `,ct`           | Toggle comment on the current line            |
-| N, X      | `,cc`           | Single-line comment leader keymap             |
-| N, X      | `,cb`           | Block comment leader keymap                   |
+| Normal    | `gcc`           | Toggle comment on the current line            |
+| Normal    | `gc`            | Toggle comment, supporting motions            |
+| Visual    | `gc`            | Toggle comment in visual mode selection       |
 | Normal    | `<C-p>`         | Fuzzy search file names                       |
 | Normal    | `,f`            | Grep for text in files                        |
 | Normal    | `,w`            | Grep list of occurrences of word under cursor |
@@ -127,10 +129,6 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Insert    | `<CR>`          | Confirm selected autocomplete suggestion      |
 | Insert    | `<C-l>`         | Expand snippet or jump forward within snippet |
 | Insert    | `<C-h>`         | Jump backward within snippet                  |
-| Insert    | `<C-k>`         | Accept Codeium AI suggestion                  |
-| Insert    | `<C-n>`         | Next Codeium AI suggestion                    |
-| Insert    | `<C-p>`         | Previous Codeium AI suggestion                |
-| Insert    | `<C-x>`         | Clear Codeium AI suggestion                   |
 | Insert    | `,db`           | Toggle breakpoint                             |
 | Insert    | `,dB`           | Set conditional breakpoint                    |
 | Insert    | `,dc`           | Start/continue debugger                       |
