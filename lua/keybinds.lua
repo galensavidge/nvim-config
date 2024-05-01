@@ -140,7 +140,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
+    local opts = { buffer = ev.buf, silent = true }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -173,7 +173,7 @@ vim.keymap.set('n', '<A-o>', function()
   if outline.is_open() then
     outline.focus_toggle()
   else
-    outline.toggle()
+    outline.open({ focus_outline=false })
   end
 end, { silent = true})
 

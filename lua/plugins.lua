@@ -26,9 +26,8 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
-  { -- Bufferline
-    'akinsho/bufferline.nvim',
-    version = "*",
+  { -- Tabline
+    'seblj/nvim-tabline',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   { -- Minintro

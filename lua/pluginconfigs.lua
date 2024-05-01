@@ -10,6 +10,19 @@ require('lualine').setup({
   },
 })
 
+-- Tabline
+require('tabline').setup({
+    no_name = '[No Name]',    -- Name for buffers with no name
+    modified_icon = '',      -- Icon for showing modified buffer
+    close_icon = '',         -- Icon for closing tab with mouse
+    separator = "▌",          -- Separator icon on the left side
+    padding = 1,              -- Prefix and suffix space
+    color_all_icons = false,  -- Color devicons in active and inactive tabs
+    right_separator = false,  -- Show right separator on the last tab
+    show_index = true,        -- Shows the index of tab before filename
+    show_icon = true,         -- Shows the devicon
+})
+
 -- Show indented blocks visually
 require('ibl').setup()
 
@@ -54,9 +67,19 @@ require('plugins.lspconfig')
 
 -- Set up treesitter context
 require'treesitter-context'.setup{
-  enable = true,
+  enable = false,
   line_numbers = true,
-  mode = 'topline',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+  -- Line used to calculate context. Choices: 'cursor', 'topline'
+  mode = 'cursor',
+  -- How many lines the window should span. Values <= 0 mean no limit.
+  max_lines = 5,
+  -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+  min_window_height = 30,
+  -- Maximum number of lines to show for a single context
+  multiline_threshold = 20,
+  -- Which context lines to discard if `max_lines` is exceeded. Choices:
+  -- 'inner', 'outer'
+  trim_scope = 'outer',
 }
 
 -- Set up completion

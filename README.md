@@ -4,10 +4,20 @@ My personal neovim configuration.
 ## Installation
 1. Install neovim:
 ```bash
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+```
+Add this to `~/.bashrc`:
+```bash
+export PATH="$PATH:/opt/nvim-linux64/bin"
+```
+(Optional) Install neovide:
+```bash
 mkdir -p ~/appimages
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage \
-    --output-dir ~/appimages
-chmod u+x ~/appimages/nvim.appimage
+cd ~/appimages
+curl -LO https://github.com/neovide/neovide/releases/latest/download/neovide.AppImage
+chmod +x neovide.AppImage
 ```
 
 2. Clone the repo into the neovim settings folder (default `~/.config/nvim`).
@@ -34,8 +44,12 @@ add LanguageServer
 ```
 
 5. Place the following lines in `~./bashrc`:
+```bash
+alias v='nvim'
 ```
-alias v='~/appimages/nvim.appimage'
+Or, for neovide:
+```bash
+alias v='~/appimages/neovide.AppImage'
 ```
 
 6. Python setup:
