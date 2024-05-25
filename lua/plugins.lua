@@ -18,10 +18,6 @@ require('lazy').setup({
     'rafamadriz/neon',
     priority = 100,
   },
-  { -- Dressing
-    'stevearc/dressing.nvim',
-    opts = {},
-  },
   { -- Lualine
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -49,7 +45,6 @@ require('lazy').setup({
   },
   { -- Telescope
     'nvim-telescope/telescope.nvim',
-    tag='0.1.6',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
@@ -163,9 +158,6 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons',
     },
-  },
-  { -- Comment
-    'terrortylor/nvim-comment',
   },
   { -- Trim
     'cappyzawa/trim.nvim',

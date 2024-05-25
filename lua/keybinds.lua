@@ -44,16 +44,6 @@ vim.keymap.set('n', 'M', 'D', { silent = true })
 vim.keymap.set({'n', 'x'}, '<leader>m', 'm', { silent = true })
 vim.keymap.set('x', 'p', 'P' , { silent = true }) -- Prevent yank on put in visual mode
 
--- Comment toggling
-require('nvim_comment').setup({
-  marker_padding = true,
-  comment_empty = false,
-  create_mappings = true,
-  line_mapping = "gcc",
-  operator_mapping = "gc",
-  comment_chunk_text_object = "ic",
-})
-
 -- Set file grep config
 local ts = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', ts.find_files, {})  -- Search file names

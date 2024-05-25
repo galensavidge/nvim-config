@@ -38,7 +38,11 @@ vim.api.nvim_create_autocmd({ 'User' },
 {
   pattern = 'PersistedSavePre',
   callback = function()
+    local current_tab = vim.fn.tabpagenr()
+    local pos = vim.fn.getcurpos()
     vim.cmd('tabd OutlineClose')
+    vim.cmd("execute 'tabnext' " .. current_tab)
+    vim.fn.setpos('.', pos)
   end,
 })
 

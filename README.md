@@ -95,7 +95,7 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Normal    | `<C-p>`         | Fuzzy search file names                       |
 | Normal    | `,f`            | Grep for text in files                        |
 | Normal    | `,w`            | Grep list of occurrences of word under cursor |
-| Normal    | `,d`            | Open file browser                             |
+| Normal    | `,F`            | Open file browser                             |
 | Normal    | `,z`            | Fuzzy search spelling suggestions             |
 | Normal    | `,b`            | Fuzzy search buffers                          |
 | Normal    | `,h`            | Fuzzy search help tags                        |

@@ -27,11 +27,35 @@ require('tabline').setup({
 require('ibl').setup()
 
 -- Telescope config
+local actions = require('telescope.actions')
 require('telescope').setup({
-  path_display = {
-    'truncate',
-    filename_first = {
-      reverse_directories = false
+  defaults = {
+    path_display = {
+      truncate = 0,
+      filename_first = {
+        reverse_directories = false
+      }
+    },
+    mappings = {
+      n = {
+        ['<a-s>'] = actions.select_horizontal,
+        ['<a-v>'] = actions.select_vertical,
+        ['<a-t>'] = actions.select_tab,
+      },
+      i = {
+        ['<a-s>'] = actions.select_horizontal,
+        ['<a-v>'] = actions.select_vertical,
+        ['<a-t>'] = actions.select_tab,
+      },
+    }
+  },
+  pickers = {
+    buffers = {
+      mappings = {
+        i = {
+          ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+        }
+      }
     }
   }
 })
@@ -67,7 +91,7 @@ require('plugins.lspconfig')
 
 -- Set up treesitter context
 require'treesitter-context'.setup{
-  enable = false,
+  enable = true,
   line_numbers = true,
   -- Line used to calculate context. Choices: 'cursor', 'topline'
   mode = 'cursor',
