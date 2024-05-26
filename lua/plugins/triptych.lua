@@ -4,6 +4,9 @@ require('triptych').setup({
     jump_to_cwd = '.',  -- Pressing again will toggle back
     nav_left = 'h',
     nav_right = { 'l', '<CR>' },
+    open_hsplit = '<A-s>',
+    open_vsplit = '<A-v>',
+    open_tab = '<A-t>',
     delete = { 'd', 'x' },
     add = 'a',
     copy = 'y',
@@ -21,24 +24,6 @@ require('triptych').setup({
           search_dirs = { target.path }
         }
       end
-    },
-    ['<C-s>'] = {
-      mode = 'n',
-      fn = function(target)
-        vim.cmd.Triptych()
-        vim.schedule(function()
-          vim.cmd.split(target.path)
-        end)
-      end,
-    },
-    ['<C-v>'] = {
-      mode = 'n',
-      fn = function(target)
-        vim.cmd.Triptych()
-        vim.schedule(function()
-          vim.cmd.vsplit(target.path)
-        end)
-      end,
     },
   },
 })

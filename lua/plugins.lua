@@ -90,12 +90,28 @@ require('lazy').setup({
     'lewis6991/gitsigns.nvim',
     lazy = true,
   },
+  { -- Neogit
+  'NeogitOrg/neogit',
+  dependencies = {
+    'nvim-lua/plenary.nvim',         -- required
+    'sindrets/diffview.nvim',        -- optional - Diff integration
+    'nvim-telescope/telescope.nvim', -- optional
+  },
+  config = true
+  },
   { -- Diffview
     'sindrets/diffview.nvim',
   },
   { -- Leap
     'ggandor/leap.nvim',
     dependencies = { 'tpope/vim-repeat' },
+  },
+  { -- Surround
+    'kylechui/nvim-surround',
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({})
+    end
   },
   { -- Lspconfig
     'neovim/nvim-lspconfig',

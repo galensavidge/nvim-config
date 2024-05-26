@@ -115,7 +115,10 @@ vim.keymap.set('n', '<leader>hd', gs.diffthis)
 vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end)
 vim.keymap.set('n', '<leader>td', gs.toggle_deleted)
 
-vim.keymap.set({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+vim.keymap.set({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { silent = true })
+
+local neogit = require('neogit')
+vim.keymap.set('n', '<leader>go', neogit.open, { silent = true })
 
 vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', { silent = true })
 vim.keymap.set('n', '<leader>gf', ':DiffviewFileHistory<CR>', { silent = true })
