@@ -1,4 +1,4 @@
- -- Move vertically by visual line (gets around super long lines)
+-- Move vertically by visual line (gets around super long lines)
 vim.keymap.set({'n', 'x'}, 'j', 'gj', { silent = true })
 vim.keymap.set({'n', 'x'}, 'k', 'gk', { silent = true })
 
@@ -51,22 +51,25 @@ vim.keymap.set('n', '<leader>f', ts.live_grep, {})  -- Search for text in files
 vim.keymap.set('n', '<leader>w', ts.grep_string, {})  -- Grep word under cursor
 vim.keymap.set('n', '<leader>b', ts.buffers, {})  -- Search buffers
 vim.keymap.set('n', '<leader>h', ts.help_tags, {})  -- Search help tags
- -- Search clipboard history
+-- Search clipboard history
 vim.keymap.set('n', '<leader>p', require('telescope').extensions.neoclip.plus)
- -- Search spelling suggestions
+-- Search spelling suggestions
 vim.keymap.set('n', '<leader>z', function()
   ts.spell_suggest(require('telescope.themes').get_cursor({}))
 end)
- -- Search undo tree
+-- Search undo tree
 vim.keymap.set('n', '<leader>u', require('telescope').extensions.undo.undo, {})
 vim.keymap.set('n', '<leader>e', ts.diagnostics, {})  -- Search diagnostics
 vim.keymap.set('n', '<leader>gb', ts.git_branches, {})  -- Search git banches
- -- Search breakpoints
+-- Search breakpoints
 vim.keymap.set('n', '<leader>bp',
   require('telescope').extensions.dap.list_breakpoints, {})
 vim.keymap.set('n', '<leader>ts', ts.builtin, {})  -- Search pickers
+-- Search sessions
+vim.keymap.set('n', '<leader>S',
+  require('telescope').extensions.persisted.persisted, {})
 
- -- File find and replace
+-- File find and replace
 vim.keymap.set('n', '<leader>r', require('spectre').toggle,
   { desc = 'Toggle Spectre' })
 vim.keymap.set('n', '<leader>R',
@@ -83,7 +86,7 @@ vim.keymap.set('n', '<leader>Rf',
   end,
   { desc = 'Search on current file' })
 
- -- Git integration
+-- Git integration
 local gs = require('gitsigns')
 vim.keymap.set('n', ']c', function()
   if vim.wo.diff then return ']c' end
@@ -188,7 +191,7 @@ vim.keymap.set('n', '<leader>dx', require('dap').terminate)
 -- Toggle DAP UI
 vim.keymap.set('n', '<leader>du', require('dapui').toggle)
 
- -- Run snippet
+-- Run snippet
 vim.keymap.set('n', '<leader>S', require('sniprun').run,
 { desc = 'Run snippet' })
 vim.keymap.set('x', '<leader>S', function() require('sniprun').run('v') end,

@@ -1,7 +1,7 @@
 local misc = require('cmp.utils.misc')
 local keymap = require('cmp.utils.keymap')
 
- -- Load extra snippets from friendly-snippets
+-- Load extra snippets from friendly-snippets
 require('luasnip.loaders.from_vscode').lazy_load({})
 
 local has_words_before = function()
