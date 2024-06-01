@@ -1,4 +1,4 @@
- -- Highlight yanked text in normal mode
+-- Highlight yanked text in normal mode
 vim.api.nvim_create_autocmd('TextYankPost',
 {
   callback = function()
@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd('TextYankPost',
   end,
 })
 
- -- Set spell check
+-- Set spell check
 vim.api.nvim_create_autocmd('FileType',
 {
   pattern = { 'html', 'markdown', 'text', 'rst', 'gitcommit' },
@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd('FileType',
   end,
 })
 
- -- Set tab length by file type
+-- Set tab length by file type
 vim.api.nvim_create_autocmd('FileType',
 {
   pattern = { 'lua' },
@@ -33,7 +33,17 @@ vim.api.nvim_create_autocmd('FileType',
   end
 })
 
- -- Close outline before saving session to prevent issues
+-- Load session on git branch change
+vim.api.nvim_create_autocmd({ 'User' },
+{
+  pattern = 'NeogitBranchCheckout',
+  callback = function()
+    vim.cmd('SessionSave')
+    vim.cmd('SessionLoad')
+  end,
+})
+
+-- Close outline before saving session to prevent issues
 vim.api.nvim_create_autocmd({ 'User' },
 {
   pattern = 'PersistedSavePre',
@@ -46,7 +56,7 @@ vim.api.nvim_create_autocmd({ 'User' },
   end,
 })
 
- -- Make sure the auto-formatter doesn't override bindings like gq
+-- Make sure the auto-formatter doesn't override bindings like gq
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     vim.bo[args.buf].formatexpr = nil
