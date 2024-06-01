@@ -118,7 +118,8 @@ vim.keymap.set('n', '<leader>hd', gs.diffthis)
 vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end)
 vim.keymap.set('n', '<leader>td', gs.toggle_deleted)
 
-vim.keymap.set({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { silent = true })
+vim.keymap.set(
+    {'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { silent = true })
 
 local neogit = require('neogit')
 vim.keymap.set('n', '<leader>go', neogit.open, { silent = true })
@@ -126,8 +127,8 @@ vim.keymap.set('n', '<leader>go', neogit.open, { silent = true })
 vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', { silent = true })
 vim.keymap.set('n', '<leader>gf', ':DiffviewFileHistory<CR>', { silent = true })
 
--- Use LspAttach autocommand to only map the following keys
--- after the language server attaches to the current buffer
+-- Use LspAttach autocommand to only map the following keys after the language
+-- server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -159,7 +160,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>s', ts.lsp_dynamic_workspace_symbols, opts)
     vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, opts)
     vim.keymap.set('n', ']e', vim.diagnostic.goto_next, opts)
-    vim.keymap.set('n', '<leader><S-e>', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, opts)
   end,
 })
 
@@ -190,13 +191,3 @@ vim.keymap.set('n', '<leader>dl', require('dap').run_last)
 vim.keymap.set('n', '<leader>dx', require('dap').terminate)
 -- Toggle DAP UI
 vim.keymap.set('n', '<leader>du', require('dapui').toggle)
-
--- Run snippet
-vim.keymap.set('n', '<leader>S', require('sniprun').run,
-{ desc = 'Run snippet' })
-vim.keymap.set('x', '<leader>S', function() require('sniprun').run('v') end,
-{ desc = 'Run snippet' }) -- Not working!
-vim.keymap.set({'n', 'x'}, '<leader>sr', require('sniprun').reset,
-{ desc = 'Reset snippet runner' })
-vim.keymap.set({'n', 'x'}, '<leader>sx', require('sniprun.display').close_all,
-{ desc = 'Close snippet runner' })

@@ -1,31 +1,3 @@
--- Status line
-require('lualine').setup({
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'filename'},
-    lualine_c = {'branch', 'diff', 'diagnostics'},
-    lualine_x = {require('lsp-progress').progress, 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-})
-
--- Tabline
-require('tabline').setup({
-    no_name = '[No Name]',    -- Name for buffers with no name
-    modified_icon = '',      -- Icon for showing modified buffer
-    close_icon = '',         -- Icon for closing tab with mouse
-    separator = "▌",          -- Separator icon on the left side
-    padding = 1,              -- Prefix and suffix space
-    color_all_icons = false,  -- Color devicons in active and inactive tabs
-    right_separator = false,  -- Show right separator on the last tab
-    show_index = true,        -- Shows the index of tab before filename
-    show_icon = true,         -- Shows the devicon
-})
-
--- Show indented blocks visually
-require('ibl').setup()
-
 -- Telescope config
 local actions = require('telescope.actions')
 require('telescope').setup({
@@ -129,8 +101,3 @@ require('trim').setup({
 -- Debugging configuration
 require('plugins.dap')
 require('telescope').load_extension('dap')
-
--- Snippet runner configuration
-require('sniprun').setup({
-  -- your options
-})

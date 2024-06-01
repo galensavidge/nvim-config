@@ -1,37 +1,4 @@
--- Bootstrap lazy.nvim if it is not installed
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
--- Set up plugins
-require('lazy').setup({
-  { -- Neon
-    'rafamadriz/neon',
-    priority = 100,
-  },
-  { -- Lualine
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-  },
-  { -- Tabline
-    'seblj/nvim-tabline',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-  },
-  { -- Minintro
-    "eoh-bse/minintro.nvim",
-    opts = { color = "#989898" },
-    config = true,
-    lazy = false
-  },
+return {
   { -- Indent-blankline
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
@@ -113,13 +80,6 @@ require('lazy').setup({
         require("nvim-surround").setup({})
     end
   },
-  { -- Lspconfig
-    'neovim/nvim-lspconfig',
-  },
-  { -- Null-ls
-    'jose-elias-alvarez/null-ls.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-  },
   { -- Python-syntax
     'vim-python/python-syntax',
   },
@@ -142,23 +102,6 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter-context',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
-  { -- Outline
-    'hedyhli/outline.nvim',
-    cmd = { 'Outline', 'OutlineOpen' },
-    lazy = true,
-  },
-  { -- Nvim-cmp
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-calc',
-    },
-  },
   { -- Lspkind
     'onsails/lspkind.nvim',
   },
@@ -167,14 +110,6 @@ require('lazy').setup({
     build = 'make install_jsregexp',
     dependencies = { 'rafamadriz/friendly-snippets' },
   },
-  { -- Triptych
-    'simonmclean/triptych.nvim',
-    event = 'VeryLazy',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-  },
   { -- Trim
     'cappyzawa/trim.nvim',
   },
@@ -182,24 +117,10 @@ require('lazy').setup({
     'xolox/vim-notes',
     dependencies = { 'xolox/vim-misc' },
   },
-  { -- Nvim-dap
-    'mfussenegger/nvim-dap',
-    dependencies = {
-      'rcarriga/nvim-dap-ui',
-      'theHamsta/nvim-dap-virtual-text',
-      'mfussenegger/nvim-dap-python',
-      'nvim-neotest/nvim-nio',
-    },
-  },
   { -- Telescope-dap
     'nvim-telescope/telescope-dap.nvim',
     dependencies = {
       'nvim-telescope/telescope.nvim',
     },
   },
-  { -- Sniprun
-    'michaelb/sniprun',
-    branch = 'master',
-    build = 'sh install.sh',
-  },
-})
+}
