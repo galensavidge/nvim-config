@@ -5,6 +5,7 @@ return {
     'rafamadriz/neon',
     priority = 100,
   },
+
   { -- Lualine (status line)
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -21,6 +22,7 @@ return {
       })
     end,
   },
+
   { -- Tabline (tab line)
     'seblj/nvim-tabline',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -38,12 +40,14 @@ return {
       })
     end,
   },
+
   { -- Minintro (intro page)
     "eoh-bse/minintro.nvim",
     opts = { color = "#989898" },
     config = true,
     lazy = false
   },
+
   { -- Indent-blankline (show indented blocks visually)
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
@@ -51,5 +55,14 @@ return {
     config = function()
       require('ibl').setup()
     end,
+  },
+
+  { -- Virt-column (color column styling)
+    'lukas-reineke/virt-column.nvim',
+  },
+
+  { -- Nvim-treesitter-context (show function context at the top of the screen)
+    'nvim-treesitter/nvim-treesitter-context',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
 }

@@ -12,6 +12,7 @@ return {
       'hrsh7th/cmp-cmdline',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-calc',
+      'onsails/lspkind.nvim',  -- Show pictograms in LSP suggestions
     },
     config = function()
       local misc = require('cmp.utils.misc')
@@ -139,5 +140,11 @@ return {
         }),
       })
     end,
-  }
+  },
+
+  { -- LuaSnip (snippet engine)
+    'L3MON4D3/LuaSnip',
+    build = 'make install_jsregexp',
+    dependencies = { 'rafamadriz/friendly-snippets' },
+  },
 }

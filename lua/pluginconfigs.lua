@@ -1,49 +1,8 @@
--- Telescope config
-local actions = require('telescope.actions')
-require('telescope').setup({
-  defaults = {
-    path_display = {
-      truncate = 0,
-      filename_first = {
-        reverse_directories = false
-      }
-    },
-    mappings = {
-      n = {
-        ['<a-s>'] = actions.select_horizontal,
-        ['<a-v>'] = actions.select_vertical,
-        ['<a-t>'] = actions.select_tab,
-      },
-      i = {
-        ['<a-s>'] = actions.select_horizontal,
-        ['<a-v>'] = actions.select_vertical,
-        ['<a-t>'] = actions.select_tab,
-      },
-    }
-  },
-  pickers = {
-    buffers = {
-      mappings = {
-        i = {
-          ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
-        }
-      }
-    }
-  }
-})
-
 -- Project/session management
 require('persisted').setup({
   use_git_branch = true,
   autoload = true,
 })
-require('telescope').load_extension('persisted')
-
--- Better fuzzy finder sorting
-require('telescope').load_extension('fzf')
-
--- Undo tree for telescope
-require('telescope').load_extension('undo')
 
 -- Better color column
 require('virt-column').setup()
@@ -78,17 +37,8 @@ require'treesitter-context'.setup{
   trim_scope = 'outer',
 }
 
--- Set up completion
-require('plugins.cmp')
-
 -- Better Python syntax highlighting
 vim.g.python_highlight_all = true
-
--- Code outline
-require('plugins.outline')
-
--- File browser
-require('plugins.triptych')
 
 -- Whitespace trimming
 require('trim').setup({
@@ -97,7 +47,3 @@ require('trim').setup({
   trim_last_line = false,
   trim_first_line = false,
 })
-
--- Debugging configuration
-require('plugins.dap')
-require('telescope').load_extension('dap')

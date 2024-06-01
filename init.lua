@@ -1,5 +1,6 @@
 -- Set `mapleader` before lazy so mappings are correct
 vim.g.mapleader = ','
+vim.g.maplocalleader = ','
 
 if vim.g.neovide then
     require('neovide')
@@ -9,7 +10,6 @@ end
 require('lazysetup')
 require('lazy').setup('plugins')
 
-require('plugins')
 require('styling')
 require('keybinds')
 require('options')

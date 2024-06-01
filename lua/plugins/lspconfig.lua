@@ -1,3 +1,5 @@
+-- Sets up language server protocol (LSP) extensions.
+
 return {
   { -- Lspconfig
     'neovim/nvim-lspconfig',
@@ -52,7 +54,9 @@ return {
       })
     end,
   },
-  { -- Null-ls
+
+  { -- Null-ls (LSP "server" which allows for integration of formatters and
+    -- linters into the built-in LSP framework)
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
@@ -67,6 +71,21 @@ return {
           null_ls.builtins.diagnostics.flake8,
         },
       })
+    end,
+  },
+
+  { -- LSP-progress (shows LSP progress in the status bar)
+    'linrongbin16/lsp-progress.nvim',
+    config = function()
+      require('lsp-progress').setup()
+    end
+  },
+
+  { -- Inc-rename (show LSP symbol rename incrementally while typing)
+    'smjonas/inc-rename.nvim',
+    event = 'VeryLazy',
+    config = function()
+      require('inc_rename').setup()
     end,
   },
 }
