@@ -8,7 +8,7 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
-    event = 'VeryLazy',
+    lazy=true,
     config = function()
       local actions = require('telescope.actions')
       require('telescope').setup({
@@ -55,6 +55,38 @@ return {
       -- Debugger breakpoints
       require('plugins.dap')
       require('telescope').load_extension('dap')
+
+      -- Set keybinds
+      local ts = require('telescope.builtin')
+      vim.keymap.set('n', '<C-p>', ts.find_files, { desc = 'Search file names' })
+      vim.keymap.set('n', '<leader>f', ts.live_grep,
+        { desc = 'Search for text in files' })
+      vim.keymap.set('n', '<leader>w', ts.grep_string,
+        { desc = 'Grep word under cursor' })
+      vim.keymap.set('n', '<leader>b', ts.buffers, { desc = 'Search buffers' })
+      vim.keymap.set('n', '<leader>km', ts.keymaps, { desc = 'Search keymaps' })
+      vim.keymap.set('n', '<leader>h', ts.help_tags, { desc = 'Search help tags' })
+      vim.keymap.set('n', '<leader>p',
+        require('telescope').extensions.neoclip.plus,
+        { desc = 'Search clipboard history' })
+      vim.keymap.set('n', '<leader>z', function()
+        ts.spell_suggest(require('telescope.themes').get_cursor({}))
+      end, { desc = 'Search speling suggestions' })
+      vim.keymap.set('n', '<leader>u',
+        require('telescope').extensions.undo.undo,
+        { desc = 'Search undo tree' })
+      vim.keymap.set('n', '<leader>e', ts.diagnostics,
+        { desc = 'Search diagnostics' })
+      vim.keymap.set('n', '<leader>gb', ts.git_branches,
+        { desc = 'Search git banches' })
+      vim.keymap.set('n', '<leader>bp',
+        require('telescope').extensions.dap.list_breakpoints,
+        { desc = 'Search breakpoints' })
+      vim.keymap.set('n', '<leader>S',
+        require('telescope').extensions.persisted.persisted,
+        { desc = 'Search sessions' })
+      vim.keymap.set('n', '<leader>ts', ts.builtin,
+        { desc = 'Search Telescope pickers' })
     end,
   },
 

@@ -3,11 +3,12 @@
 return {
   {
     'simonmclean/triptych.nvim',
-    event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons',
     },
+    lazy=true,
+    cmd='Triptych',
     config = function()
       require('triptych').setup({
         mappings = {

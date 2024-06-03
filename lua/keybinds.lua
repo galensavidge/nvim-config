@@ -58,73 +58,13 @@ vim.keymap.set('n', 'M', 'D', { desc = 'Cut to end of line' })
 vim.keymap.set({'n', 'x'}, '<leader>m', 'm', { desc = 'Set mark'})
 vim.keymap.set('x', 'p', 'P') -- Prevent yank on put in visual mode
 
--- Fuzzy finding keybinds
-local ts = require('telescope.builtin')
-vim.keymap.set('n', '<C-p>', ts.find_files, { desc = 'Search file names' })
-vim.keymap.set('n', '<leader>f', ts.live_grep, { desc = 'Search for text in files' })
-vim.keymap.set('n', '<leader>w', ts.grep_string, { desc = 'Grep word under cursor' })
-vim.keymap.set('n', '<leader>b', ts.buffers, { desc = 'Search buffers' })
-vim.keymap.set('n', '<leader>km', ts.keymaps, { desc = 'Search keymaps' })
-vim.keymap.set('n', '<leader>h', ts.help_tags, { desc = 'Search help tags' })
-
-vim.keymap.set('n', '<leader>p', require('telescope').extensions.neoclip.plus,
-  { desc = 'Search clipboard history' })
--- Search spelling suggestions
-vim.keymap.set('n', '<leader>z', function()
-  ts.spell_suggest(require('telescope.themes').get_cursor({}))
-end)
--- Search undo tree
-vim.keymap.set('n', '<leader>u', require('telescope').extensions.undo.undo, {})
-vim.keymap.set('n', '<leader>e', ts.diagnostics, { desc = 'Search diagnostics' })
-vim.keymap.set('n', '<leader>gb', ts.git_branches, { desc = 'Search git banches' })
-vim.keymap.set('n', '<leader>bp',
-  require('telescope').extensions.dap.list_breakpoints,
-  { desc = 'Search breakpoints' })
-vim.keymap.set('n', '<leader>S',
-  require('telescope').extensions.persisted.persisted,
-  { desc = 'Search sessions' })
-vim.keymap.set('n', '<leader>ts', ts.builtin, { desc = 'Search Telescope pickers' })
-
 -- File search and replace
 vim.keymap.set('n', '<leader>r', ':GrugFar<CR>',
   { silent = true, desc = 'Toggle Grug-Far (search and replace)' })
 
 -- Git integration
-local gs = require('gitsigns')
-vim.keymap.set('n', ']c', function()
-  if vim.wo.diff then return ']c' end
-    vim.schedule(function() gs.next_hunk() end)
-  return '<Ignore>'
-end, { expr = true, desc = 'Next git hunk' })
-
-vim.keymap.set('n', '[c', function()
-  if vim.wo.diff then return '[c' end
-    vim.schedule(function() gs.prev_hunk() end)
-  return '<Ignore>'
-end, { expr = true, desc = 'Previous git hunk' })
-
-vim.keymap.set('n', '<leader>hs', gs.stage_hunk, { desc = 'Stage git hunk' })
-vim.keymap.set('n', '<leader>hr', gs.reset_hunk, { desc = 'Reset git hunk' })
-vim.keymap.set('v', '<leader>hs', function()
-  gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')}
-end, { desc = 'Stage git hunk' })
-vim.keymap.set('v', '<leader>hr', function()
-  gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')}
-end, { desc = 'Reset git hunk' })
-vim.keymap.set('n', '<leader>hS', gs.stage_buffer, { desc = 'Stage all git hunks in buffer' })
-vim.keymap.set('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Undo stage git hunk' })
-vim.keymap.set('n', '<leader>hR', gs.reset_buffer, { desc = 'Reset all git hunks in buffer' })
-vim.keymap.set('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview git hunk' })
-vim.keymap.set('n', '<leader>hb', function() gs.blame_line{full=true} end, { desc = 'Open git blame for current line' })
-vim.keymap.set('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'Toggle git blame' })
-vim.keymap.set('n', '<leader>hd', gs.diffthis, { desc = 'Open git diff for buffer' })
-vim.keymap.set('n', '<leader>hD', function() gs.diffthis('~') end)
-vim.keymap.set('n', '<leader>td', gs.toggle_deleted, { desc = 'Toggle deleted lines in git hunks' })
-
-vim.keymap.set(
-    {'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { silent = true })
-
-vim.keymap.set('n', '<leader>go', ':Neogit<CR>', { silent = true, desc = 'Open git UI page' })
+vim.keymap.set('n', '<leader>go', ':Neogit<CR>', { silent = true,
+  desc = 'Open git UI page' })
 
 vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', { silent = true,
   desc = 'Open git diff view for all files' })
@@ -141,30 +81,44 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf, silent = true }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    -- vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
+      { buffer = ev.buf, silent = true, desc = 'LSP go to declaration' })
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
+      { buffer = ev.buf, silent = true, desc = 'LSP go to definition' })
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover,
+      { buffer = ev.buf, silent = true, desc = 'LSP hover symbol' })
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
+      { buffer = ev.buf, silent = true, desc = 'LSP go to implementation' })
+    -- vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help,
+      -- { buffer = ev.buf, silent = true, desc = 'LSP signature help' })
+    vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
+      { buffer = ev.buf, silent = true, desc = 'LSP add workspace folder' })
+    vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,
+      { buffer = ev.buf, silent = true, desc = 'LSP remove workspace folder' })
     vim.keymap.set('n', '<leader>wl', function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts)
-    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+    end, { buffer = ev.buf, silent = true, desc = 'LSP list workspace folders' })
+    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition,
+      { buffer = ev.buf, silent = true, desc = 'LSP go to type definition' })
     vim.keymap.set('n', '<leader>rn', function()
       return ':IncRename ' .. vim.fn.expand('<cword>')
-    end, { expr = true, silent = true })
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    end, { expr = true, silent = true, desc = 'Rename LSP symbol' })
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action,
+      { buffer = ev.buf, silent = true, desc = 'LSP execute code action' })
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references,
+      { buffer = ev.buf, silent = true, desc = 'LSP go to references' })
     vim.keymap.set('n', '<leader>l', function()
       vim.lsp.buf.format { async = true }
-    end, opts)
-    vim.keymap.set('n', '<leader>s', ts.lsp_dynamic_workspace_symbols, opts)
-    vim.keymap.set('n', '[e', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']e', vim.diagnostic.goto_next, opts)
-    vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float, opts)
+    end, { buffer = ev.buf, silent = true, desc = 'LSP format buffer' })
+    vim.keymap.set('n', '<leader>s', function()
+      require('telescope.builtin').lsp_dynamic_workspace_symbols
+      end, { buffer = ev.buf, silent = true, desc = 'Search LSP symbols' })
+    vim.keymap.set('n', '[e', vim.diagnostic.goto_prev,
+      { buffer = ev.buf, silent = true, desc = 'Go to previous LSP diagnostic' })
+    vim.keymap.set('n', ']e', vim.diagnostic.goto_next,
+      { buffer = ev.buf, silent = true, desc = 'Go to next LSP diagnostic' })
+    vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float,
+      { buffer = ev.buf, silent = true, desc = 'Open LSP diagnostic' })
   end,
 })
 
@@ -179,19 +133,5 @@ vim.keymap.set('n', '<A-o>', function()
 end, { silent = true, desc = 'Open code outline'})
 
 -- File browser
-vim.keymap.set('n', '<leader>F', ':Triptych<CR>', { silent = true, desc = 'Open file browser' })
-
--- Debugging
-vim.keymap.set('n', '<leader>db', require('dap').toggle_breakpoint)
-vim.keymap.set('n', '<leader>dB', function()
-  return require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
-end)
-vim.keymap.set('n', '<leader>dc', require('dap').continue)
-vim.keymap.set('n', '<leader>di', require('dap').step_into)
-vim.keymap.set('n', '<leader>do', require('dap').step_over)
-vim.keymap.set('n', '<leader>dO', require('dap').step_out)
-vim.keymap.set('n', '<leader>dr', require('dap').repl.toggle)
-vim.keymap.set('n', '<leader>dl', require('dap').run_last)
-vim.keymap.set('n', '<leader>dx', require('dap').terminate)
--- Toggle DAP UI
-vim.keymap.set('n', '<leader>du', require('dapui').toggle)
+vim.keymap.set('n', '<leader>F', ':Triptych<CR>',
+  { silent = true, desc = 'Open file browser' })
