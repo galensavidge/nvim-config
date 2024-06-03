@@ -111,7 +111,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.format { async = true }
     end, { buffer = ev.buf, silent = true, desc = 'LSP format buffer' })
     vim.keymap.set('n', '<leader>s', function()
-      require('telescope.builtin').lsp_dynamic_workspace_symbols
+        require('telescope.builtin').lsp_dynamic_workspace_symbols()
       end, { buffer = ev.buf, silent = true, desc = 'Search LSP symbols' })
     vim.keymap.set('n', '[e', vim.diagnostic.goto_prev,
       { buffer = ev.buf, silent = true, desc = 'Go to previous LSP diagnostic' })
