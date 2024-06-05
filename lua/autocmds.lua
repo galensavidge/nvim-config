@@ -7,6 +7,28 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Only show the cursorline and relative line numbers in the active window
+vim.api.nvim_create_autocmd('WinEnter', {
+  callback = function()
+    vim.opt_local.cursorline = true
+    vim.opt_local.relativenumber = true
+  end,
+})
+vim.api.nvim_create_autocmd('WinLeave', {
+  callback = function()
+    vim.opt_local.cursorline = false
+    vim.opt_local.relativenumber = false
+  end,
+})
+
+-- Set folding by indent in certain file types
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'python', 'julia', 'h', 'c', 'cpp' },
+  callback = function()
+      vim.opt_local.foldmethod = 'indent'
+    end,
+})
+
 -- Set spell check
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'html', 'markdown', 'text', 'rst', 'gitcommit' },
@@ -42,7 +64,6 @@ vim.api.nvim_create_autocmd('User', {
 vim.api.nvim_create_autocmd('User', {
   pattern = 'PersistedSavePre',
   callback = function()
-    require('neogit').close()
     local current_tab = vim.fn.tabpagenr()
     local pos = vim.fn.getcurpos()
     vim.cmd('tabd OutlineClose')
