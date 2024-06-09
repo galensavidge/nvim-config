@@ -3,22 +3,22 @@
 -- Set keybinds
 vim.keymap.set('n', '<C-p>', function()
     require('telescope').extensions.smart_open.smart_open()
-  end, { desc = 'Search file names' })
+  end, { silent = true, desc = 'Search file names' })
 
-vim.keymap.set('n', '<leader>f', ':Telescope live_grep',
-  { desc = 'Search for text in files' })
+vim.keymap.set('n', '<leader>f', ':Telescope live_grep<CR>',
+  { silent = true, desc = 'Search for text in files' })
 
-vim.keymap.set('n', '<leader>w', ':Telescope grep_string',
-  { desc = 'Grep word under cursor' })
+vim.keymap.set('n', '<leader>w', ':Telescope grep_string<CR>',
+  { silent = true, desc = 'Grep word under cursor' })
 
-vim.keymap.set('n', '<leader>b', ':Telescope buffers',
-  { desc = 'Search buffers' })
+vim.keymap.set('n', '<leader>b', ':Telescope buffers<CR>',
+  { silent = true, desc = 'Search buffers' })
 
-vim.keymap.set('n', '<leader>km', ':Telescope keymaps',
-  { desc = 'Search keymaps' })
+vim.keymap.set('n', '<leader>km', ':Telescope keymaps<CR>',
+  { silent = true, desc = 'Search keymaps' })
 
-vim.keymap.set('n', '<leader>h', ':Telescope help_tags',
-  { desc = 'Search help tags' })
+vim.keymap.set('n', '<leader>h', ':Telescope help_tags<CR>',
+  { silent = true, desc = 'Search help tags' })
 
 vim.keymap.set('n', '<leader>p',
   function()
@@ -37,11 +37,11 @@ vim.keymap.set('n', '<leader>u',
     require('telescope').extensions.undo.undo()
   end, { desc = 'Search undo tree' })
 
-vim.keymap.set('n', '<leader>e', ':Telescope diagnostics',
-  { desc = 'Search diagnostics' })
+vim.keymap.set('n', '<leader>e', ':Telescope diagnostics<CR>',
+  { silent = true, desc = 'Search diagnostics' })
 
-vim.keymap.set('n', '<leader>gb', ':Telescope git_branches',
-  { desc = 'Search git banches' })
+vim.keymap.set('n', '<leader>gb', ':Telescope git_branches<CR>',
+  { silent = true, desc = 'Search git banches' })
 
 vim.keymap.set('n', '<leader>bp',
   function()
@@ -53,8 +53,8 @@ vim.keymap.set('n', '<leader>S',
     require('telescope').extensions.persisted.persisted()
   end, { desc = 'Search sessions' })
 
-vim.keymap.set('n', '<leader>ts', ':Telescope builtin',
-  { desc = 'Search Telescope pickers' })
+vim.keymap.set('n', '<leader>ts', ':Telescope builtin<CR>',
+  { silent = true, desc = 'Search Telescope pickers' })
 
 return {
   { -- Telescope
@@ -64,6 +64,7 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
     lazy=true,
+    cmd='Telescope',
     config = function()
       -- Project/session management
       require('telescope').load_extension('persisted')
