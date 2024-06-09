@@ -56,7 +56,12 @@ return {
       'nvim-telescope/telescope.nvim',
     },
     lazy = true,
-    config = true,
+    config = {
+      integrations = {
+      telescope = true,
+      diffview = true,
+      },
+    },
     cmd = 'Neogit',
   },
 
