@@ -63,8 +63,11 @@ vim.keymap.set('n', '<leader>r', ':GrugFar<CR>',
   { silent = true, desc = 'Toggle Grug-Far (search and replace)' })
 
 -- Git integration
-vim.keymap.set('n', '<leader>go', ':Neogit<CR>', { silent = true,
-  desc = 'Open git UI page' })
+vim.keymap.set('n', '<leader>go', function()
+    vim.cmd('tabl')
+    require('neogit').open()
+  end,
+  { silent = true, desc = 'Open git UI page' })
 
 vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', { silent = true,
   desc = 'Open git diff view for all files' })
