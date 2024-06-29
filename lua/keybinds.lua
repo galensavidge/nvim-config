@@ -1,10 +1,10 @@
 -- Move vertically by visual line (gets around super long lines)
-vim.keymap.set({'n', 'x'}, 'j', 'gj', { silent = true })
-vim.keymap.set({'n', 'x'}, 'k', 'gk', { silent = true })
+vim.keymap.set({'n', 'x', 'o'}, 'j', 'gj', { silent = true })
+vim.keymap.set({'n', 'x', 'o'}, 'k', 'gk', { silent = true })
 
 -- Move to the beginning and end of lines
-vim.keymap.set({'n', 'x'}, 'H', '^', { silent = true })
-vim.keymap.set({'n', 'x'}, 'L', '$', { silent = true })
+vim.keymap.set({'n', 'x', 'o'}, 'H', '^', { silent = true })
+vim.keymap.set({'n', 'x', 'o'}, 'L', '$', { silent = true })
 
 -- Keep automatically inserted indentation when switching back to normal mode
 vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })

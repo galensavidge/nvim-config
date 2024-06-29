@@ -50,7 +50,7 @@ vim.keymap.set('n', '<leader>bp',
 
 vim.keymap.set('n', '<leader>S',
   function()
-    require('telescope').extensions.persisted.persisted()
+    require('auto-session.session-lens').search_session()
   end, { desc = 'Search sessions' })
 
 vim.keymap.set('n', '<leader>ts', ':Telescope builtin<CR>',
@@ -66,9 +66,6 @@ return {
     lazy=true,
     cmd='Telescope',
     config = function()
-      -- Project/session management
-      require('telescope').load_extension('persisted')
-
       -- Better fuzzy finder
       require('telescope').load_extension('fzf')
 

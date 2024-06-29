@@ -1,9 +1,3 @@
--- Project/session management
-require('persisted').setup({
-  use_git_branch = true,
-  autoload = true,
-})
-
 -- Better color column
 require('virt-column').setup()
 

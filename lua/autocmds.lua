@@ -10,12 +10,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Only show the cursorline and relative line numbers in the active window
 vim.api.nvim_create_autocmd('WinEnter', {
   callback = function()
+    if vim.bo.filetype == '' then
+        return
+    end
     vim.opt_local.cursorline = true
     vim.opt_local.relativenumber = true
   end,
 })
 vim.api.nvim_create_autocmd('WinLeave', {
   callback = function()
+    if vim.bo.filetype == '' then
+        return
+    end
     vim.opt_local.cursorline = false
     vim.opt_local.relativenumber = false
   end,
@@ -48,27 +54,6 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'rst' },
   callback = function(ev)
     vim.opt_local.tabstop = 3
-  end,
-})
-
--- Load session on git branch change
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'NeogitBranchCheckout',
-  callback = function()
-    vim.cmd('SessionSave')
-    vim.cmd('SessionLoad')
-  end,
-})
-
--- Close outline and neogit before saving session to prevent issues
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'PersistedSavePre',
-  callback = function()
-    local current_tab = vim.fn.tabpagenr()
-    local pos = vim.fn.getcurpos()
-    vim.cmd('tabd OutlineClose')
-    vim.cmd("execute 'tabnext' " .. current_tab)
-    vim.fn.setpos('.', pos)
   end,
 })
 

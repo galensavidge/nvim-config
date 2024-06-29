@@ -4,7 +4,7 @@
 return {
   {
     'MagicDuck/grug-far.nvim',
-    event='VeryLazy',
+    cmd = { 'GrugFar' },
     config = function()
       require('grug-far').setup({})
     end
