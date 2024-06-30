@@ -1,3 +1,17 @@
+local ts_parsers = require("nvim-treesitter.parsers")
+
+-- Request treesitter parser to update the syntax tree on text change
+vim.api.nvim_create_autocmd('TextChanged', {
+  callback = function()
+    local filelang = ts_parsers.ft_to_lang(
+      vim.api.nvim_buf_get_option(vim.fn.bufnr(), 'filetype'))
+    local parser = ts_parsers.get_parser(vim.fn.bufnr(), filelang)
+    if not parser == nil then
+      parser:parse()
+    end
+  end,
+})
+
 -- Highlight yanked text in normal mode
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -10,7 +24,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Only show the cursorline and relative line numbers in the active window
 vim.api.nvim_create_autocmd('WinEnter', {
   callback = function()
-    if vim.bo.filetype == '' then
+    if vim.bo.filetype == '' or vim.bo.filetype == 'Outline' then
         return
     end
     vim.opt_local.cursorline = true
@@ -19,7 +33,7 @@ vim.api.nvim_create_autocmd('WinEnter', {
 })
 vim.api.nvim_create_autocmd('WinLeave', {
   callback = function()
-    if vim.bo.filetype == '' then
+    if vim.bo.filetype == '' or vim.bo.filetype == 'Outline' then
         return
     end
     vim.opt_local.cursorline = false
