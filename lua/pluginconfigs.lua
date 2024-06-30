@@ -14,6 +14,12 @@ require('leap').create_default_mappings()
 -- Set up language servers
 require('plugins.lspconfig')
 
+-- Set up treesitter
+require('nvim-treesitter.configs').setup({
+  ensure_installed = { 'lua', 'python', 'c', 'cpp', 'julia', 'markdown',
+                       'markdown_inline' },
+})
+
 -- Set up treesitter context
 require'treesitter-context'.setup{
   enable = true,

@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd('TextChanged', {
     local filelang = ts_parsers.ft_to_lang(
       vim.api.nvim_buf_get_option(vim.fn.bufnr(), 'filetype'))
     local parser = ts_parsers.get_parser(vim.fn.bufnr(), filelang)
-    if not parser == nil then
+    if parser ~= nil then
       parser:parse()
     end
   end,
@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_create_autocmd('WinEnter', {
   callback = function()
     if vim.bo.filetype == '' or vim.bo.filetype == 'Outline' then
-        return
+      return
     end
     vim.opt_local.cursorline = true
     vim.opt_local.relativenumber = true
@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd('WinEnter', {
 vim.api.nvim_create_autocmd('WinLeave', {
   callback = function()
     if vim.bo.filetype == '' or vim.bo.filetype == 'Outline' then
-        return
+      return
     end
     vim.opt_local.cursorline = false
     vim.opt_local.relativenumber = false
