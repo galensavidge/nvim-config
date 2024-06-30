@@ -30,6 +30,7 @@ opt.spell = false
 vim.cmd('set spellfile=~/.config/nvim/spell/en.utf-8.add')
 opt.spelllang = 'en_us'
 opt.splitbelow = true -- Open new split panes to right and below
+opt.splitkeep = 'topline'
 opt.splitright = true
 opt.smartcase = true
 opt.smartindent = false
@@ -38,6 +39,7 @@ opt.swapfile = false
 opt.tabstop = 4
 opt.textwidth = 0 -- Don't insert newlines automatically while typing
 opt.timeoutlen = 400
+opt.updatetime = 250
 opt.wildmenu = true
 opt.wrap = true
 opt.writebackup = false
@@ -49,4 +51,12 @@ vim.diagnostic.config({
   underline = true,
   update_in_insert = false,
   severity_sort = false,
+  float = {
+    focusable = false,
+    close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+    border = 'rounded',
+    source = 'always',
+    prefix = ' ',
+    scope = 'cursor',
+  },
 })

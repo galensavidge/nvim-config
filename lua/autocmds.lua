@@ -84,3 +84,10 @@ vim.api.nvim_create_autocmd('BufWritePre',  {
     vim.api.nvim_command('silent! exe "%s/\r$//"')
   end,
 })
+
+-- Show diagnostics on hover
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float()
+  end
+})
