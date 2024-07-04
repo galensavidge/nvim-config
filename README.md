@@ -31,7 +31,7 @@ gcc yapf flake8
 
 4. Set up language servers:
 ```bash
-pip3 install pyright
+pip3 install pyright ruff
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
 ```
 (Optional) Install Julia:
@@ -52,12 +52,7 @@ Or, for neovide:
 alias v='~/appimages/neovide.AppImage'
 ```
 
-6. Python setup:
-```bash
-pip install isort
-```
-
-7. Set up debuggers:
+6. Set up debuggers:
 ```bash
 cd ~
 mkdir .virtualenvs

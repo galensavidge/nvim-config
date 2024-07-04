@@ -1,5 +1,14 @@
 -- Sets up theme and GUI elements.
 
+vim.keymap.set('n', '<A-o>', function()
+  local outline = require('edgy')
+  if outline.is_open() then
+    outline.focus_toggle()
+  else
+    outline.open({ focus_outline=false })
+  end
+end, { silent = true, desc = 'Open code outline'})
+
 return {
   { -- Neon (color scheme)
     'rafamadriz/neon',
@@ -59,10 +68,44 @@ return {
 
   { -- Virt-column (color column styling)
     'lukas-reineke/virt-column.nvim',
+    config = function()
+      require('virt-column').setup()
+    end,
   },
 
   { -- Nvim-treesitter-context (show function context at the top of the screen)
     'nvim-treesitter/nvim-treesitter-context',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('treesitter-context').setup({
+        enable = true,
+        line_numbers = true,
+        -- Line used to calculate context. Choices: 'cursor', 'topline'
+        mode = 'cursor',
+        -- How many lines the window should span. Values <= 0 mean no limit.
+        max_lines = 1,
+        -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+        min_window_height = 30,
+        -- Maximum number of lines to show for a single context
+        multiline_threshold = 20,
+        -- Which context lines to discard if `max_lines` is exceeded. Choices:
+        -- 'inner', 'outer'
+        trim_scope = 'outer',
+      })
+    end,
   },
+
+  { -- Edgy (use predefined window layout)
+    'folke/edgy.nvim',
+    event = 'VeryLazy',
+    opts = {
+      right = {
+        {
+          ft = 'Outline',
+          pinned = true,
+          open = 'Outline',
+        },
+      },
+    }
+  }
 }

@@ -6,6 +6,13 @@ vim.keymap.set({'n', 'x', 'o'}, 'k', 'gk', { silent = true })
 vim.keymap.set({'n', 'x', 'o'}, 'H', '^', { silent = true })
 vim.keymap.set({'n', 'x', 'o'}, 'L', '$', { silent = true })
 
+-- Leap motions (need to unbind some things set by cutlass first)
+vim.keymap.del('n', 's', {silent = true})
+vim.keymap.del('n', 'S', {silent = true})
+vim.keymap.del('x', '"_s', {silent = true})
+vim.keymap.del('x', '"_S', {silent = true})
+require('leap').create_default_mappings()
+
 -- Keep automatically inserted indentation when switching back to normal mode
 vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })
 vim.keymap.set('n', 'O', 'Ox<backspace>', { silent = true })

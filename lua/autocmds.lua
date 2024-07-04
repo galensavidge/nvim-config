@@ -91,3 +91,14 @@ vim.api.nvim_create_autocmd("CursorHold", {
     vim.diagnostic.open_float()
   end
 })
+--
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   callback = function()
+--     vim.api.nvim_create_autocmd('CursorHold', {
+--       callback = vim.lsp.buf.document_highlight
+--     })
+--     vim.api.nvim_create_autocmd('CursorMoved', {
+--       callback = vim.lsp.buf.clear_references
+--     })
+--   end,
+-- })

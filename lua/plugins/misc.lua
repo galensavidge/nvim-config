@@ -18,6 +18,14 @@ return {
 
   { -- Trim (automatically trim newlines and whitespace)
     'cappyzawa/trim.nvim',
+    config = function()
+      require('trim').setup({
+        trim_on_write = true,
+        trim_trailing = true,
+        trim_last_line = true,
+        trim_first_line = false,
+      })
+    end,
   },
 
   { -- Hlsearch (automatically remove search highlights)

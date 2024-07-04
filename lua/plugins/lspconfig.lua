@@ -13,8 +13,11 @@ return {
         settings = {},
       })
 
+      -- Ruff for Python linting and formatting
+      lsp.ruff.setup({ on_attach = on_attach })
+
       -- Set up clangd for C/++ code analysis
-      lsp.clangd.setup({capabilities = capabilities})
+      lsp.clangd.setup({ capabilities = capabilities })
 
       -- Set up julials for Julia code analysis
       lsp.julials.setup({
@@ -66,9 +69,6 @@ return {
         sources = {
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.diagnostics.eslint,
-          null_ls.builtins.completion.spell,
-          null_ls.builtins.formatting.yapf,
-          null_ls.builtins.diagnostics.flake8,
         },
       })
     end,
