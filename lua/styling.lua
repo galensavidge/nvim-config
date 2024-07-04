@@ -12,6 +12,18 @@ vim.cmd([[
   highlight clear Statement
   highlight link Statement Constant
   highlight link Boolean Constant
+  highlight! link NormalFloat Normal
+  highlight! link FloatBorder Directory
+]])
+
+-- LSP highlight groups
+vim.cmd([[
+  highlight clear LspReferenceText
+  highlight link LspReferenceText CursorLine
+  highlight clear LspReferenceRead
+  highlight link LspReferenceRead CursorLine
+  highlight clear LspReferenceWrite
+  highlight link LspReferenceWrite CursorLine
 ]])
 
 -- Set git-diff highlight groups to something better looking
@@ -32,3 +44,11 @@ vim.cmd([[
   highlight link juliaFunctionDef juliaFunction
   highlight link juliaFunctionCall juliaFunction
 ]])
+
+-- Override LSP floating window styling
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or 'rounded'  -- Rounded border by default
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end

@@ -88,4 +88,20 @@ return {
       require('inc_rename').setup()
     end,
   },
+
+  { -- Lsp-signature
+    'ray-x/lsp_signature.nvim',
+    lazy = false,
+    opts = {
+      floating_window = false, -- Virtual text only
+      hint_prefix = {
+          above = "↙ ",
+          current = "← ",
+          below = "↖ ",
+      },
+    },
+    config = function(_, opts)
+      require('lsp_signature').setup(opts)
+    end,
+  },
 }

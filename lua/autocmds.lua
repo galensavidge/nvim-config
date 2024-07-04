@@ -86,12 +86,12 @@ vim.api.nvim_create_autocmd('BufWritePre',  {
 })
 
 -- Show diagnostics on hover
-vim.api.nvim_create_autocmd("CursorHold", {
-  callback = function()
-    vim.diagnostic.open_float()
-  end
-})
---
+-- vim.api.nvim_create_autocmd("CursorHold", {
+--   callback = function()
+--     vim.diagnostic.open_float()
+--   end
+-- })
+
 -- vim.api.nvim_create_autocmd('LspAttach', {
 --   callback = function()
 --     vim.api.nvim_create_autocmd('CursorHold', {
