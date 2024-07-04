@@ -5,19 +5,17 @@ My personal neovim configuration.
 1. Install neovim:
 ```bash
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-sudo rm -rf /opt/nvim
+sudo rm -rf /opt/nvim-linux64
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
-```
-Add this to `~/.bashrc`:
-```bash
-export PATH="$PATH:/opt/nvim-linux64/bin"
+ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin
 ```
 (Optional) Install neovide:
 ```bash
-mkdir -p ~/appimages
-cd ~/appimages
+mkdir -p ~/bin/appimages
+cd ~/bin/appimages
 curl -LO https://github.com/neovide/neovide/releases/latest/download/neovide.AppImage
 chmod +x neovide.AppImage
+ln -s ~/bin/appimages/neovide.AppImage /usr/local/bin
 ```
 
 2. Clone the repo into the neovim settings folder (default `~/.config/nvim`).
@@ -42,6 +40,13 @@ Then in the Julia REPL package manager:
 ```julia
 add LanguageServer
 ```
+(Optional) Install lua-language-server:
+```bash
+curl -LO https://github.com/LuaLS/lua-language-server/releases/download/3.9.3/lua-language-server-3.9.3-linux-x64.tar.gz
+tar -xzf lua-language-server-3.9.3-linux-x64.tar.gz -C ~/bin/lua-language-server
+rm lua-language-server-3.9.3-linux-x64.tar.gz
+ln -s ~/bin/lua-language-server/bin/lua-lanauge-server /usr/local/bin
+```
 
 5. Place the following lines in `~./bashrc`:
 ```bash
@@ -49,7 +54,7 @@ alias v='nvim'
 ```
 Or, for neovide:
 ```bash
-alias v='~/appimages/neovide.AppImage'
+alias v='neovide.AppImage'
 ```
 
 6. Set up debuggers:
