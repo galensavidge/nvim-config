@@ -42,3 +42,4 @@ neovim
 repo
 differencing
 whitespace
+lua

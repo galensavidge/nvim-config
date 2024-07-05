@@ -28,6 +28,7 @@ vim.api.nvim_create_autocmd('WinEnter', {
       return
     end
     vim.opt_local.cursorline = true
+    vim.opt_local.number = true
     vim.opt_local.relativenumber = true
   end,
 })
@@ -68,6 +69,14 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'rst' },
   callback = function(ev)
     vim.opt_local.tabstop = 3
+  end,
+})
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { '*.script' },
+  callback = function(ev)
+    vim.opt_local.tabstop = 3
+    vim.opt_local.filetype = 'matlab'
+    vim.opt_local.syntax = 'matlab'
   end,
 })
 
