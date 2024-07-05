@@ -99,8 +99,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
       { buffer = ev.buf, silent = true, desc = 'LSP hover symbol' })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
       { buffer = ev.buf, silent = true, desc = 'LSP go to implementation' })
-    -- vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help,
-      -- { buffer = ev.buf, silent = true, desc = 'LSP signature help' })
+    vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help,
+      { buffer = ev.buf, silent = true, desc = 'LSP signature help' })
     vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
       { buffer = ev.buf, silent = true, desc = 'LSP add workspace folder' })
     vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,
