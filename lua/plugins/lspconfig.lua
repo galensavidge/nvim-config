@@ -91,21 +91,19 @@ return {
     end,
   },
 
-  { -- Null-ls (LSP "server" which allows for integration of formatters and
-    -- linters into the built-in LSP framework)
-    'jose-elias-alvarez/null-ls.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      -- Set up code auto-formatting
-      local null_ls = require('null-ls')
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.diagnostics.eslint,
-        },
-      })
-    end,
-  },
+  -- { -- Null-ls (LSP "server" which allows for integration of formatters and
+  --   -- linters into the built-in LSP framework)
+  --   'jose-elias-alvarez/null-ls.nvim',
+  --   dependencies = { 'nvim-lua/plenary.nvim' },
+  --   config = function()
+  --     -- Set up code auto-formatting
+  --     local null_ls = require('null-ls')
+  --     null_ls.setup({
+  --       sources = {
+  --       },
+  --     })
+  --   end,
+  -- },
 
   { -- LSP-progress (shows LSP progress in the status bar)
     'linrongbin16/lsp-progress.nvim',

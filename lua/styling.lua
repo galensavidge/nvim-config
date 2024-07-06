@@ -7,6 +7,12 @@ require('lualine').setup {
   options = { theme = 'neon' }
 }
 
+-- Leap highlight groups
+vim.cmd([[
+  highlight link leapLabel IncSearch
+  highlight link leapMatch Search
+]])
+
 -- Code color scheme customization
 vim.cmd([[
   highlight clear Statement
