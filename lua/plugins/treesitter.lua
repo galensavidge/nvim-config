@@ -10,12 +10,17 @@ return {
         'c',
         'cpp',
         'julia',
+        'matlab',
+        'rst',
         'markdown',
         'markdown_inline',
         'git_config',
         'make',
         'toml',
         'vimdoc',
+      },
+      highlight = {
+        enable = true,
       },
     })
   end,

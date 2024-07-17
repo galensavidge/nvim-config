@@ -85,6 +85,20 @@ vim.keymap.set('n', '<A-c>', ':tabclose<cr>', {
   silent = true,
   desc = 'Close tab'
 })
+vim.keymap.set('n', 'gl', ':tabnext<cr>', {
+  silent = true,
+  desc = 'Next tab'
+})
+vim.keymap.set('n', 'gh', ':tabprevious<cr>', {
+  silent = true,
+  desc = 'Next tab'
+})
+vim.keymap.set('n', 'gt', '', {
+  desc = 'Old next tab'
+})
+vim.keymap.set('n', 'gT', '', {
+  desc = 'Old previous tab'
+})
 
 -- Cut keybinds
 vim.keymap.set({ 'n', 'x' }, 'm', 'd', { desc = 'Cut' })

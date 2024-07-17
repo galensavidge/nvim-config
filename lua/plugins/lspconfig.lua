@@ -11,7 +11,7 @@ return {
       require('lspconfig').lua_ls.setup({
         on_init = function(client)
           local path = client.workspace_folders[1].name
-          if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+          if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
             return
           end
 
@@ -55,55 +55,12 @@ return {
       -- Set up julials for Julia code analysis
       lsp.julials.setup({
         capabilities = capabilities,
-
-        cmd = {
-          'julia',
-          '--startup-file=no',
-          '--history-file=no',
-          '-e',
-          [[
-            # Load LanguageServer.jl: attempt to load from ~/.julia/environments/nvim-lspconfig
-            # with the regular load path as a fallback
-            ls_install_path = joinpath(
-                get(DEPOT_PATH, 1, joinpath(homedir(), ".julia")),
-                "environments", "nvim-lspconfig"
-            )
-            pushfirst!(LOAD_PATH, ls_install_path)
-            using LanguageServer
-            popfirst!(LOAD_PATH)
-            depot_path = get(ENV, "JULIA_DEPOT_PATH", "")
-            project_path = pwd()
-            @info "Running language server" VERSION pwd() project_path depot_path
-            server = LanguageServer.LanguageServerInstance(stdin, stdout, project_path, depot_path)
-            server.runlinter = true
-            run(server)
-          ]],
-        },
-
-        filetypes = { 'julia' },
-
-        root_dir = function(fname)
-          return vim.fn.getcwd()
-        end,
-
-        single_file_support = true,
       })
+
+      -- set up ltex-ls for LaTeX, RST, and others
+      require('lspconfig').ltex.setup({ capabilities = capabilities })
     end,
   },
-
-  -- { -- Null-ls (LSP "server" which allows for integration of formatters and
-  --   -- linters into the built-in LSP framework)
-  --   'jose-elias-alvarez/null-ls.nvim',
-  --   dependencies = { 'nvim-lua/plenary.nvim' },
-  --   config = function()
-  --     -- Set up code auto-formatting
-  --     local null_ls = require('null-ls')
-  --     null_ls.setup({
-  --       sources = {
-  --       },
-  --     })
-  --   end,
-  -- },
 
   { -- LSP-progress (shows LSP progress in the status bar)
     'linrongbin16/lsp-progress.nvim',
@@ -126,9 +83,9 @@ return {
     opts = {
       floating_window = false, -- Virtual text only
       hint_prefix = {
-          above = "↙ ",
-          current = "← ",
-          below = "↖ ",
+        above = "↙ ",
+        current = "← ",
+        below = "↖ ",
       },
     },
     config = function(_, opts)

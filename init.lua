@@ -1,6 +1,6 @@
 -- Set `mapleader` before lazy so mappings are correct
-vim.g.mapleader = ','
-vim.g.maplocalleader = ','
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 if vim.g.neovide then
     require('neovide')
@@ -14,3 +14,4 @@ require('styling')
 require('keybinds')
 require('options')
 require('autocmds')
+require('foldtext').setup({})

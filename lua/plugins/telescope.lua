@@ -1,5 +1,6 @@
 -- Telescope
 -- Includes fuzzy finders for a variety of different things.
+
 -- Set keybinds
 vim.keymap.set('n', '<C-p>', function()
     require('telescope').extensions.smart_open.smart_open()

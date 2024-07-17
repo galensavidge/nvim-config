@@ -47,6 +47,14 @@ tar -xzf lua-language-server-3.9.3-linux-x64.tar.gz -C ~/bin/lua-language-server
 rm lua-language-server-3.9.3-linux-x64.tar.gz
 ln -s ~/bin/lua-language-server/bin/lua-lanauge-server /usr/local/bin
 ```
+(Optional) Install LaTeX (and RST) language server:
+```bash
+
+curl -LO https://github.com/valentjn/ltex-ls/releases/download/16.0.0/ltex-ls-16.0.0-linux-x64.tar.gz
+tar -xvf ltex-ls-16.0.0-linux-x64.tar.gz -C ~/bin
+rm ltex-ls-16.0.0-linux-x64.tar.gz
+sudo ln -s ~/bin/ltex-ls/bin/ltex-ls /usr/local/bin
+```
 
 5. Place the following lines in `~./bashrc`:
 ```bash

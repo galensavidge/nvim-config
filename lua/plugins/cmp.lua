@@ -11,7 +11,7 @@ return {
       'hrsh7th/cmp-cmdline',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-calc',
-      'onsails/lspkind.nvim',  -- Show pictograms in LSP suggestions
+      'onsails/lspkind.nvim', -- Show pictograms in LSP suggestions
     },
     config = function()
       local misc = require('cmp.utils.misc')
@@ -66,8 +66,8 @@ return {
           format = lspkind.cmp_format({
             mode = 'symbol',
 
-            -- prevent the popup from showing more than provided characters (e.g
-            -- 50 will not show more than 50 characters)
+            -- prevent the popup from showing more than provided characters
+            -- (e.g 50 will not show more than 50 characters)
             maxwidth = 50,
 
             -- when popup menu exceed maxwidth, the truncated part would show
@@ -78,7 +78,7 @@ return {
             -- from lspkind so that you can provide more controls on popup
             -- customization. (See
             -- [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-            before = function (entry, vim_item)
+            before = function(entry, vim_item)
               return vim_item
             end
           }),
