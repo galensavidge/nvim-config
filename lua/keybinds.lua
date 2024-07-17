@@ -12,6 +12,12 @@ vim.keymap.del('n', 'S', { silent = true })
 vim.keymap.del('x', '"_s', { silent = true })
 vim.keymap.del('x', '"_S', { silent = true })
 require('leap').create_default_mappings()
+vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap-forward)')
+vim.keymap.set({ 'n', 'x', 'o' }, 'S', '<Plug>(leap-backward)')
+vim.keymap.set({ 'n', 'x', 'o' }, 'gs', '<Plug>(leap-from-window)')
+vim.keymap.set({ 'n', 'o' }, 'gS', function()
+  require('leap.remote').action()
+end)
 
 -- Keep automatically inserted indentation when switching back to normal mode
 vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })

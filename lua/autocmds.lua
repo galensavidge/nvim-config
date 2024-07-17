@@ -46,8 +46,8 @@ vim.api.nvim_create_autocmd('WinLeave', {
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'python', 'julia', 'h', 'c', 'cpp' },
   callback = function()
-      vim.opt_local.foldmethod = 'indent'
-    end,
+    vim.opt_local.foldmethod = 'indent'
+  end,
 })
 
 -- Set spell check
@@ -71,11 +71,12 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.tabstop = 3
   end,
 })
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '*.script' },
+
+-- Use Matlb syntax for GMAT files
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
+  pattern = { '*.script' , '*.gmf' },
   callback = function(ev)
     vim.opt_local.tabstop = 3
-    vim.opt_local.filetype = 'matlab'
     vim.opt_local.syntax = 'matlab'
   end,
 })
@@ -88,7 +89,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Strip Windows line endings on save
-vim.api.nvim_create_autocmd('BufWritePre',  {
+vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function()
     vim.api.nvim_command('silent! exe "%s/\r$//"')
   end,
