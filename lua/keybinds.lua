@@ -127,10 +127,6 @@ vim.keymap.set('n', '<leader>gd', ':DiffviewOpen HEAD<CR>', {
   silent = true,
   desc = 'Open git diff view for all files'
 })
-vim.keymap.set('n', '<leader>gc', ':DiffviewOpen HEAD~1<CR>', {
-  silent = true,
-  desc = 'Open git diff against HEAD~1 (i.e. including last commit)'
-})
 vim.keymap.set('n', '<leader>gu', ':DiffviewOpen @{upstream}...HEAD<CR>', {
   silent = true,
   desc = 'Open git diff against upstream (branch point)'

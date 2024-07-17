@@ -22,23 +22,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Only show the cursorline and relative line numbers in the active window
-vim.api.nvim_create_autocmd('WinEnter', {
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufNew' }, {
   callback = function()
-    if vim.bo.filetype == '' or vim.bo.filetype == 'Outline' then
-      return
+    if vim.opt_local.number:get() == true then
+      vim.opt_local.cursorline = true
+      vim.opt_local.relativenumber = true
     end
-    vim.opt_local.cursorline = true
-    vim.opt_local.number = true
-    vim.opt_local.relativenumber = true
   end,
 })
 vim.api.nvim_create_autocmd('WinLeave', {
   callback = function()
-    if vim.bo.filetype == '' or vim.bo.filetype == 'Outline' then
-      return
+    if vim.opt_local.number:get() == true then
+      vim.opt_local.cursorline = false
+      vim.opt_local.relativenumber = false
     end
-    vim.opt_local.cursorline = false
-    vim.opt_local.relativenumber = false
   end,
 })
 
@@ -74,7 +71,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Use Matlb syntax for GMAT files
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
-  pattern = { '*.script' , '*.gmf' },
+  pattern = { '*.script', '*.gmf' },
   callback = function(ev)
     vim.opt_local.tabstop = 3
     vim.opt_local.syntax = 'matlab'

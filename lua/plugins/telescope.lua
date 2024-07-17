@@ -3,8 +3,11 @@
 
 -- Set keybinds
 vim.keymap.set('n', '<C-p>', function()
-    require('telescope').extensions.smart_open.smart_open()
-  end, { silent = true, desc = 'Search file names' })
+  require('telescope').extensions.smart_open.smart_open()
+end, { silent = true, desc = 'Search file names' })
+
+vim.keymap.set('n', '<A-p>', ':Telescope resume<CR>',
+  { silent = true, desc = 'Resume last used telescope picker' })
 
 vim.keymap.set('n', '<leader>f', ':Telescope live_grep<CR>',
   { silent = true, desc = 'Search for text in files' })
@@ -27,26 +30,32 @@ vim.keymap.set('n', '<leader>p',
   end, { desc = 'Search clipboard history' })
 
 vim.keymap.set('n', '<leader>z', function()
-    local ts = require('telescope.builtin')
-    local themes = require('telescope.themes')
+  local ts = require('telescope.builtin')
+  local themes = require('telescope.themes')
 
-    ts.spell_suggest(themes.get_cursor({}))
-  end, { desc = 'Search speling suggestions' })
+  ts.spell_suggest(themes.get_cursor({}))
+end, { desc = 'Search speling suggestions' })
 
 vim.keymap.set('n', '<leader>u',
   function()
-    require('telescope').extensions.undo.undo()
+    local themes = require('telescope.themes')
+    require('telescope').extensions.undo.undo(themes.get_dropdown({}))
   end, { desc = 'Search undo tree' })
 
 vim.keymap.set('n', '<leader>e', ':Telescope diagnostics<CR>',
   { silent = true, desc = 'Search diagnostics' })
 
-vim.keymap.set('n', '<leader>gb', ':Telescope git_branches<CR>',
+vim.keymap.set('n', '<leader>gb', ':Telescope git_branches theme=dropdown<CR>',
   { silent = true, desc = 'Search git banches' })
+
+vim.keymap.set('n', '<leader>gc', ':Telescope git_bcommits<CR>',
+  { silent = true, desc = 'Show commit history for current buffer' })
 
 vim.keymap.set('n', '<leader>bp',
   function()
-    require('telescope').extensions.dap.list_breakpoints()
+    local themes = require('telescope.themes')
+    require('telescope').extensions.dap.list_breakpoints(
+      themes.get_dropdown({}))
   end, { desc = 'Search breakpoints' })
 
 vim.keymap.set('n', '<leader>S',
@@ -54,7 +63,7 @@ vim.keymap.set('n', '<leader>S',
     require('auto-session.session-lens').search_session()
   end, { desc = 'Search sessions' })
 
-vim.keymap.set('n', '<leader>ts', ':Telescope builtin<CR>',
+vim.keymap.set('n', '<leader>ts', ':Telescope builtin theme=get_ivy<CR>',
   { silent = true, desc = 'Search Telescope pickers' })
 
 return {
@@ -64,8 +73,8 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
-    lazy=true,
-    cmd='Telescope',
+    lazy = true,
+    cmd = 'Telescope',
     config = function()
       -- Better fuzzy finder
       require('telescope').load_extension('fzf')
@@ -114,15 +123,16 @@ return {
 
   { -- Telescope-fzf-native (better fuzzy finder)
     'nvim-telescope/telescope-fzf-native.nvim',
-    lazy=true,
-    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    lazy = true,
+    build =
+    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
     dependencies = { 'nvim-telescope/telescope.nvim' },
   },
 
   { -- Smart-open (
     'danielfalk/smart-open.nvim',
     branch = '0.2.x',
-    lazy=true,
+    lazy = true,
     config = function()
       require('telescope').load_extension('smart_open')
     end,
@@ -131,13 +141,13 @@ return {
 
   { -- Telescope-undo (undo tree)
     'debugloop/telescope-undo.nvim',
-    lazy=true,
+    lazy = true,
     dependencies = { 'nvim-telescope/telescope.nvim' },
   },
 
   { -- Telescope-dap (debugger breakpoints)
     'nvim-telescope/telescope-dap.nvim',
-    lazy=true,
+    lazy = true,
     dependencies = { 'nvim-telescope/telescope.nvim', },
   },
 }
