@@ -93,7 +93,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 
 -- Show diagnostics on hover
-vim.api.nvim_create_autocmd("CursorHold", {
+vim.api.nvim_create_autocmd('CursorHold', {
   callback = function()
     -- Return if there is a floating window open already
     for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
@@ -107,13 +107,22 @@ vim.api.nvim_create_autocmd("CursorHold", {
   end
 })
 
--- vim.api.nvim_create_autocmd('LspAttach', {
---   callback = function()
---     vim.api.nvim_create_autocmd('CursorHold', {
---       callback = vim.lsp.buf.document_highlight
---     })
---     vim.api.nvim_create_autocmd('CursorMoved', {
---       callback = vim.lsp.buf.clear_references
---     })
---   end,
--- })
+-- Highlight LSP symbols on hover
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function()
+    local clients = vim.lsp.get_clients({ buffer = 0 })
+    for _, client in ipairs(clients) do
+      if client.server_capabilities.documentHighlightProvider then
+        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+          buffer = 0,
+          callback = vim.lsp.buf.document_highlight
+        })
+        vim.api.nvim_create_autocmd({ 'CursorMoved', 'WinLeave' }, {
+          buffer = 0,
+          callback = vim.lsp.buf.clear_references
+        })
+        return
+      end
+    end
+  end,
+})
