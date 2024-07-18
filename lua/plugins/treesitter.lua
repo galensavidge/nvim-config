@@ -19,9 +19,9 @@ return {
         'toml',
         'vimdoc',
       },
-      highlight = {
-        enable = true,
-      },
+      -- highlight = {
+      --   enable = true,
+      -- },
     })
   end,
 }

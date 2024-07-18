@@ -55,6 +55,14 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Set treesitter highlighting for markdown and RST
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'markdown', 'rst' },
+  callback = function()
+    vim.cmd('TSEnable highlight')
+  end,
+})
+
 -- Set tab length by file type
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'lua' },
@@ -110,15 +118,17 @@ vim.api.nvim_create_autocmd('CursorHold', {
 -- Highlight LSP symbols on hover
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function()
-    local clients = vim.lsp.get_clients({ buffer = 0 })
+    local bufnr = vim.fn.bufnr()
+    local clients = vim.lsp.buf_get_clients()
     for _, client in ipairs(clients) do
       if client.server_capabilities.documentHighlightProvider then
         vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-          buffer = 0,
+          buffer = bufnr,
           callback = vim.lsp.buf.document_highlight
         })
+
         vim.api.nvim_create_autocmd({ 'CursorMoved', 'WinLeave' }, {
-          buffer = 0,
+          buffer = bufnr,
           callback = vim.lsp.buf.clear_references
         })
         return

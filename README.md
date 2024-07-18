@@ -50,7 +50,6 @@ sudo ln -s ~/bin/lua-language-server/bin/lua-lanauge-server /usr/local/bin
 ```
 (Optional) Install LaTeX (and RST) language server:
 ```bash
-
 curl -LO https://github.com/valentjn/ltex-ls/releases/download/16.0.0/ltex-ls-16.0.0-linux-x64.tar.gz
 tar -xvf ltex-ls-16.0.0-linux-x64.tar.gz -C ~/bin
 rm ltex-ls-16.0.0-linux-x64.tar.gz
