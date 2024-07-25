@@ -59,7 +59,7 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'markdown', 'rst' },
   callback = function()
-    vim.cmd('TSEnable highlight')
+    vim.cmd('TSBufEnable highlight')
   end,
 })
 
