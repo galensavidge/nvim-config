@@ -122,12 +122,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local clients = vim.lsp.buf_get_clients()
     for _, client in ipairs(clients) do
       if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+        vim.api.nvim_create_autocmd({ 'CursorHold' }, {
           buffer = bufnr,
           callback = vim.lsp.buf.document_highlight
         })
 
-        vim.api.nvim_create_autocmd({ 'CursorMoved', 'WinLeave' }, {
+        vim.api.nvim_create_autocmd({
+          'CursorMoved', 'WinLeave', 'InsertEnter'
+        }, {
           buffer = bufnr,
           callback = vim.lsp.buf.clear_references
         })

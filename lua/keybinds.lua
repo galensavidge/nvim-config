@@ -123,7 +123,7 @@ vim.keymap.set('n', '<leader>go', function()
   require('neogit').open()
 end, { silent = true, desc = 'Open git UI page' })
 
-vim.keymap.set('n', '<leader>gd', ':DiffviewOpen HEAD<CR>', {
+vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', {
   silent = true,
   desc = 'Open git diff view for all files'
 })
