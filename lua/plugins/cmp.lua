@@ -45,7 +45,7 @@ return {
       local lspkind = require('lspkind')
 
       cmp.setup({
-        completion = { keyword_length = 1, autocomplete = false },
+        completion = { keyword_length = 2, autocomplete = false },
         snippet = {
           -- REQUIRED - you must specify a snippet engine
           expand = function(args)
@@ -55,12 +55,16 @@ return {
 
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
-          { name = 'luasnip' },
+          {
+            name = 'luasnip',
+            option = { show_autosnippets = true },
+          },
           { name = 'async_path' },
           { name = 'calc' },
           -- { name = 'cmdline' },
           {
             name = 'buffer',
+            max_item_count = 5,
             option = {
               get_bufnrs = function()
                 return vim.api.nvim_list_bufs()
@@ -81,9 +85,9 @@ return {
             -- ellipsis_char instead (must define maxwidth first)
             ellipsis_char = '...',
 
-            -- The function below will be called before any actual modifications
-            -- from lspkind so that you can provide more controls on popup
-            -- customization. (See
+            -- The function below will be called before any actual
+            -- modifications from lspkind so that you can provide more controls
+            -- on popup customization. (See
             -- [#30](https://github.com/onsails/lspkind-nvim/pull/30))
             before = function(entry, vim_item)
               return vim_item

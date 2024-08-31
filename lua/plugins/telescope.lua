@@ -112,11 +112,16 @@ return {
           buffers = {
             mappings = {
               i = {
-                ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+                ['<c-d>'] = actions.delete_buffer + actions.move_to_top,
               }
             }
           }
-        }
+        },
+        extensions = {
+          smart_open = {
+            match_algorithm = 'fzf',
+          }
+        },
       })
     end,
   },

@@ -25,6 +25,7 @@ opt.selection = 'old'
 opt.sessionoptions='blank,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 opt.shiftround = true
 opt.shiftwidth = 0 -- Use value of tabstop
+opt.showmode = false
 opt.signcolumn = 'yes'
 opt.spell = false
 vim.cmd('set spellfile=~/.config/nvim/spell/en.utf-8.add')
