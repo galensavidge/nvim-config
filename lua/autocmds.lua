@@ -12,12 +12,10 @@ vim.api.nvim_create_autocmd('TextChanged', {
   end,
 })
 
--- Highlight yanked text in normal mode
+-- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    if not vim.v.event.visual then
-      require('vim.highlight').on_yank()
-    end
+    require('vim.highlight').on_yank()
   end,
 })
 
@@ -65,7 +63,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Set tab length by file type
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'lua' },
+  pattern = { 'lua', 'json' },
   callback = function(ev)
     vim.opt_local.tabstop = 2
   end,
