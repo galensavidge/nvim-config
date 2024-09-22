@@ -8,7 +8,7 @@ return {
 
   { -- Neoclip (clipboard manager with Telescope integration)
     'AckslD/nvim-neoclip.lua',
-    lazy=true,
+    lazy=false,
     dependencies = {
       'nvim-telescope/telescope.nvim',
     },
