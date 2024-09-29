@@ -57,8 +57,8 @@ return {
         capabilities = capabilities,
       })
 
-      -- set up ltex-ls for LaTeX, RST, and others
-      require('lspconfig').ltex.setup({ capabilities = capabilities })
+      -- Set up ltex-ls for LaTeX, RST, and others
+      -- require('lspconfig').ltex.setup({ capabilities = capabilities })
     end,
   },
 
@@ -83,9 +83,9 @@ return {
     opts = {
       floating_window = false, -- Virtual text only
       hint_prefix = {
-        above = "↙ ",
-        current = "← ",
-        below = "↖ ",
+        above = '↙ ',
+        current = '← ',
+        below = '↖ ',
       },
     },
     config = function(_, opts)

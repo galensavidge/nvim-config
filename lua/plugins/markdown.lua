@@ -1,7 +1,7 @@
 -- Markdown
 -- Markdown viewer.
 return {
-  'MeanderingProgrammer/markdown.nvim',
+  'MeanderingProgrammer/render-markdown.nvim',
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
     'nvim-tree/nvim-web-devicons'
@@ -37,7 +37,7 @@ return {
       },
     })
 
-    vim.keymap.set('n', '<leader>mv', ':RenderMarkdownToggle<cr>',
+    vim.keymap.set('n', '<leader>mv', ':RenderMarkdown toggle<cr>',
       { silent = true, desc = 'Toggle markdown viewer' })
   end
 }
