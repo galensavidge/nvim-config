@@ -75,6 +75,15 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Set max line length by file type
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'julia' },
+  callback = function(ev)
+    vim.opt_local.colorcolumn = 93
+    vim.opt_local.textwidth = 92
+  end,
+})
+
 -- Use Matlb syntax for GMAT files
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
   pattern = { '*.script', '*.gmf' },
