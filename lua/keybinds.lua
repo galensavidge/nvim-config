@@ -200,3 +200,35 @@ end, { silent = true, desc = 'Open code outline' })
 -- File browser
 vim.keymap.set('n', '<leader>F', ':Triptych<CR>',
   { silent = true, desc = 'Open file browser' })
+
+-- Create new file from the path under the cursor
+vim.keymap.set('n', '<leader>nf', function()
+    -- Clear the f register.
+    vim.cmd('let @f=""')
+
+    -- Copy the word within parentheses.
+    vim.cmd.normal('"fyib')
+
+    local path = vim.fn.getreg('f')
+
+    if string.len(path) == 0 then
+      return
+    end
+
+    if string.sub(path, 1, 1) ~= ('~') then
+      -- Get the path to the directory containing the current file.
+      local filepath = vim.fn.expand('%')
+      filepath = vim.fn.fnamemodify(filepath, ':h')
+      path = filepath .. '/' .. path
+      path = vim.fn.resolve(path)
+    end
+
+    path = vim.fn.expand(path)
+
+    print(path)
+
+    vim.cmd('! mkdir -p "$(dirname "' .. path .. '")" && touch "' .. path .. '"')
+    vim.cmd('e ' .. path)
+  end,
+
+  { silent = true, desc = 'Create new file from path under cursor' })
