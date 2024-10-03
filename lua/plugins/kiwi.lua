@@ -4,18 +4,22 @@
 return {
   'serenevoid/kiwi.nvim',
   dependencies = {
-    "nvim-lua/plenary.nvim"
+    'nvim-lua/plenary.nvim'
   },
   keys = {
     {
-      "<leader>ww",
-      ":lua require(\"kiwi\").open_wiki_index()<cr>",
-      desc = "Open wiki index"
+      '<leader>ww',
+      function()
+        require('kiwi').open_wiki_index()
+      end,
+      desc = 'Open wiki index'
     },
     {
-      "<leader>wt",
-      ":lua require(\"kiwi\").todo.toggle()<cr>",
-      desc = "Toggle markdown task"
+      '<leader>wt',
+      function()
+        require('kiwi').todo.toggle()
+      end,
+      desc = 'Toggle markdown task'
     }
   },
   lazy = true,

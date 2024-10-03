@@ -37,6 +37,14 @@ vim.api.nvim_create_autocmd('WinLeave', {
   end,
 })
 
+-- Set highlighting for certain words
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
+  callback = function()
+    vim.cmd('syntax match Todo /TODO/')
+    vim.cmd('syntax match Done /DONE/')
+  end,
+})
+
 -- Set folding by indent in certain file types
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'python', 'julia', 'h', 'c', 'cpp' },
@@ -79,7 +87,7 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'julia' },
   callback = function(ev)
-    vim.opt_local.colorcolumn = 93
+    vim.opt_local.colorcolumn = '93'
     vim.opt_local.textwidth = 92
   end,
 })

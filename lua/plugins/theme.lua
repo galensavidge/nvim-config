@@ -5,9 +5,9 @@ vim.keymap.set('n', '<A-o>', function()
   if outline.is_open() then
     outline.focus_toggle()
   else
-    outline.open({ focus_outline=false })
+    outline.open({ focus_outline = false })
   end
-end, { silent = true, desc = 'Open code outline'})
+end, { silent = true, desc = 'Open code outline' })
 
 return {
   { -- Neon (color scheme)
@@ -21,12 +21,12 @@ return {
     config = function()
       require('lualine').setup({
         sections = {
-          lualine_a = {'mode'},
-          lualine_b = {'filename'},
-          lualine_c = {'branch', 'diff', 'diagnostics'},
-          lualine_x = {require('lsp-progress').progress, 'filetype'},
-          lualine_y = {'progress'},
-          lualine_z = {'location'}
+          lualine_a = { 'mode' },
+          lualine_b = { 'filename' },
+          lualine_c = { 'branch', 'diff', 'diagnostics' },
+          lualine_x = { require('lsp-progress').progress, 'filetype' },
+          lualine_y = { 'progress' },
+          lualine_z = { 'location' }
         },
       })
     end,
@@ -37,15 +37,15 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('tabline').setup({
-          no_name = '[No Name]',    -- Name for buffers with no name
-          modified_icon = '',      -- Icon for showing modified buffer
-          close_icon = '',         -- Icon for closing tab with mouse
-          separator = '▌',          -- Separator icon on the left side
-          padding = 1,              -- Prefix and suffix space
-          color_all_icons = false,  -- Color devicons in active and inactive tabs
-          right_separator = false,  -- Show right separator on the last tab
-          show_index = true,        -- Shows the index of tab before filename
-          show_icon = true,         -- Shows the devicon
+        no_name = '[No Name]', -- Name for buffers with no name
+        modified_icon = '', -- Icon for showing modified buffer
+        close_icon = '', -- Icon for closing tab with mouse
+        separator = '▌', -- Separator icon on the left side
+        padding = 1, -- Prefix and suffix space
+        color_all_icons = false, -- Color devicons in active and inactive tabs
+        right_separator = false, -- Show right separator on the last tab
+        show_index = true, -- Shows the index of tab before filename
+        show_icon = true, -- Shows the devicon
       })
     end,
   },
@@ -62,7 +62,32 @@ return {
     main = 'ibl',
     opts = {},
     config = function()
-      require('ibl').setup()
+      require('ibl').setup({
+        scope = {
+          show_start = false,
+          show_end = false,
+        },
+        exclude = {
+          filetypes = {
+            'lspinfo',
+            'packer',
+            'checkhealth',
+            'help',
+            'man',
+            'gitcommit',
+            'TelescopePrompt',
+            'TelescopeResults',
+            'markdown',
+            '',
+          },
+          buftypes = {
+            'terminal',
+            'nofile',
+            'quickfix',
+            'prompt',
+          },
+        },
+      })
     end,
   },
 

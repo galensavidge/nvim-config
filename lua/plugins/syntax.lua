@@ -9,6 +9,9 @@ return {
   },
 
   { -- Julia-vim
-    'julialang/julia-vim'
+    'julialang/julia-vim',
+    config = function()
+      vim.g.latex_to_unicode_auto = true
+    end,
   },
 }

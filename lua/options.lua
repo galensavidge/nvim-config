@@ -23,7 +23,7 @@ opt.path:append '**'
 opt.relativenumber = true
 opt.scrolloff = 5
 opt.selection = 'old'
-opt.sessionoptions='blank,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+opt.sessionoptions = 'blank,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 opt.shiftround = true
 opt.shiftwidth = 0 -- Use value of tabstop
 opt.showmode = false
@@ -43,6 +43,7 @@ opt.textwidth = 79
 opt.timeoutlen = 400
 opt.updatetime = 250
 opt.wildmenu = true
+opt.wildmode = 'longest,full'
 opt.wrap = true
 opt.writebackup = false
 
