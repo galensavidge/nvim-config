@@ -10,9 +10,9 @@ return {
   { -- Surround (shortcuts with working with parenthesis, brackets, quotes, or
     -- other surrounding characters)
     'kylechui/nvim-surround',
-    event = "VeryLazy",
+    event = 'VeryLazy',
     config = function()
-        require("nvim-surround").setup({})
+      require('nvim-surround').setup({})
     end
   },
 
@@ -33,5 +33,15 @@ return {
     config = function()
       require('hlsearch').setup()
     end,
+  },
+
+  { -- Bufjump (jump backward and forward through buffers in jump list)
+    'kwkarlwang/bufjump.nvim',
+    config = function()
+      require('bufjump').setup({
+        forward_key = false,
+        backward_key = false,
+      })
+    end
   },
 }

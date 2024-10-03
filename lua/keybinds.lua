@@ -24,6 +24,16 @@ vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })
 vim.keymap.set('n', 'O', 'Ox<backspace>', { silent = true })
 vim.keymap.set('i', '<cr>', '<cr>x<backspace>', { silent = true })
 
+-- Jump back and foward in the buffer stack
+vim.keymap.set('n', '<A-o>', require('bufjump').backward, {
+  silent = true,
+  desc = 'Jump to the previous buffer'
+})
+vim.keymap.set('n', '<A-i>', require('bufjump').forward, {
+  silent = true,
+  desc = 'Jump to the next buffer'
+})
+
 -- Split panes
 vim.keymap.set('n', '<A-s>', '<C-w>s', {
   silent = true,
@@ -188,7 +198,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Code outline
-vim.keymap.set('n', '<A-o>', function()
+vim.keymap.set('n', '<leader>o', function()
   local outline = require('outline')
   if outline.is_open() then
     outline.focus_toggle()
