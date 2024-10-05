@@ -9,7 +9,6 @@ opt.clipboard = 'unnamedplus' -- Use system clipboard by default
 opt.colorcolumn = '80'
 opt.expandtab = true
 opt.foldlevelstart = 99
-opt.foldmethod = 'manual'
 opt.formatoptions = 'cqj'
 opt.hidden = true
 opt.hlsearch = true

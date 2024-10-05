@@ -10,6 +10,7 @@ return {
       'theHamsta/nvim-dap-virtual-text',
       'mfussenegger/nvim-dap-python',
       'nvim-neotest/nvim-nio',
+      'kdheepak/nvim-dap-julia',
     },
     config = function()
       local dap, dapui = require('dap'), require('dapui')
@@ -22,6 +23,9 @@ return {
         ensure_installed = { 'python' }})
       require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
       require('dap-python').test_runner = 'pytest'
+
+      -- Julia debugging
+      require('nvim-dap-julia').setup()
 
       -- Open and close UI automatically
       dap.listeners.before.attach.dapui_config = function()

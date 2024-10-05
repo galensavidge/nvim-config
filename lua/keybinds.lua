@@ -208,8 +208,10 @@ vim.keymap.set('n', '<leader>o', function()
 end, { silent = true, desc = 'Open code outline' })
 
 -- File browser
-vim.keymap.set('n', '<leader>F', ':Triptych<CR>',
-  { silent = true, desc = 'Open file browser' })
+vim.keymap.set('n', '<leader>F', function()
+    require('oil').open()
+  end,
+  { silent = true, desc = 'Open current file directory' })
 
 -- Create new file from the path under the cursor
 vim.keymap.set('n', '<leader>nf', function()

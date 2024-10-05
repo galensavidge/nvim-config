@@ -1,14 +1,5 @@
 -- Sets up theme and GUI elements.
 
-vim.keymap.set('n', '<A-o>', function()
-  local outline = require('edgy')
-  if outline.is_open() then
-    outline.focus_toggle()
-  else
-    outline.open({ focus_outline = false })
-  end
-end, { silent = true, desc = 'Open code outline' })
-
 return {
   { -- Neon (color scheme)
     'rafamadriz/neon',
@@ -119,18 +110,4 @@ return {
       })
     end,
   },
-
-  { -- Edgy (use predefined window layout)
-    'folke/edgy.nvim',
-    event = 'VeryLazy',
-    opts = {
-      right = {
-        {
-          ft = 'Outline',
-          pinned = true,
-          open = 'Outline',
-        },
-      },
-    }
-  }
 }
