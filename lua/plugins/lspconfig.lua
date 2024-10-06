@@ -27,11 +27,11 @@ return {
               library = {
                 vim.env.VIMRUNTIME
                 -- Depending on the usage, you might want to add additional paths here.
-                -- "${3rd}/luv/library"
-                -- "${3rd}/busted/library",
+                -- '${3rd}/luv/library'
+                -- '${3rd}/busted/library',
               }
               -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-              -- library = vim.api.nvim_get_runtime_file("", true)
+              -- library = vim.api.nvim_get_runtime_file('', true)
             }
           })
         end,
@@ -81,11 +81,15 @@ return {
     'ray-x/lsp_signature.nvim',
     lazy = false,
     opts = {
-      floating_window = false, -- Virtual text only
+      floating_window = true, -- Enable floating window
+      hint_enable = false, -- Disable virtual text
       hint_prefix = {
         above = '↙ ',
         current = '← ',
         below = '↖ ',
+      },
+      handler_opts = {
+        border = 'rounded'
       },
     },
     config = function(_, opts)
