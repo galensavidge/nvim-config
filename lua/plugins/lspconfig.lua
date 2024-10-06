@@ -82,7 +82,7 @@ return {
     lazy = false,
     opts = {
       floating_window = true, -- Enable floating window
-      hint_enable = false, -- Disable virtual text
+      hint_enable = false,    -- Disable virtual text
       hint_prefix = {
         above = '↙ ',
         current = '← ',
