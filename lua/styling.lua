@@ -1,19 +1,19 @@
 -- Code color scheme customization
-vim.api.nvim_set_hl(0, 'Statement', { link = 'Constant', force = true })
-vim.api.nvim_set_hl(0, 'Boolean', { link = 'Constant', force = true })
-vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal', force = true })
-vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Directory', force = true })
+-- vim.api.nvim_set_hl(0, 'Statement', { link = 'Constant', force = true })
+-- vim.api.nvim_set_hl(0, 'Boolean', { link = 'Constant', force = true })
+-- vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal', force = true })
+-- vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Directory', force = true })
 
 -- Leap highlight groups
 vim.api.nvim_set_hl(0, 'leapLabel', { link = 'IncSearch', force = true })
 vim.api.nvim_set_hl(0, 'leapMatch', { link = 'Search', force = true })
 
 -- Highlight groups for TODO and DONE
-vim.api.nvim_set_hl(0, 'Todo', { link = 'Character', force = true })
-vim.api.nvim_set_hl(0, 'Done', { link = 'Label', force = true })
+vim.api.nvim_set_hl(0, 'Todo', { link = 'Label', force = true })
+vim.api.nvim_set_hl(0, 'Done', { link = 'Character', force = true })
 
 -- LSP highlight groups
-local lsp_ref = { bg = '#323c4d', force = true }
+local lsp_ref = { link = 'CursorLine', force = true }
 vim.api.nvim_set_hl(0, 'LspReferenceWrite', lsp_ref)
 vim.api.nvim_set_hl(0, 'LspReferenceRead', lsp_ref)
 vim.api.nvim_set_hl(0, 'LspReferenceText', lsp_ref)

@@ -1,4 +1,4 @@
-local ts_parsers = require("nvim-treesitter.parsers")
+local ts_parsers = require('nvim-treesitter.parsers')
 
 -- Request treesitter parser to update the syntax tree on text change
 vim.api.nvim_create_autocmd('TextChanged', {
