@@ -45,14 +45,6 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
   end,
 })
 
--- Set folding by indent in certain file types
--- vim.api.nvim_create_autocmd('FileType', {
---   pattern = { 'python', 'julia', 'h', 'c', 'cpp' },
---   callback = function()
---     vim.opt_local.foldmethod = 'indent'
---   end,
--- })
-
 -- Set spell check
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'html', 'markdown', 'text', 'rst', 'gitcommit' },
