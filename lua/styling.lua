@@ -1,12 +1,3 @@
--- Set color theme
-vim.g.neon_style = "dark"
-vim.cmd.colorscheme('neon')
-
--- Set status line config
-require('lualine').setup {
-  options = { theme = 'neon' }
-}
-
 -- Code color scheme customization
 vim.api.nvim_set_hl(0, 'Statement', { link = 'Constant', force = true })
 vim.api.nvim_set_hl(0, 'Boolean', { link = 'Constant', force = true })
@@ -28,13 +19,13 @@ vim.api.nvim_set_hl(0, 'LspReferenceRead', lsp_ref)
 vim.api.nvim_set_hl(0, 'LspReferenceText', lsp_ref)
 
 -- Set git-diff highlight groups to something better looking
-vim.api.nvim_set_hl(0, 'DiffAdd',
-  { ctermbg = 10, bg = '#1d3613', force = true })
-vim.api.nvim_set_hl(0, 'DiffDelete',
-  { ctermfg = 15, bg = '#3b1212', force = true })
-vim.api.nvim_set_hl(0, 'DiffChange', { bg = '#054a3c', force = true })
-vim.api.nvim_set_hl(0, 'DiffText',
-  { cterm = { bold = true }, ctermbg = 9, bg = '#076e59', force = true })
+-- vim.api.nvim_set_hl(0, 'DiffAdd',
+--   { ctermbg = 10, bg = '#1d3613', force = true })
+-- vim.api.nvim_set_hl(0, 'DiffDelete',
+--   { ctermfg = 15, bg = '#3b1212', force = true })
+-- vim.api.nvim_set_hl(0, 'DiffChange', { bg = '#054a3c', force = true })
+-- vim.api.nvim_set_hl(0, 'DiffText',
+--   { cterm = { bold = true }, ctermbg = 9, bg = '#076e59', force = true })
 
 -- Set Julia syntax highlighting colors
 vim.api.nvim_set_hl(0, 'juliaFunction', { link = 'Function', force = true })
