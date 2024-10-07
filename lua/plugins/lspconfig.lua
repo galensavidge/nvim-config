@@ -47,7 +47,13 @@ return {
       })
 
       -- Ruff for Python linting and formatting
-      lsp.ruff.setup({})
+      local ruff_config = lsp.ruff.config_def
+      ruff_config.cmd = { 'ruff', 'server', '--preview' }
+      ruff_config.default_config.cmd = { 'ruff', 'server', '--preview' }
+
+      local configs = require('lspconfig.configs')
+      configs.custom_ruff = ruff_config
+      lsp.custom_ruff.setup(ruff_config)
 
       -- Set up clangd for C/++ code analysis
       lsp.clangd.setup({ capabilities = capabilities })

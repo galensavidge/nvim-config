@@ -78,4 +78,11 @@ return {
       require('better-n').setup({})
     end
   },
+
+  { -- Faster.nvim (disable features on big files)
+    'pteroctopus/faster.nvim',
+    config = function()
+      require('faster').setup({})
+    end,
+  },
 }
