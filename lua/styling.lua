@@ -1,8 +1,8 @@
 -- Code color scheme customization
 -- vim.api.nvim_set_hl(0, 'Statement', { link = 'Constant', force = true })
 -- vim.api.nvim_set_hl(0, 'Boolean', { link = 'Constant', force = true })
--- vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal', force = true })
--- vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Directory', force = true })
+vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal', force = true })
+vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Directory', force = true })
 
 -- Leap highlight groups
 vim.api.nvim_set_hl(0, 'leapLabel', { link = 'IncSearch', force = true })
