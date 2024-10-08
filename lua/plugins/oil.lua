@@ -34,8 +34,8 @@ return {
             desc = "Open the entry in new tab"
           },
           ["gp"] = "actions.preview",
-          ["<C-c>"] = "actions.close",
-          ["<C-l>"] = "actions.refresh",
+          ["gc"] = "actions.close",
+          ["gR"] = "actions.refresh",
           ["-"] = "actions.parent",
           ["_"] = "actions.open_cwd",
           ["`"] = "actions.cd",
