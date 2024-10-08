@@ -1,7 +1,8 @@
-# nvim-config
+# Neovim Config
 My personal neovim configuration.
 
 ## Installation
+### Three
 1. Install neovim:
 ```bash
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
@@ -101,50 +102,50 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Normal    | `gc`            | Toggle comment, supporting motions            |
 | Visual    | `gc`            | Toggle comment in visual mode selection       |
 | Normal    | `<C-p>`         | Fuzzy search file names                       |
-| Normal    | `,f`            | Grep for text in files                        |
-| Normal    | `,w`            | Grep list of occurrences of word under cursor |
-| Normal    | `,F`            | Open file browser                             |
-| Normal    | `,z`            | Fuzzy search spelling suggestions             |
-| Normal    | `,b`            | Fuzzy search buffers                          |
-| Normal    | `,h`            | Fuzzy search help tags                        |
-| Normal    | `,p`            | Fuzzy search clipboard history                |
-| Normal    | `,u`            | Fuzzy search undo history tree                |
-| Normal    | `,s`            | Fuzzy search LSP symbols                      |
-| Normal    | `,e`            | Fuzzy search diagnostics                      |
-| Normal    | `,gb`           | Fuzzy search git branches                     |
-| Normal    | `,bp`           | Fuzzy search DAP breakpoints                  |
-| Normal    | `,S`            | Fuzzy search sessions                         |
-| Normal    | `,ts`           | Fuzzy search Telescope search pickers         |
-| Normal    | `,r`            | Toggle find/replace window for all files      |
-| Normal    | `,R`            | Find word under cursor in all files           |
-| Normal    | `,rf`           | Toggle find/replace window for current file   |
-| Normal    | `,Rf`           | Find word under cursor in current file        |
+| Normal    | ` f`            | Grep for text in files                        |
+| Normal    | ` w`            | Grep list of occurrences of word under cursor |
+| Normal    | ` F`            | Open file browser                             |
+| Normal    | ` z`            | Fuzzy search spelling suggestions             |
+| Normal    | ` b`            | Fuzzy search buffers                          |
+| Normal    | ` h`            | Fuzzy search help tags                        |
+| Normal    | ` p`            | Fuzzy search clipboard history                |
+| Normal    | ` u`            | Fuzzy search undo history tree                |
+| Normal    | ` s`            | Fuzzy search LSP symbols                      |
+| Normal    | ` e`            | Fuzzy search diagnostics                      |
+| Normal    | ` gb`           | Fuzzy search git branches                     |
+| Normal    | ` bp`           | Fuzzy search DAP breakpoints                  |
+| Normal    | ` S`            | Fuzzy search sessions                         |
+| Normal    | ` ts`           | Fuzzy search Telescope search pickers         |
+| Normal    | ` r`            | Toggle find/replace window for all files      |
+| Normal    | ` R`            | Find word under cursor in all files           |
+| Normal    | ` rf`           | Toggle find/replace window for current file   |
+| Normal    | ` Rf`           | Find word under cursor in current file        |
 | Normal    | `{[/]}c`        | {Previous/Next} git hunk                      |
-| Normal    | `,hs`           | Stage git hunk                                |
-| Normal    | `,hr`           | Reset git hunk                                |
-| Normal    | `,hS`           | Stage all git hunks in buffer                 |
-| Normal    | `,hR`           | Reset all git hunks in buffer                 |
-| Normal    | `,hu`           | Undo staging git hunk                         |
-| Normal    | `,hp`           | Preview git hunk                              |
-| Normal    | `,hb`           | Show git blame for last change on this line   |
-| Normal    | `,tb`           | Toggle git blame for current line on/off      |
-| Normal    | `,hD`           | Show git diff for current buffer              |
-| Normal    | `,td`           | Toggle showing deleted lines on/off           |
+| Normal    | ` hs`           | Stage git hunk                                |
+| Normal    | ` hr`           | Reset git hunk                                |
+| Normal    | ` hS`           | Stage all git hunks in buffer                 |
+| Normal    | ` hR`           | Reset all git hunks in buffer                 |
+| Normal    | ` hu`           | Undo staging git hunk                         |
+| Normal    | ` hp`           | Preview git hunk                              |
+| Normal    | ` hb`           | Show git blame for last change on this line   |
+| Normal    | ` tb`           | Toggle git blame for current line on/off      |
+| Normal    | ` hD`           | Show git diff for current buffer              |
+| Normal    | ` td`           | Toggle showing deleted lines on/off           |
 | O, X      | `ih`            | Select git hunk                               |
-| Normal    | `,gd`           | Open git diff view page of all changed files  |
+| Normal    | ` gd`           | Open git diff view page of all changed files  |
 | Normal    | `K`             | Hover LSP symbol                              |
 | Normal    | `gd`            | Go to LSP symbol definition                   |
 | Normal    | `gD`            | Go to LSP symbol declaration                  |
-| Normal    | `,D`            | Go to LSP symbol type definition              |
-| Normal    | `,rn`           | Rename LSP symbol                             |
-| Normal    | `,ca`           | Execute code actions                          |
-| Normal    | `,gr`           | Show LSP symbol references                    |
-| Normal    | `,l`            | Auto-format buffer                            |
-| Normal    | `,o`            | Show code outline sidebar using LSP symbols   |
+| Normal    | ` D`            | Go to LSP symbol type definition              |
+| Normal    | ` rn`           | Rename LSP symbol                             |
+| Normal    | ` ca`           | Execute code actions                          |
+| Normal    | ` gr`           | Show LSP symbol references                    |
+| Normal    | ` l`            | Auto-format buffer                            |
+| Normal    | ` o`            | Show code outline sidebar using LSP symbols   |
 | Normal    | `[e`            | Jump to previous diagnostic                   |
 | Normal    | `]e`            | Jump to next diagnostic                       |
 | Normal    | `<leader>E`     | Show the diagnostic under the cursor          |
-| Normal    | `,ca`           | Execute code actions                          |
+| Normal    | ` ca`           | Execute code actions                          |
 | Insert    | `<Tab>/<C-Space>` | Manually trigger autocomplete               |
 | Insert    | `<C-e>`         | Close autocomplete window                     |
 | Insert    | `<Tab>`         | Select next autocomplete suggestion           |
@@ -152,16 +153,16 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Insert    | `<CR>`          | Confirm selected autocomplete suggestion      |
 | Insert    | `<C-l>`         | Expand snippet or jump forward within snippet |
 | Insert    | `<C-h>`         | Jump backward within snippet                  |
-| Insert    | `,db`           | Toggle breakpoint                             |
-| Insert    | `,dB`           | Set conditional breakpoint                    |
-| Insert    | `,dc`           | Start/continue debugger                       |
-| Insert    | `,di`           | Debugger step into                            |
-| Insert    | `,do`           | Debugger step over                            |
-| Insert    | `,dO`           | Debugger step out                             |
-| Insert    | `,dr`           | Debugger toggle REPL                          |
-| Insert    | `,dl`           | Rerun last debugging session                  |
-| Insert    | `,dx`           | Terminate debugger                            |
-| Insert    | `,du`           | Toggle debugger UI                            |
+| Insert    | ` db`           | Toggle breakpoint                             |
+| Insert    | ` dB`           | Set conditional breakpoint                    |
+| Insert    | ` dc`           | Start/continue debugger                       |
+| Insert    | ` di`           | Debugger step into                            |
+| Insert    | ` do`           | Debugger step over                            |
+| Insert    | ` dO`           | Debugger step out                             |
+| Insert    | ` dr`           | Debugger toggle REPL                          |
+| Insert    | ` dl`           | Rerun last debugging session                  |
+| Insert    | ` dx`           | Terminate debugger                            |
+| Insert    | ` du`           | Toggle debugger UI                            |
 | DAP UI    | `e`             | Edit action                                   |
 | DAP UI    | `<CR>`          | Expand action                                 |
 | DAP UI    | `o`             | Open action                                   |

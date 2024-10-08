@@ -13,7 +13,7 @@ vim.api.nvim_set_hl(0, 'Todo', { link = 'Label', force = true })
 vim.api.nvim_set_hl(0, 'Done', { link = 'Character', force = true })
 
 -- LSP highlight groups
-local lsp_ref = { link = 'CursorLine', force = true }
+local lsp_ref = { link = 'Search', force = true }
 vim.api.nvim_set_hl(0, 'LspReferenceWrite', lsp_ref)
 vim.api.nvim_set_hl(0, 'LspReferenceRead', lsp_ref)
 vim.api.nvim_set_hl(0, 'LspReferenceText', lsp_ref)
@@ -41,3 +41,12 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts.border = opts.border or 'rounded' -- Rounded border by default
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
+
+-- Markdown highlight groups
+vim.api.nvim_set_hl(0, 'RenderMarkdownCode', { bg = '#16161d', force = true })
+vim.api.nvim_set_hl(0, 'RenderMarkdownCodeHover',
+  { bg = '#1f1f28', force = true })
+vim.api.nvim_set_hl(0, 'RenderMarkdownH1',
+  { link = 'CursorLineNr', force = true })
+vim.api.nvim_set_hl(0, 'RenderMarkdownH1Bg',
+  { link = 'CursorLineNr', force = true })
