@@ -5,7 +5,9 @@ return {
     'neovim/nvim-lspconfig',
     config = function()
       local lsp = require('lspconfig')
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend('force', capabilities,
+        require('cmp_nvim_lsp').default_capabilities())
 
       -- Set up lua-lanaguage-server
       require('lspconfig').lua_ls.setup({

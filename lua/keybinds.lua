@@ -123,6 +123,11 @@ vim.keymap.set('n', 'M', 'D', { desc = 'Cut to end of line' })
 vim.keymap.set({ 'n', 'x' }, '<leader>m', 'm', { desc = 'Set mark' })
 vim.keymap.set('x', 'p', 'P') -- Prevent yank on put in visual mode
 
+-- Terminal mode keybinds
+vim.keymap.set('n', '<leader>T', ':tabnew | term<CR>', { silent = true})
+vim.keymap.set('n', '<leader>t', ':term<CR>', { silent = true})
+vim.keymap.set('t', '<esc>', '<C-\\><C-n>')
+
 -- File search and replace
 vim.keymap.set('n', '<leader>r', ':GrugFar<CR>',
   { silent = true, desc = 'Toggle Grug-Far (search and replace)' })
