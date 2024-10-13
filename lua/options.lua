@@ -32,6 +32,7 @@ opt.showmode = false
 opt.signcolumn = 'yes'
 opt.spell = false
 vim.cmd('set spellfile=~/.config/nvim/spell/en.utf-8.add')
+opt.spelloptions = 'camel'
 opt.spelllang = 'en_us'
 opt.splitbelow = true -- Open new split panes to right and below
 opt.splitkeep = 'topline'

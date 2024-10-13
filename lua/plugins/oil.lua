@@ -14,6 +14,7 @@ return {
           'mtime',
         },
         watch_for_changes = false,
+        skip_confirm_for_simple_edits = true,
         use_default_keymaps = false,
         keymaps = {
           ['g?'] = 'actions.show_help',
