@@ -85,4 +85,29 @@ return {
       require('faster').setup({})
     end,
   },
+
+  { -- Term-edit.nvim (enable some normal mode keybindings in terminal mode)
+    'chomosuke/term-edit.nvim',
+    lazy = false,
+    version = '1.*',
+    config = function()
+      require('term-edit').setup({
+        -- Mandatory option:
+        -- Set this to a lua pattern that would match the end of your prompt.
+        -- Or a table of multiple lua patterns where at least one would match the
+        -- end of your prompt at any given time.
+        -- For most bash/zsh user this is '%$ '.
+        -- For most powershell/fish user this is '> '.
+        -- For most windows cmd user this is '>'.
+        prompt_end = '%$ ',
+        -- How to write lua patterns: https://www.lua.org/pil/20.2.html
+        mapping = {
+          n = {
+            s = false,
+            S = false,
+          },
+        },
+      })
+    end,
+  },
 }
