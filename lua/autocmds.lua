@@ -1,7 +1,7 @@
 local ts_parsers = require('nvim-treesitter.parsers')
 
 -- Request treesitter parser to update the syntax tree on text change
-vim.api.nvim_create_autocmd('TextChanged', {
+vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave' }, {
   callback = function()
     local filelang = ts_parsers.ft_to_lang(
       vim.api.nvim_buf_get_option(vim.fn.bufnr(), 'filetype'))

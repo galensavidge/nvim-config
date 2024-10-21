@@ -2,7 +2,6 @@
 My personal neovim configuration.
 
 ## Installation
-### Three
 1. Install neovim:
 ```bash
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
