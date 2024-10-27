@@ -35,15 +35,20 @@ return {
             desc = 'Open the entry in new tab'
           },
           ['gp'] = 'actions.preview',
-          ['gc'] = 'actions.close',
+          [','] = 'actions.close',
           ['gR'] = 'actions.refresh',
           ['-'] = 'actions.parent',
           ['_'] = 'actions.open_cwd',
-          ['`'] = 'actions.cd',
           ['~'] = {
+            callback = function()
+              require('oil').open(vim.fn.expand('~'))
+            end,
+            desc = 'Open the home directory',
+          },
+          ['`'] = {
             'actions.cd',
             opts = { scope = 'tab' },
-            desc = ':tcd to the current oil directory',
+            desc = ':cd to the current oil directory',
             mode = 'n'
           },
           ['yp'] = {
@@ -56,8 +61,8 @@ return {
                 return
               end
 
-              local relpath = vim.fn.fnamemodify(dir, ":.") .. entry.name
-              vim.fn.setreg("+", relpath)
+              local relpath = vim.fn.fnamemodify(dir, ':.') .. entry.name
+              vim.fn.setreg('+', relpath)
               vim.print('Copied ' .. relpath)
             end,
             desc = 'Yank relative filepath',

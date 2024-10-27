@@ -48,7 +48,8 @@ return {
           lualine_z = { 'location' }
         },
 
-        options = { theme = 'kanagawa' }
+        options = { theme = 'kanagawa' },
+        extensions = { 'quickfix', 'oil', 'nvim-dap-ui' },
       })
     end,
   },

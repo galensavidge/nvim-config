@@ -213,7 +213,7 @@ vim.keymap.set('n', '<leader>o', function()
 end, { silent = true, desc = 'Open code outline' })
 
 -- File browser
-vim.keymap.set('n', '<leader>F', function()
+vim.keymap.set('n', ',', function()
     require('oil').open()
   end,
   { silent = true, desc = 'Open current file directory' })

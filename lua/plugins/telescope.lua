@@ -2,23 +2,23 @@
 -- Includes fuzzy finders for a variety of different things.
 
 -- Set keybinds
-vim.keymap.set('n', '<C-p>', function()
+vim.keymap.set('n', ';', function()
   require('telescope').extensions.smart_open.smart_open()
 end, { silent = true, desc = 'Search file names' })
 
 vim.keymap.set('n', '<A-p>', ':Telescope resume<CR>',
   { silent = true, desc = 'Resume last used telescope picker' })
 
-vim.keymap.set('n', '<leader>f', ':Telescope live_grep<CR>',
+vim.keymap.set('n', '<leader>f', ':Telescope live_grep theme=ivy<CR>',
   { silent = true, desc = 'Search for text in files' })
 
-vim.keymap.set('n', '<leader>w', ':Telescope grep_string<CR>',
+vim.keymap.set('n', '<leader>w', ':Telescope grep_string theme=ivy<CR>',
   { silent = true, desc = 'Grep word under cursor' })
 
-vim.keymap.set('n', '<leader>b', ':Telescope buffers<CR>',
+vim.keymap.set('n', '<leader>b', ':Telescope buffers theme=dropdown<CR>',
   { silent = true, desc = 'Search buffers' })
 
-vim.keymap.set('n', '<leader>km', ':Telescope keymaps<CR>',
+vim.keymap.set('n', '<leader>km', ':Telescope keymaps theme=ivy<CR>',
   { silent = true, desc = 'Search keymaps' })
 
 vim.keymap.set('n', '<leader>h', ':Telescope help_tags<CR>',
@@ -26,7 +26,8 @@ vim.keymap.set('n', '<leader>h', ':Telescope help_tags<CR>',
 
 vim.keymap.set('n', '<leader>p',
   function()
-    require('telescope').extensions.neoclip.plus()
+    local themes = require('telescope.themes')
+    require('telescope').extensions.neoclip.plus(themes.get_dropdown({}))
   end, { desc = 'Search clipboard history' })
 
 vim.keymap.set('n', '<leader>z', function()
@@ -51,12 +52,12 @@ vim.keymap.set('n', '<leader>gb', ':Telescope git_branches theme=dropdown<CR>',
 vim.keymap.set('n', '<leader>gc', ':Telescope git_bcommits<CR>',
   { silent = true, desc = 'Show commit history for current buffer' })
 
-vim.keymap.set('n', '<leader>bp',
-  function()
-    local themes = require('telescope.themes')
-    require('telescope').extensions.dap.list_breakpoints(
-      themes.get_dropdown({}))
-  end, { desc = 'Search breakpoints' })
+-- vim.keymap.set('n', '<leader>bp',
+--   function()
+--     local themes = require('telescope.themes')
+--     require('telescope').extensions.dap.list_breakpoints(
+--       themes.get_dropdown({}))
+--   end, { desc = 'Search breakpoints' })
 
 vim.keymap.set('n', '<leader>S',
   function()
