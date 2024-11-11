@@ -25,7 +25,7 @@ opt.path:append '**'
 opt.relativenumber = true
 opt.scrolloff = 5
 opt.selection = 'old'
-opt.sessionoptions = 'blank,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
+opt.sessionoptions = 'blank,curdir,help,tabpages,winsize,winpos,terminal,localoptions'
 opt.shiftround = true
 opt.shiftwidth = 0 -- Use value of tabstop
 opt.showmode = false
