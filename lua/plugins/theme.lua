@@ -141,4 +141,17 @@ return {
       })
     end,
   },
+
+  { -- FastAction.nvim (better vim.ui.select)
+    'Chaitanyabsprip/fastaction.nvim',
+    config = function()
+      require('fastaction').setup({
+        dismiss_keys = { 'j', 'k', '<esc>', 'q' },
+        popup = {
+          relative = 'cursor',
+        },
+        register_ui_select = true,
+      })
+    end
+  }
 }

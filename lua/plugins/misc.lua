@@ -94,8 +94,8 @@ return {
       require('term-edit').setup({
         -- Mandatory option:
         -- Set this to a lua pattern that would match the end of your prompt.
-        -- Or a table of multiple lua patterns where at least one would match the
-        -- end of your prompt at any given time.
+        -- Or a table of multiple lua patterns where at least one would match
+        -- the end of your prompt at any given time.
         -- For most bash/zsh user this is '%$ '.
         -- For most powershell/fish user this is '> '.
         -- For most windows cmd user this is '>'.
