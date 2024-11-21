@@ -52,13 +52,6 @@ vim.keymap.set('n', '<leader>gb', ':Telescope git_branches theme=dropdown<CR>',
 vim.keymap.set('n', '<leader>gc', ':Telescope git_bcommits<CR>',
   { silent = true, desc = 'Show commit history for current buffer' })
 
--- vim.keymap.set('n', '<leader>bp',
---   function()
---     local themes = require('telescope.themes')
---     require('telescope').extensions.dap.list_breakpoints(
---       themes.get_dropdown({}))
---   end, { desc = 'Search breakpoints' })
-
 vim.keymap.set('n', '<leader>S',
   function()
     require('auto-session.session-lens').search_session()
@@ -82,10 +75,6 @@ return {
 
       -- Undo tree
       require('telescope').load_extension('undo')
-
-      -- Debugger breakpoints
-      require('plugins.dap')
-      require('telescope').load_extension('dap')
 
       local actions = require('telescope.actions')
       require('telescope').setup({
@@ -149,11 +138,5 @@ return {
     'debugloop/telescope-undo.nvim',
     lazy = true,
     dependencies = { 'nvim-telescope/telescope.nvim' },
-  },
-
-  { -- Telescope-dap (debugger breakpoints)
-    'nvim-telescope/telescope-dap.nvim',
-    lazy = true,
-    dependencies = { 'nvim-telescope/telescope.nvim', },
   },
 }

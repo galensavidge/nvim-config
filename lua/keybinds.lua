@@ -6,11 +6,7 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'k', 'gk', { silent = true })
 vim.keymap.set({ 'n', 'x', 'o' }, 'H', '^', { silent = true })
 vim.keymap.set({ 'n', 'x', 'o' }, 'L', '$', { silent = true })
 
--- Leap motions (need to unbind some things set by cutlass first)
-vim.keymap.del('n', 's', { silent = true })
-vim.keymap.del('n', 'S', { silent = true })
-vim.keymap.del('x', '"_s', { silent = true })
-vim.keymap.del('x', '"_S', { silent = true })
+-- Leap motions
 vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap-forward)')
 vim.keymap.set({ 'n', 'x', 'o' }, 'S', '<Plug>(leap-backward)')
 vim.keymap.set({ 'n', 'x', 'o' }, 'gs', '<Plug>(leap-from-window)')
@@ -121,6 +117,12 @@ vim.keymap.set('n', 'mm', 'dd', { desc = 'Cut line' })
 vim.keymap.set('n', 'M', 'D', { desc = 'Cut to end of line' })
 vim.keymap.set({ 'n', 'x' }, '<leader>m', 'm', { desc = 'Set mark' })
 vim.keymap.set('x', 'p', 'P') -- Prevent yank on put in visual mode
+
+-- Keybinds to dlete without yanking
+vim.keymap.set({ 'n', 'x' }, 'd', '"0d', { desc = 'Delete' })
+vim.keymap.set({ 'n', 'x' }, 'x', '"0x', { desc = 'Delete character' })
+vim.keymap.set('n', 'dd', '"0dd', { desc = 'Delete line' })
+vim.keymap.set('n', 'D', '"0D', { desc = 'Delete to end of line' })
 
 -- Terminal mode keybinds
 vim.keymap.set('n', '<leader>T', ':tabnew | term<CR>', { silent = true})

@@ -83,13 +83,17 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | --------- | --------------- | --------------------------------------------- |
 | N, X      | `H`             | Move to first non-whitespace char on line     |
 | N, X      | `L`             | Move to last non-whitespace char on line      |
+| N, X      | ` m`            | Set mark                                      |
 | N, X      | `s`             | Begin leap search forward                     |
 | N, X      | `S`             | Begin leap search backward                    |
 | N, X      | `gs`            | Begin leap search in other splits             |
+| N, X      | `gS`            | Begin leap action at a distance               |
 | Normal    | `<A-s>`         | Split horizontally                            |
 | Normal    | `<A-v>`         | Split vertically                              |
 | Normal    | `<C-{h/j/k/l}>` | Move between panes to {left/bottom/top/right} |
 | Normal    | `<A-{h/j/k/l}>` | Move split pane to the {left/bottom/top/right}|
+| Normal    | `<A-o>`         | Jump back to the previously opened buffer     |
+| Normal    | `<A-i>`         | Jump forward to the next opened buffer        |
 | N, X      | `<A-=>`         | Set split panes to equal sizes                |
 | N, X      | `<C-c>`         | Close pane                                    |
 | Normal    | `<A-t>`         | Make new tab                                  |
@@ -97,13 +101,10 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | N, X      | `m`             | Cut selection                                 |
 | Normal    | `M`             | Cut to the right of cursor                    |
 | Normal    | `mm`            | Cut line                                      |
-| Normal    | `gcc`           | Toggle comment on the current line            |
-| Normal    | `gc`            | Toggle comment, supporting motions            |
-| Visual    | `gc`            | Toggle comment in visual mode selection       |
-| Normal    | `<C-p>`         | Fuzzy search file names                       |
+| Normal    | `;`             | Fuzzy search file names                       |
 | Normal    | ` f`            | Grep for text in files                        |
 | Normal    | ` w`            | Grep list of occurrences of word under cursor |
-| Normal    | ` F`            | Open file browser                             |
+| Normal    | `,`             | Open file browser                             |
 | Normal    | ` z`            | Fuzzy search spelling suggestions             |
 | Normal    | ` b`            | Fuzzy search buffers                          |
 | Normal    | ` h`            | Fuzzy search help tags                        |
@@ -112,13 +113,9 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Normal    | ` s`            | Fuzzy search LSP symbols                      |
 | Normal    | ` e`            | Fuzzy search diagnostics                      |
 | Normal    | ` gb`           | Fuzzy search git branches                     |
-| Normal    | ` bp`           | Fuzzy search DAP breakpoints                  |
 | Normal    | ` S`            | Fuzzy search sessions                         |
 | Normal    | ` ts`           | Fuzzy search Telescope search pickers         |
 | Normal    | ` r`            | Toggle find/replace window for all files      |
-| Normal    | ` R`            | Find word under cursor in all files           |
-| Normal    | ` rf`           | Toggle find/replace window for current file   |
-| Normal    | ` Rf`           | Find word under cursor in current file        |
 | Normal    | `{[/]}c`        | {Previous/Next} git hunk                      |
 | Normal    | ` hs`           | Stage git hunk                                |
 | Normal    | ` hr`           | Reset git hunk                                |
