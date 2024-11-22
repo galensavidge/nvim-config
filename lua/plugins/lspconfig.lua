@@ -77,12 +77,8 @@ return {
     end
   },
 
-  { -- Inc-rename (show LSP symbol rename incrementally while typing)
-    'smjonas/inc-rename.nvim',
-    event = 'VeryLazy',
-    config = function()
-      require('inc_rename').setup()
-    end,
+  { -- Live-rename (show LSP symbol rename incrementally while typing)
+    'saecki/live-rename.nvim',
   },
 
   { -- Lsp-signature

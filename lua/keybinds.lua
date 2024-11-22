@@ -118,19 +118,20 @@ vim.keymap.set('n', 'M', 'D', { desc = 'Cut to end of line' })
 vim.keymap.set({ 'n', 'x' }, '<leader>m', 'm', { desc = 'Set mark' })
 vim.keymap.set('x', 'p', 'P') -- Prevent yank on put in visual mode
 
--- Keybinds to dlete without yanking
+-- Keybinds to delete without yanking
 vim.keymap.set({ 'n', 'x' }, 'd', '"0d', { desc = 'Delete' })
 vim.keymap.set({ 'n', 'x' }, 'x', '"0x', { desc = 'Delete character' })
+vim.keymap.set({ 'n', 'x' }, 'c', '"0c', { desc = 'Change' })
 vim.keymap.set('n', 'dd', '"0dd', { desc = 'Delete line' })
 vim.keymap.set('n', 'D', '"0D', { desc = 'Delete to end of line' })
 
 -- Terminal mode keybinds
-vim.keymap.set('n', '<leader>T', ':tabnew | term<CR>', { silent = true})
-vim.keymap.set('n', '<leader>t', ':term<CR>', { silent = true})
+vim.keymap.set('n', '<leader>T', ':tabnew | term<CR>', { silent = true })
+vim.keymap.set('n', '<leader>t', ':term<CR>', { silent = true })
 vim.keymap.set('t', '<esc>', '<C-\\><C-n>')
 
 -- File search and replace
-vim.keymap.set('n', '<leader>r', ':GrugFar<CR>',
+vim.keymap.set('n', '<leader>re', ':GrugFar<CR>',
   { silent = true, desc = 'Toggle Grug-Far (search and replace)' })
 
 -- Git integration
@@ -182,8 +183,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition,
       { buffer = ev.buf, silent = true, desc = 'LSP go to type definition' })
     vim.keymap.set('n', '<leader>rn', function()
-      return ':IncRename ' .. vim.fn.expand('<cword>')
-    end, { expr = true, silent = true, desc = 'Rename LSP symbol' })
+        require('live-rename').rename()
+      end,
+      { silent = true, desc = 'Rename LSP symbol' })
+    vim.keymap.set('n', '<leader>R', function()
+        require('live-rename').rename({ text = "", insert = true })
+      end,
+      { silent = true, desc = 'Rename LSP symbol' })
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action,
       { buffer = ev.buf, silent = true, desc = 'LSP execute code action' })
     vim.keymap.set('n', 'gr', vim.lsp.buf.references,

@@ -19,6 +19,7 @@ opt.ignorecase = true
 opt.inccommand = 'nosplit'
 opt.incsearch = true
 opt.lazyredraw = true
+opt.linebreak = true
 opt.mouse = 'a'
 opt.number = true
 opt.path:append '**'
