@@ -125,6 +125,11 @@ vim.keymap.set({ 'n', 'x' }, 'c', '"0c', { desc = 'Change' })
 vim.keymap.set('n', 'dd', '"0dd', { desc = 'Delete line' })
 vim.keymap.set('n', 'D', '"0D', { desc = 'Delete to end of line' })
 
+-- Open clipboard history
+vim.keymap.set('n', '<leader>p', function()
+  require('lazyclip').show_clipboard()
+end, { desc = 'Open clipboard history' })
+
 -- Terminal mode keybinds
 vim.keymap.set('n', '<leader>T', ':tabnew | term<CR>', { silent = true })
 vim.keymap.set('n', '<leader>t', ':term<CR>', { silent = true })
@@ -197,9 +202,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>l', function()
       vim.lsp.buf.format { async = true }
     end, { buffer = ev.buf, silent = true, desc = 'LSP format buffer' })
-    vim.keymap.set('n', '<leader>s', function()
-      require('telescope.builtin').lsp_dynamic_workspace_symbols()
-    end, { buffer = ev.buf, silent = true, desc = 'Search LSP symbols' })
+    vim.keymap.set('n', '<leader>s',
+      ':Telescope lsp_dynamic_workspace_symbols theme=ivy<CR>',
+      { buffer = ev.buf, silent = true, desc = 'Search LSP symbols' })
     vim.keymap.set('n', '[e', vim.diagnostic.goto_prev,
       { buffer = ev.buf, silent = true, desc = 'Go to previous LSP diagnostic' })
     vim.keymap.set('n', ']e', vim.diagnostic.goto_next,
@@ -209,15 +214,37 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Code outline
-vim.keymap.set('n', '<leader>o', function()
-  local outline = require('outline')
-  if outline.is_open() then
-    outline.focus_toggle()
-  else
-    outline.open({ focus_outline = false })
-  end
-end, { silent = true, desc = 'Open code outline' })
+-- Debugger
+vim.keymap.set('n', '<leader>db', function()
+  require('dap').toggle_breakpoint()
+end, { desc = 'Toggle breakpoint on current line' })
+vim.keymap.set('n', '<leader>dB', function()
+  return require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
+end, { desc = 'Set conditional breakpoint on current line' })
+vim.keymap.set('n', '<leader>dc', function()
+  require('dap').continue()
+end, { desc = 'Start/continue debugger' })
+vim.keymap.set('n', '<leader>di', function()
+  require('dap').step_into()
+end, { desc = 'Debugger step into' })
+vim.keymap.set('n', '<leader>do', function()
+  require('dap').step_over()
+end, { desc = 'Debugger step over' })
+vim.keymap.set('n', '<leader>dO', function()
+  require('dap').step_out()
+end, { desc = 'Debugger step out' })
+vim.keymap.set('n', '<leader>dr', function()
+  require('dap').repl.toggle()
+end, { desc = 'Debugger toggle REPL' })
+vim.keymap.set('n', '<leader>dl', function()
+  require('dap').run_last()
+end, { desc = 'Debugger run last' })
+vim.keymap.set('n', '<leader>dx', function()
+  require('dap').terminate()
+end, { desc = 'Stop debugger' })
+vim.keymap.set('n', '<leader>du', function()
+  require('dapui').toggle()
+end, { desc = 'Toggle debugger UI' })
 
 -- File browser
 vim.keymap.set('n', ',', function()
@@ -227,32 +254,30 @@ vim.keymap.set('n', ',', function()
 
 -- Create new file from the path under the cursor
 vim.keymap.set('n', '<leader>nf', function()
-    -- Clear the f register.
-    vim.cmd('let @f=""')
+  -- Clear the f register.
+  vim.cmd('let @f=""')
 
-    -- Copy the word within parentheses.
-    vim.cmd.normal('"fyib')
+  -- Copy the word within parentheses.
+  vim.cmd.normal('"fyib')
 
-    local path = vim.fn.getreg('f')
+  local path = vim.fn.getreg('f')
 
-    if string.len(path) == 0 then
-      return
-    end
+  if string.len(path) == 0 then
+    return
+  end
 
-    if string.sub(path, 1, 1) ~= ('~') then
-      -- Get the path to the directory containing the current file.
-      local filepath = vim.fn.expand('%')
-      filepath = vim.fn.fnamemodify(filepath, ':h')
-      path = filepath .. '/' .. path
-      path = vim.fn.resolve(path)
-    end
+  if string.sub(path, 1, 1) ~= ('~') then
+    -- Get the path to the directory containing the current file.
+    local filepath = vim.fn.expand('%')
+    filepath = vim.fn.fnamemodify(filepath, ':h')
+    path = filepath .. '/' .. path
+    path = vim.fn.resolve(path)
+  end
 
-    path = vim.fn.expand(path)
+  path = vim.fn.expand(path)
 
-    print(path)
+  print(path)
 
-    vim.cmd('! mkdir -p "$(dirname "' .. path .. '")" && touch "' .. path .. '"')
-    vim.cmd('e ' .. path)
-  end,
-
-  { silent = true, desc = 'Create new file from path under cursor' })
+  vim.cmd('! mkdir -p "$(dirname "' .. path .. '")" && touch "' .. path .. '"')
+  vim.cmd('e ' .. path)
+end, { silent = true, desc = 'Create new file from path under cursor' })

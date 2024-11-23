@@ -24,12 +24,6 @@ vim.keymap.set('n', '<leader>km', ':Telescope keymaps theme=ivy<CR>',
 vim.keymap.set('n', '<leader>h', ':Telescope help_tags<CR>',
   { silent = true, desc = 'Search help tags' })
 
-vim.keymap.set('n', '<leader>p',
-  function()
-    local themes = require('telescope.themes')
-    require('telescope').extensions.neoclip.plus(themes.get_dropdown({}))
-  end, { desc = 'Search clipboard history' })
-
 vim.keymap.set('n', '<leader>z', function()
   local ts = require('telescope.builtin')
   local themes = require('telescope.themes')

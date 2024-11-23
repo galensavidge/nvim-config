@@ -113,12 +113,12 @@ return {
     end,
   },
 
-  { -- Virt-column (color column styling)
-    'lukas-reineke/virt-column.nvim',
-    config = function()
-      require('virt-column').setup()
-    end,
-  },
+  -- { -- Virt-column (color column styling)
+  --   'lukas-reineke/virt-column.nvim',
+  --   config = function()
+  --     require('virt-column').setup()
+  --   end,
+  -- },
 
   { -- Nvim-treesitter-context (show function context at the top of the screen)
     'nvim-treesitter/nvim-treesitter-context',
