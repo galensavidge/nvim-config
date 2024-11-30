@@ -130,6 +130,13 @@ vim.keymap.set('n', '<leader>p', function()
   require('lazyclip').show_clipboard()
 end, { desc = 'Open clipboard history' })
 
+-- Open quickfix list
+vim.keymap.set('n', '<leader>q', function()
+  require('quicker').toggle()
+end, {
+  desc = 'Toggle quickfix',
+})
+
 -- Terminal mode keybinds
 vim.keymap.set('n', '<leader>T', ':tabnew | term<CR>', { silent = true })
 vim.keymap.set('n', '<leader>t', ':term<CR>', { silent = true })
