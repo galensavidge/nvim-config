@@ -1,5 +1,15 @@
 -- Sets up theme and GUI elements.
 
+local current_signature = function()
+  if not pcall(require, 'lsp_signature') then return end
+  local sig = require("lsp_signature").status_line(vim.o.columns * 2 / 3)
+  if vim.fn.mode() == "i" then
+    return sig.label
+  else
+    return ""
+  end
+end
+
 return {
   { -- Neon (color scheme)
     'rebelot/kanagawa.nvim',
@@ -42,10 +52,11 @@ return {
         sections = {
           lualine_a = { 'mode' },
           lualine_b = { 'filename' },
+          -- lualine_c = { 'branch', 'diff', 'diagnostics' },
           lualine_c = { 'branch', 'diff', 'diagnostics' },
-          lualine_x = { require('lsp-progress').progress, 'filetype' },
-          lualine_y = { 'progress' },
-          lualine_z = { 'location' }
+          lualine_x = { current_signature },
+          lualine_y = { require('lsp-progress').progress, 'filetype' },
+          lualine_z = { 'progress', 'location' }
         },
 
         options = { theme = 'kanagawa', globalstatus = true },

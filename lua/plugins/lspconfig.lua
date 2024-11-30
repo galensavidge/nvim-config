@@ -85,9 +85,12 @@ return {
     'ray-x/lsp_signature.nvim',
     lazy = false,
     opts = {
-      floating_window = true, -- Enable floating window
-      floating_window_above_cur_line = true,
-      hint_enable = false,    -- Disable virtual text
+      always_trigger = true,
+      floating_window = false, -- Enable floating window
+      floating_window_above_cur_line = false,
+      max_height = 8,         -- Max height of signature floating window
+      floating_window_off_y = 0,
+      hint_enable = false, -- Disable virtual text
       hint_prefix = {
         above = '↙ ',
         current = '← ',
