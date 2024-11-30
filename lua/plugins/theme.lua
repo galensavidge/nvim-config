@@ -75,6 +75,7 @@ return {
           padding = 0,
           margin = { horizontal = 0, vertical = 0 },
           overlap = { borders = true, winbar = true },
+          zindex = 10,
         },
         hide = { only_win = true, },
         render = function(props)
@@ -87,7 +88,7 @@ return {
           return {
             ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
             ' ',
-            { filename, gui = modified and 'bold,italic' or 'bold' },
+            { filename, gui = modified and 'italic' or '' },
             ' ',
             guibg = '#16161d',
           }
@@ -181,6 +182,7 @@ return {
         -- Which context lines to discard if `max_lines` is exceeded. Choices:
         -- 'inner', 'outer'
         trim_scope = 'outer',
+        zindex = 5,
       })
     end,
   },

@@ -13,9 +13,10 @@ end
 -- Request treesitter parser to update the syntax tree on text change
 vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave' }, {
   callback = function()
+    local buf = vim.fn.bufnr()
     local filelang = ts_parsers.ft_to_lang(
-      vim.api.nvim_buf_get_option(vim.fn.bufnr(), 'filetype'))
-    local parser = ts_parsers.get_parser(vim.fn.bufnr(), filelang)
+      vim.api.nvim_buf_get_option(buf, 'filetype'))
+    local parser = ts_parsers.get_parser(buf, filelang)
     if parser ~= nil then
       parser:parse()
     end
@@ -122,7 +123,8 @@ vim.api.nvim_create_autocmd('CursorHold', {
   callback = function()
     -- Return if there is a floating window open already
     for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-      if vim.api.nvim_win_get_config(winid).zindex then
+      if vim.api.nvim_win_get_config(winid).zindex and
+          vim.api.nvim_win_get_config(winid).zindex > 10 then
         return
       end
     end
