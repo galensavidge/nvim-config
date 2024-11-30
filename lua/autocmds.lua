@@ -1,5 +1,15 @@
 local ts_parsers = require('nvim-treesitter.parsers')
 
+-- Check if a table contains an element.
+local function contains(table, element)
+  for _, value in pairs(table) do
+    if value == element then
+      return true
+    end
+  end
+  return false
+end
+
 -- Request treesitter parser to update the syntax tree on text change
 vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave' }, {
   callback = function()
@@ -131,16 +141,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
       if client.server_capabilities.documentHighlightProvider then
         vim.api.nvim_create_autocmd({ 'CursorHold' }, {
           buffer = bufnr,
-          callback = vim.lsp.buf.document_highlight
+          callback = function()
+            local winid = vim.fn.win_getid(vim.fn.winnr())
+            if contains(vim.fn.win_findbuf(bufnr), winid) then
+              vim.lsp.buf.document_highlight()
+            end
+          end
         })
 
         vim.api.nvim_create_autocmd({
           'CursorMoved', 'WinLeave', 'InsertEnter'
         }, {
           buffer = bufnr,
-          callback = vim.lsp.buf.clear_references
+          callback = function()
+            local winid = vim.fn.win_getid(vim.fn.winnr())
+            if contains(vim.fn.win_findbuf(bufnr), winid) then
+              vim.lsp.buf.clear_references()
+            end
+          end,
         })
-        return
       end
     end
   end,
