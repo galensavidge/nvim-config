@@ -1,5 +1,3 @@
-local M = {}
-
 -- Move vertically by visual line (gets around super long lines)
 vim.keymap.set({ 'n', 'x', 'o' }, 'j', 'gj', { silent = true })
 vim.keymap.set({ 'n', 'x', 'o' }, 'k', 'gk', { silent = true })
@@ -89,6 +87,18 @@ vim.keymap.set({ 'n', 'x' }, '<C-c>', '<C-w>c', {
   desc = 'Close split'
 })
 
+-- Delete buffer
+vim.keymap.set({ 'n', 'x' }, '<A-d>', ':bp | sp | bn | bd<cr>', {
+  silent = true,
+  desc = 'Delete buffer'
+})
+
+-- Save all and quit neovim
+vim.keymap.set({ 'n' }, 'ZZ', ':wa | qa<cr>', {
+  silent = true,
+  desc = 'Save all buffers and quit neovim'
+})
+
 -- Tab navigation
 vim.keymap.set('n', '<A-t>', ':tabnew<cr>', {
   silent = true,
@@ -126,50 +136,6 @@ vim.keymap.set({ 'n', 'x' }, 'x', '"0x', { desc = 'Delete character' })
 vim.keymap.set({ 'n', 'x' }, 'c', '"0c', { desc = 'Change' })
 vim.keymap.set('n', 'dd', '"0dd', { desc = 'Delete line' })
 vim.keymap.set('n', 'D', '"0D', { desc = 'Delete to end of line' })
-
--- Open buffers using vim.ui.select
-
-local function buf_info_from_line(s)
-  local o = {}
-
-  o.id = tonumber(vim.split(s, " ", { trimempty = true })[1])
-  o.classifiers = s:sub(4, 8)
-
-  local ss = s:find('"')
-  local se = #s - s:reverse():find('"')
-
-  local path = vim.fs.normalize(s:sub(ss + 1, se))
-  local cwd = vim.fn.getcwd() .. '/'
-  o.path = path:gsub(cwd, "")
-  o.name = vim.fs.basename(o.path)
-
-  return o
-end
-
-local function get_buffers()
-  local bufs_out = vim.api.nvim_exec2("ls", { output = true }).output
-  local bufs = vim.split(bufs_out, "\n", { trimempty = true })
-  return vim.tbl_map(buf_info_from_line, bufs)
-end
-
-function M.open_buf_picker()
-  local bufs = get_buffers()
-
-  local function display(item)
-    return item.name .. ' -- ' .. vim.fs.dirname(item.path)
-  end
-
-  local opts = { prompt = 'Buffers', format_item = display }
-
-  local function choice(buf, idx)
-    return vim.api.nvim_win_set_buf(0, buf.id)
-  end
-
-  vim.ui.select(bufs, opts, choice)
-end
-
-vim.keymap.set('n', ';', M.open_buf_picker,
-  { silent = true, desc = 'Open buffer picker' })
 
 -- Open clipboard history
 vim.keymap.set('n', '<leader>p', function()
@@ -334,5 +300,3 @@ vim.keymap.set('n', '<leader>nf', function()
   vim.cmd('! mkdir -p "$(dirname "' .. path .. '")" && touch "' .. path .. '"')
   vim.cmd('e ' .. path)
 end, { silent = true, desc = 'Create new file from path under cursor' })
-
-return M

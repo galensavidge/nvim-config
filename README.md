@@ -96,15 +96,17 @@ Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/
 | Normal    | `<A-i>`         | Jump forward to the next opened buffer        |
 | N, X      | `<A-=>`         | Set split panes to equal sizes                |
 | N, X      | `<C-c>`         | Close pane                                    |
+| N, X      | `<A-d>`         | Delete buffer                                 |
 | Normal    | `<A-t>`         | Make new tab                                  |
 | Normal    | `<A-c>`         | Close tab                                     |
 | N, X      | `m`             | Cut selection                                 |
 | Normal    | `M`             | Cut to the right of cursor                    |
 | Normal    | `mm`            | Cut line                                      |
-| Normal    | `;`             | Fuzzy search file names                       |
+| Normal    | `;`             | Quick select buffers                          |
+| Normal    | ` ;`            | Fuzzy search files                            |
 | Normal    | ` f`            | Grep for text in files                        |
 | Normal    | ` w`            | Grep list of occurrences of word under cursor |
-| Normal    | `,`             | Open file browser                             |
+| Normal    | `,`             | Open/close file browser                       |
 | Normal    | ` z`            | Fuzzy search spelling suggestions             |
 | Normal    | ` b`            | Fuzzy search buffers                          |
 | Normal    | ` h`            | Fuzzy search help tags                        |

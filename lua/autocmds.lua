@@ -166,3 +166,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
   end,
 })
+
+-- Override <A-d> keyboard shotcut so it kills terminal buffers
+vim.api.nvim_create_autocmd({ 'TermOpen', },
+  {
+    callback = function(ev)
+      vim.keymap.set({ 'n', 'x', 'i' }, '<A-d>', ':bp | sp | bn | bd!<cr>',
+        { buffer = ev.buf, silent = true, desc = 'Quit terminal' })
+    end,
+  })

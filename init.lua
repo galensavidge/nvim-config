@@ -12,5 +12,6 @@ require('lazy').setup('plugins')
 
 require('styling')
 require('keybinds')
+require('buflist')
 require('options')
 require('autocmds')
