@@ -1,4 +1,3 @@
--- Sets up theme and GUI elements.
 
 local current_signature = function()
   if not pcall(require, 'lsp_signature') then return end
@@ -11,12 +10,12 @@ local current_signature = function()
 end
 
 return {
-  { -- Neon (color scheme)
+  { -- Kanagawa (color scheme)
     'rebelot/kanagawa.nvim',
     priority = 1000,
     config = function()
       require('kanagawa').setup({
-        compile = false,  -- enable compiling the colorscheme
+        compile = true,  -- enable compiling the colorscheme
         undercurl = true, -- enable undercurls
         commentStyle = { italic = true },
         functionStyle = {},
@@ -46,12 +45,15 @@ return {
 
   { -- Lualine (status line)
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'bwpge/lualine-pretty-path',
+    },
     config = function()
       require('lualine').setup({
         sections = {
           lualine_a = { 'mode' },
-          lualine_b = { 'filename' },
+          lualine_b = { 'pretty_path' },
           lualine_c = { 'branch', 'diff', 'diagnostics' },
           lualine_x = { current_signature },
           lualine_y = { require('lsp-progress').progress, 'filetype' },
@@ -64,7 +66,7 @@ return {
     end,
   },
 
-  { -- Incline.nvim (floating statusline)
+  { -- Incline.nvim (floating status line)
     'b0o/incline.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
@@ -191,7 +193,8 @@ return {
     'Chaitanyabsprip/fastaction.nvim',
     config = function()
       require('fastaction').setup({
-        dismiss_keys = { 'j', 'k', '<esc>', 'q' },
+        dismiss_keys = { '<esc>' },
+        keys = "qwertyuiopasdfghjklzxcvbnm",
         popup = {
           relative = 'cursor',
         },

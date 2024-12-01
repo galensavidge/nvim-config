@@ -2,7 +2,7 @@
 -- Includes fuzzy finders for a variety of different things.
 
 -- Set keybinds
-vim.keymap.set('n', ';', function()
+vim.keymap.set('n', '<leader>;', function()
   require('telescope').extensions.smart_open.smart_open()
 end, { silent = true, desc = 'Search file names' })
 
