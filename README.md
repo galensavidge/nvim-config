@@ -4,11 +4,14 @@ My personal neovim configuration.
 ## Installation
 1. Install neovim:
 ```bash
+# Linux
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 sudo rm -rf /opt/nvim-linux64
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin
 ```
+On Windows, run the MSI installer from the [latest
+release.](https://github.com/neovim/neovim/releases/latest/download/nvim-win64.msi).
 (Optional) Install neovide:
 ```bash
 mkdir -p ~/bin/appimages
@@ -18,23 +21,29 @@ chmod +x neovide.AppImage
 ln -s ~/bin/appimages/neovide.AppImage /usr/local/bin
 ```
 
-2. Clone the repo into the neovim settings folder (default `~/.config/nvim`).
+2. Clone the repo into the neovim settings folder (linux: `~/.config/nvim`,
+   Windows: `~/AppData/Local/nvim/`).
 
 3. Install required packages:
 ```bash
+# Linux
 sudo apt-get update
-sudo apt-get install ripgrep fd-find xclip clangd python3-venv markdown cmake
-gcc yapf flake8
+sudo apt-get install ripgrep xclip clangd python3-venv markdown cmake
+gcc
+
+# Windows
+choco install make cmake ripgrep
 ```
 
 4. Set up language servers:
 ```bash
-pip3 install pyright ruff
+winget install pip  # Windows pip3 install pyright ruff
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
 ```
 (Optional) Install Julia:
 ```bash
-curl -fsSL https://install.julialang.org | sh
+curl -fsSL https://install.julialang.org | sh  # Linux
+winget install julia -s msstore  # Windows
 ```
 Then in the Julia REPL package manager:
 ```julia
@@ -48,7 +57,7 @@ tar -xzf lua-language-server-3.9.3-linux-x64.tar.gz -C ~/bin/lua-language-server
 rm lua-language-server-3.9.3-linux-x64.tar.gz
 sudo ln -s ~/bin/lua-language-server/bin/lua-lanauge-server /usr/local/bin
 ```
-(Optional) Install LaTeX (and RST) language server:
+(Optional) Install LaTeX (and RST) language server (not currently enabled):
 ```bash
 curl -LO https://github.com/valentjn/ltex-ls/releases/download/16.0.0/ltex-ls-16.0.0-linux-x64.tar.gz
 tar -xvf ltex-ls-16.0.0-linux-x64.tar.gz -C ~/bin
@@ -76,6 +85,26 @@ debugpy/bin/python -m pip install debugpy
 
 ## Font
 Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraMono.zip)
+
+## Windows Setup
+
+Consider setting this in `$profile`, which better matches the default behavior
+of bash:
+```
+Set-PSReadLineOption -EditMode Emacs
+```
+
+[Chocolatey](https://chocolatey.org/install#individual) must be installed for
+the setup instructions above.
+
+C++ build tools must be installed before installing and building plugins. To do
+so, install [VS Build
+Tools](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=buildtools).
+When running the installer,
+* Choose "Visual Studio Build Tools" and make sure "C++ Clang Tools" is checked
+* Add clang location to path, most likely by adding `$env:PATH += ';C:\Program
+  Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\Llvm\x64\bin'`
+  to `$profile`.
 
 ## Keybinds
 
