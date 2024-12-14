@@ -79,6 +79,13 @@ return {
     end
   },
 
+  { -- Treewalker.nvim (navigate between syntax tree elements like functions)
+    "aaronik/treewalker.nvim",
+    opts = {
+      highlight = false
+    }
+  },
+
   { -- Faster.nvim (disable features on big files)
     'pteroctopus/faster.nvim',
     config = function()

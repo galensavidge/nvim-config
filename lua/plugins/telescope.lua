@@ -6,7 +6,7 @@ vim.keymap.set('n', '<leader>;', function()
   require('telescope').extensions.smart_open.smart_open()
 end, { silent = true, desc = 'Search file names' })
 
-vim.keymap.set('n', '<A-p>', ':Telescope resume<CR>',
+vim.keymap.set('n', '<leader>R', ':Telescope resume<CR>',
   { silent = true, desc = 'Resume last used telescope picker' })
 
 vim.keymap.set('n', '<leader>f', ':Telescope live_grep theme=ivy<CR>',
@@ -24,12 +24,12 @@ vim.keymap.set('n', '<leader>km', ':Telescope keymaps theme=ivy<CR>',
 vim.keymap.set('n', '<leader>h', ':Telescope help_tags<CR>',
   { silent = true, desc = 'Search help tags' })
 
-vim.keymap.set('n', '<leader>z', function()
-  local ts = require('telescope.builtin')
-  local themes = require('telescope.themes')
-
-  ts.spell_suggest(themes.get_cursor({}))
-end, { desc = 'Search speling suggestions' })
+vim.keymap.set('n', '<leader>z',
+  function()
+    local ts = require('telescope.builtin')
+    local themes = require('telescope.themes')
+    ts.spell_suggest(themes.get_cursor({}))
+  end, { desc = 'Search speling suggestions' })
 
 vim.keymap.set('n', '<leader>u',
   function()
@@ -37,8 +37,8 @@ vim.keymap.set('n', '<leader>u',
     require('telescope').extensions.undo.undo(themes.get_dropdown({}))
   end, { desc = 'Search undo tree' })
 
-vim.keymap.set('n', '<leader>e', ':Telescope diagnostics<CR>',
-  { silent = true, desc = 'Search diagnostics' })
+-- vim.keymap.set('n', '<leader>e', ':Telescope diagnostics<CR>',
+--   { silent = true, desc = 'Search diagnostics' })
 
 vim.keymap.set('n', '<leader>gb', ':Telescope git_branches theme=dropdown<CR>',
   { silent = true, desc = 'Search git banches' })
@@ -46,10 +46,10 @@ vim.keymap.set('n', '<leader>gb', ':Telescope git_branches theme=dropdown<CR>',
 vim.keymap.set('n', '<leader>gc', ':Telescope git_bcommits<CR>',
   { silent = true, desc = 'Show commit history for current buffer' })
 
-vim.keymap.set('n', '<leader>S',
-  function()
-    require('auto-session.session-lens').search_session()
-  end, { desc = 'Search sessions' })
+-- vim.keymap.set('n', '<leader>S',
+--   function()
+--     require('auto-session.session-lens').search_session()
+--   end, { desc = 'Search sessions' })
 
 vim.keymap.set('n', '<leader>ts', ':Telescope builtin theme=get_ivy<CR>',
   { silent = true, desc = 'Search Telescope pickers' })

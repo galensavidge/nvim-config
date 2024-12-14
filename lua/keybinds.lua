@@ -14,6 +14,12 @@ vim.keymap.set({ 'n', 'o' }, 'gS', function()
   require('leap.remote').action()
 end)
 
+-- Syntax tree walking motions
+vim.keymap.set({ 'n', 'x' }, 'gj', ':Treewalker Down<CR>', { silent = true })
+vim.keymap.set({ 'n', 'x' }, 'gk', ':Treewalker Up<CR>', { silent = true })
+vim.keymap.set({ 'n', 'x' }, 'gh', ':Treewalker Left<CR>', { silent = true })
+vim.keymap.set({ 'n', 'x' }, 'gl', ':Treewalker Right<CR>', { silent = true })
+
 -- Keep automatically inserted indentation when switching back to normal mode
 vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })
 vim.keymap.set('n', 'O', 'Ox<backspace>', { silent = true })
@@ -108,19 +114,13 @@ vim.keymap.set('n', '<A-c>', ':tabclose<cr>', {
   silent = true,
   desc = 'Close tab'
 })
-vim.keymap.set('n', 'gl', ':tabnext<cr>', {
+vim.keymap.set('n', 'gt', ':tabnext<cr>', {
   silent = true,
   desc = 'Next tab'
 })
-vim.keymap.set('n', 'gh', ':tabprevious<cr>', {
+vim.keymap.set('n', 'gT', ':tabprevious<cr>', {
   silent = true,
   desc = 'Next tab'
-})
-vim.keymap.set('n', 'gt', '', {
-  desc = 'Old next tab'
-})
-vim.keymap.set('n', 'gT', '', {
-  desc = 'Old previous tab'
 })
 
 -- Cut keybinds
@@ -149,19 +149,30 @@ end, {
   desc = 'Toggle quickfix',
 })
 
--- Terminal mode keybinds
-vim.keymap.set('n', '<leader>T', ':tabnew | term<CR>', { silent = true })
-vim.keymap.set('n', '<leader>t', ':term<CR>', { silent = true })
+-- Terminal related keybinds
+vim.keymap.set('n', '<leader>T', ':split | term<CR>', {
+  silent = true,
+  desc = 'Open terminal in split'
+})
+vim.keymap.set('n', '<leader>t', ':term<CR>', {
+  silent = true,
+  desc = 'Open terminal'
+})
 vim.keymap.set('t', '<esc>', '<C-\\><C-n>')
 
 -- File search and replace
-vim.keymap.set('n', '<leader>re', ':GrugFar<CR>',
+vim.keymap.set('n', '<leader>re', function()
+    require('grug-far').open({
+      windowCreationCommand = 'split',
+      transient = true,
+    })
+  end,
   { silent = true, desc = 'Toggle Grug-Far (search and replace)' })
 
 -- Git integration
 vim.keymap.set('n', '<leader>go', function()
   vim.cmd('tabl')
-  require('neogit').open()
+  require('neogit').open({ kind = 'replace' })
 end, { silent = true, desc = 'Open git UI page' })
 
 vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', {
@@ -197,24 +208,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
       { buffer = ev.buf, silent = true, desc = 'LSP go to implementation' })
     vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help,
       { buffer = ev.buf, silent = true, desc = 'LSP signature help' })
-    vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
-      { buffer = ev.buf, silent = true, desc = 'LSP add workspace folder' })
-    vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,
-      { buffer = ev.buf, silent = true, desc = 'LSP remove workspace folder' })
-    vim.keymap.set('n', '<leader>wl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, { buffer = ev.buf, silent = true, desc = 'LSP list workspace folders' })
-    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition,
-      { buffer = ev.buf, silent = true, desc = 'LSP go to type definition' })
+    -- vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
+    --   { buffer = ev.buf, silent = true, desc = 'LSP add workspace folder' })
+    -- vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,
+    --   { buffer = ev.buf, silent = true, desc = 'LSP remove workspace folder' })
+    -- vim.keymap.set('n', '<leader>wl', function()
+    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    -- end, { buffer = ev.buf, silent = true, desc = 'LSP list workspace folders' })
+    -- vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition,
+    --   { buffer = ev.buf, silent = true, desc = 'LSP go to type definition' })
     vim.keymap.set('n', '<leader>rn', function()
         require('live-rename').rename()
       end,
       { silent = true, desc = 'Rename LSP symbol' })
-    vim.keymap.set('n', '<leader>R', function()
-        require('live-rename').rename({ text = "", insert = true })
-      end,
-      { silent = true, desc = 'Rename LSP symbol' })
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action,
+    -- vim.keymap.set('n', '<leader>R', function()
+    --     require('live-rename').rename({ text = "", insert = true })
+    --   end,
+    --   { silent = true, desc = 'Rename LSP symbol' })
+    vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action,
       { buffer = ev.buf, silent = true, desc = 'LSP execute code action' })
     vim.keymap.set('n', 'gr', vim.lsp.buf.references,
       { buffer = ev.buf, silent = true, desc = 'LSP go to references' })
