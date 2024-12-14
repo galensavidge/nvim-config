@@ -27,6 +27,9 @@ opt.relativenumber = true
 opt.scrolloff = 5
 opt.selection = 'old'
 opt.sessionoptions = 'blank,buffers,curdir,help,tabpages,winsize,winpos,terminal,localoptions'
+if vim.fn.has('windows') then
+  opt.shell = '\"C:/Program Files/PowerShell/7/pwsh.exe\"'
+end
 opt.shiftround = true
 opt.shiftwidth = 0 -- Use value of tabstop
 opt.showmode = false

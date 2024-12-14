@@ -2,9 +2,14 @@
 -- Includes fuzzy finders for a variety of different things.
 
 -- Set keybinds
-vim.keymap.set('n', '<leader>;', function()
-  require('telescope').extensions.smart_open.smart_open()
-end, { silent = true, desc = 'Search file names' })
+if vim.fn.has('windows') then
+  vim.keymap.set('n', '<leader>;', ':Telescope find_files<CR>',
+  { silent = true, desc = 'Search file names' })
+else
+  vim.keymap.set('n', '<leader>;', function()
+    require('telescope').extensions.smart_open.smart_open()
+  end, { silent = true, desc = 'Search file names' })
+end
 
 vim.keymap.set('n', '<leader>R', ':Telescope resume<CR>',
   { silent = true, desc = 'Resume last used telescope picker' })
@@ -123,7 +128,11 @@ return {
     branch = '0.2.x',
     lazy = true,
     config = function()
-      require('telescope').load_extension('smart_open')
+      if vim.fn.has('windows') then
+        -- vim.g.sqlite_clib_path = 'sqlite3/sqlite3.dll'
+      else
+        require('telescope').load_extension('smart_open')
+      end
     end,
     dependencies = { 'kkharji/sqlite.lua', },
   },
