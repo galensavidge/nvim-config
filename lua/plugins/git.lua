@@ -9,13 +9,13 @@ return {
       local gs = require('gitsigns')
       vim.keymap.set('n', ']c', function()
         if vim.wo.diff then return ']c' end
-          vim.schedule(function() gs.next_hunk() end)
+        vim.schedule(function() gs.next_hunk() end)
         return '<Ignore>'
       end, { expr = true, desc = 'Next git hunk' })
 
       vim.keymap.set('n', '[c', function()
         if vim.wo.diff then return '[c' end
-          vim.schedule(function() gs.prev_hunk() end)
+        vim.schedule(function() gs.prev_hunk() end)
         return '<Ignore>'
       end, { expr = true, desc = 'Previous git hunk' })
 
@@ -24,10 +24,10 @@ return {
       vim.keymap.set('n', '<leader>hr', gs.reset_hunk,
         { desc = 'Reset git hunk' })
       vim.keymap.set('v', '<leader>hs', function()
-        gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')}
+        gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') }
       end, { desc = 'Stage git hunk' })
       vim.keymap.set('v', '<leader>hr', function()
-        gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')}
+        gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') }
       end, { desc = 'Reset git hunk' })
       vim.keymap.set('n', '<leader>hS', gs.stage_buffer,
         { desc = 'Stage all git hunks in buffer' })
@@ -37,14 +37,14 @@ return {
         { desc = 'Reset all git hunks in buffer' })
       vim.keymap.set('n', '<leader>hp', gs.preview_hunk,
         { desc = 'Preview git hunk' })
-      vim.keymap.set('n', '<leader>hb', function() gs.blame_line{full=true} end,
+      vim.keymap.set('n', '<leader>hb', function() gs.blame_line { full = true } end,
         { desc = 'Open git blame for current line' })
       vim.keymap.set('n', '<leader>tb', gs.toggle_current_line_blame,
         { desc = 'Toggle git blame' })
       vim.keymap.set('n', '<leader>td', gs.toggle_deleted,
         { desc = 'Toggle deleted lines in git hunks' })
-      vim.keymap.set({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>',
-          { silent = true, desc = 'Select hunk motion'})
+      vim.keymap.set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>',
+        { silent = true, desc = 'Select hunk motion' })
     end,
   },
 
@@ -57,9 +57,37 @@ return {
     },
     lazy = true,
     config = {
-      integrations = {
-      telescope = true,
-      diffview = true,
+      -- integrations = {
+      --   telescope = true,
+      --   diffview = true,
+      -- },
+      kind = 'replace',
+      commit_editor = {
+        kind = 'replace',
+        show_staged_diff = true,
+        -- Accepted values:
+        -- 'split' to show the staged diff below the commit editor
+        -- 'vsplit' to show it to the right
+        -- 'split_above' Like :top split
+        -- 'vsplit_left' like :vsplit, but open to the left
+        -- 'auto' 'vsplit' if window would have 80 cols, otherwise 'split'
+        staged_diff_split_kind = 'split',
+        spell_check = true,
+      },
+      commit_select_view = {
+        kind = 'replace',
+      },
+      log_view = {
+        kind = 'replace',
+      },
+      reflog_view = {
+        kind = 'replace',
+      },
+      stash = {
+        kind = 'replace',
+      },
+      refs_view = {
+        kind = 'replace',
       },
     },
     cmd = 'Neogit',
