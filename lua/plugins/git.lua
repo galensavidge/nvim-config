@@ -61,9 +61,9 @@ return {
       --   telescope = true,
       --   diffview = true,
       -- },
-      kind = 'replace',
+      kind = 'split',
       commit_editor = {
-        kind = 'replace',
+        kind = 'floating',
         show_staged_diff = true,
         -- Accepted values:
         -- 'split' to show the staged diff below the commit editor
@@ -75,19 +75,19 @@ return {
         spell_check = true,
       },
       commit_select_view = {
-        kind = 'replace',
+        kind = 'floating',
       },
       log_view = {
-        kind = 'replace',
+        kind = 'split',
       },
       reflog_view = {
-        kind = 'replace',
+        kind = 'split',
       },
       stash = {
-        kind = 'replace',
+        kind = 'floating',
       },
       refs_view = {
-        kind = 'replace',
+        kind = 'split',
       },
     },
     cmd = 'Neogit',
