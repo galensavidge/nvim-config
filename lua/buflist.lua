@@ -32,7 +32,7 @@ function M.open_buf_picker()
   end
 
   local function display(item)
-    return item.name .. ' -- ' .. vim.fs.dirname(item.path)
+    return item.name .. ' — ' .. vim.fs.dirname(item.path)
   end
 
   local opts = { prompt = 'Buffers', format_item = display }

@@ -160,8 +160,8 @@ vim.keymap.set('n', '<leader>t', ':term<CR>', {
 })
 vim.keymap.set('t', '<esc>', '<C-\\><C-n>')
 
--- File search and replace
-vim.keymap.set('n', '<leader>re', function()
+-- Project wide search and replace
+vim.keymap.set({ 'n', 'x' }, '<leader>re', function()
     require('grug-far').open({
       windowCreationCommand = 'split',
       transient = true,
