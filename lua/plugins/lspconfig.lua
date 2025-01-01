@@ -3,11 +3,10 @@
 return {
   { -- Lspconfig
     'neovim/nvim-lspconfig',
+    dependencies = { 'saghen/blink.cmp' },
     config = function()
       local lsp = require('lspconfig')
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities,
-        require('cmp_nvim_lsp').default_capabilities())
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       -- Set up lua-lanaguage-server
       require('lspconfig').lua_ls.setup({
@@ -88,9 +87,9 @@ return {
       always_trigger = true,
       floating_window = false, -- Enable floating window
       floating_window_above_cur_line = false,
-      max_height = 8,         -- Max height of signature floating window
+      max_height = 8,          -- Max height of signature floating window
       floating_window_off_y = 0,
-      hint_enable = false, -- Disable virtual text
+      hint_enable = false,     -- Disable virtual text
       hint_prefix = {
         above = '↙ ',
         current = '← ',
