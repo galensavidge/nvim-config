@@ -1,4 +1,3 @@
-
 local current_signature = function()
   if not pcall(require, 'lsp_signature') then return end
   local sig = require("lsp_signature").status_line(vim.o.columns * 2 / 3)
@@ -15,7 +14,7 @@ return {
     priority = 1000,
     config = function()
       require('kanagawa').setup({
-        compile = true,  -- enable compiling the colorscheme
+        compile = true,   -- enable compiling the colorscheme
         undercurl = true, -- enable undercurls
         commentStyle = { italic = true },
         functionStyle = {},
@@ -79,7 +78,7 @@ return {
           overlap = { borders = true, winbar = true },
           zindex = 10,
         },
-        hide = { only_win = true, },
+        hide = { only_win = false, },
         render = function(props)
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
           if filename == '' then
@@ -95,9 +94,8 @@ return {
             guibg = '#16161d',
           }
         end,
-
       }
-    end
+    end,
   },
 
   { -- Tabline (tab line)

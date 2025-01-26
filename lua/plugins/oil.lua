@@ -8,12 +8,15 @@ return {
     config = function()
       require('oil').setup({
         columns = {
-          'icon',
           -- 'permissions',
           'size',
           'mtime',
+          'icon',
         },
-        watch_for_changes = false,
+        win_options = {
+          signcolumn = "yes:2",
+        },
+        watch_for_changes = true,
         skip_confirm_for_simple_edits = true,
         use_default_keymaps = false,
         keymaps = {
@@ -83,5 +86,14 @@ return {
         },
       })
     end,
+  },
+  {
+    "refractalize/oil-git-status.nvim",
+
+    dependencies = {
+      "stevearc/oil.nvim",
+    },
+
+    config = true,
   },
 }
