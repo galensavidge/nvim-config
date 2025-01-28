@@ -14,12 +14,6 @@ vim.keymap.set({ 'n', 'o' }, 'gS', function()
   require('leap.remote').action()
 end)
 
--- Syntax tree walking motions
-vim.keymap.set({ 'n', 'x' }, 'gj', ':Treewalker Down<CR>', { silent = true })
-vim.keymap.set({ 'n', 'x' }, 'gk', ':Treewalker Up<CR>', { silent = true })
-vim.keymap.set({ 'n', 'x' }, 'gh', ':Treewalker Left<CR>', { silent = true })
-vim.keymap.set({ 'n', 'x' }, 'gl', ':Treewalker Right<CR>', { silent = true })
-
 -- Keep automatically inserted indentation when switching back to normal mode
 vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })
 vim.keymap.set('n', 'O', 'Ox<backspace>', { silent = true })

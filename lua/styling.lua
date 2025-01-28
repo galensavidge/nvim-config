@@ -13,7 +13,7 @@ vim.api.nvim_set_hl(0, 'Todo', { link = 'Label', force = true })
 vim.api.nvim_set_hl(0, 'Done', { link = 'Character', force = true })
 
 -- LSP highlight groups
-local lsp_ref = { link = 'Search', force = true }
+local lsp_ref = { link = 'Visual', force = true }
 vim.api.nvim_set_hl(0, 'LspReferenceWrite', lsp_ref)
 vim.api.nvim_set_hl(0, 'LspReferenceRead', lsp_ref)
 vim.api.nvim_set_hl(0, 'LspReferenceText', lsp_ref)
