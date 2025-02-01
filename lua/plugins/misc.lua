@@ -107,6 +107,15 @@ return {
             S = false,
           },
         },
+        feedkeys_delay = 1000, use_up_down_arrows = function()
+          -- Enable up/down arrows for ipython
+          local line = vim.fn.getline(vim.fn.line '.')
+          if line:find(']:', 1, true) or line:find('...:', 1, true) then
+            return true
+          else
+            return false
+          end
+        end,
       })
     end,
   },
