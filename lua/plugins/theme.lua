@@ -52,8 +52,8 @@ return {
     'b0o/incline.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      local helpers = require 'incline.helpers'
-      local devicons = require 'nvim-web-devicons'
+      local helpers = require('incline.helpers')
+      local devicons = require('nvim-web-devicons')
       require('incline').setup {
         window = {
           padding = 0,
@@ -74,7 +74,7 @@ return {
             ' ',
             { filename, gui = modified and 'italic' or '' },
             ' ',
-            guibg = '#16161d',
+            guibg = '#484d67',
           }
         end,
       }
