@@ -301,8 +301,6 @@ vim.keymap.set('n', '<leader>nf', function()
 
   path = vim.fn.expand(path)
 
-  print(path)
-
   vim.cmd('! mkdir -p "$(dirname "' .. path .. '")" && touch "' .. path .. '"')
   vim.cmd('e ' .. path)
 end, { silent = true, desc = 'Create new file from path under cursor' })

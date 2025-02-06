@@ -9,12 +9,19 @@ local current_signature = function()
 end
 
 return {
-  { -- Oxocarbon (color scheme)
-     'nyoom-engineering/oxocarbon.nvim',
+  { -- Ef-themes (color scheme)
+    'oonamo/ef-themes.nvim',
     priority = 1000,
     config = function()
-      vim.opt.background = "dark"
-      vim.cmd('colorscheme oxocarbon')
+      require('ef-themes').setup({
+        dark = 'ef-tint',
+        modules = {
+          blink = true,
+          telescope = true,
+        },
+      })
+      vim.opt.background = 'dark'
+      vim.cmd('colorscheme ef-tint')
     end
   },
 
@@ -35,7 +42,7 @@ return {
           lualine_z = { 'progress', 'location' }
         },
 
-        options = { theme = 'oxocarbon', globalstatus = true },
+        options = { theme = 'ef-tint', globalstatus = true },
         extensions = { 'quickfix', 'oil', 'nvim-dap-ui' },
       })
     end,
