@@ -79,7 +79,7 @@ return {
     end
   },
 
-  { -- Fastergnvim (disable features on big files)
+  { -- Faster.nvim (disable features on big files)
     'pteroctopus/faster.nvim',
     config = function()
       require('faster').setup({})
@@ -107,7 +107,8 @@ return {
             S = false,
           },
         },
-        feedkeys_delay = 1000, use_up_down_arrows = function()
+        feedkeys_delay = 1000,
+        use_up_down_arrows = function()
           -- Enable up/down arrows for ipython
           local line = vim.fn.getline(vim.fn.line '.')
           if line:find(']:', 1, true) or line:find('...:', 1, true) then
@@ -116,6 +117,18 @@ return {
             return false
           end
         end,
+      })
+    end,
+  },
+
+  {
+    'Wansmer/treesj',
+    lazy = true,
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      local lang_utils = require('treesj.langs.utils')
+      require('treesj').setup({
+        use_default_keymaps = false,
       })
     end,
   },

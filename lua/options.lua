@@ -7,6 +7,7 @@ opt.breakindent = true
 opt.breakindentopt = 'shift:2'
 opt.clipboard = 'unnamedplus' -- Use system clipboard by default
 opt.colorcolumn = '80'
+opt.diffopt = 'internal,filler,closeoff,linematch:60'
 opt.expandtab = true
 opt.foldcolumn = '0' -- Set to '1' to show folds by the number column.
 opt.foldenable = true

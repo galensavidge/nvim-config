@@ -140,7 +140,7 @@ end, { desc = 'Open clipboard history' })
 vim.keymap.set('n', '<leader>q', function()
   require('quicker').toggle()
 end, {
-  desc = 'Toggle quickfix',
+  desc = 'Toggle quickfix list',
 })
 
 -- Terminal related keybinds
@@ -319,3 +319,8 @@ end, { desc = 'Jump to next placeholder in annotation' })
 vim.keymap.set('i', '<C-h>', function()
   require('neogen').jump_prev()
 end, { desc = 'Jump to previous placeholder in annotation' })
+
+-- Toggle joining lines
+vim.keymap.set({ 'n', 'x' }, '<leader>j', function()
+  require('treesj').toggle()
+end, { desc = 'Toggle joining lines' })
