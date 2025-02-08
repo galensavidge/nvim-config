@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
--- Use Matlb syntax for GMAT files
+-- Use Matlab syntax for GMAT files
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
   pattern = { '*.script', '*.gmf' },
   callback = function(ev)

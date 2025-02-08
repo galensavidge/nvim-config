@@ -14,6 +14,13 @@ vim.keymap.set({ 'n', 'o' }, 'gS', function()
   require('leap.remote').action()
 end)
 
+-- -- Undo inside visual selection only
+-- vim.keymap.set({ 'v' }, 'u', function()
+--   require('select-undo').undo_selection('partial')
+-- end, { desc = 'Undo within visual selection' })
+-- vim.keymap.set({ 'x' }, 'gu', 'u', { silent = true })
+-- vim.keymap.set({ 'x' }, 'gU', 'U', { silent = true })
+
 -- Keep automatically inserted indentation when switching back to normal mode
 vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })
 vim.keymap.set('n', 'O', 'Ox<backspace>', { silent = true })
@@ -321,4 +328,4 @@ end, { desc = 'Jump to previous placeholder in annotation' })
 -- Toggle joining lines
 vim.keymap.set({ 'n', 'x' }, '<leader>j', function()
   require('treesj').toggle()
-end, { desc = 'Toggle joining lines' })
+end, { desc = 'Toggle splitting/joining lines by delimiter' })

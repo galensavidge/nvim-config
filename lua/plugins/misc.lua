@@ -121,7 +121,7 @@ return {
     end,
   },
 
-  {
+  { -- Treesj (add annotations like docstrings based on treesitter context)
     'Wansmer/treesj',
     lazy = true,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -132,4 +132,14 @@ return {
       })
     end,
   },
+  --
+  -- {
+  --   'SunnyTamang/select-undo.nvim',
+  --   config = function()
+  --     require('select-undo').setup({
+  --       persistent_undo = false, -- Disable persistent undo history
+  --       mapping = false,         -- Disable default keybindings
+  --     })
+  --   end,
+  -- },
 }

@@ -37,10 +37,12 @@ return {
         { desc = 'Reset all git hunks in buffer' })
       vim.keymap.set('n', '<leader>hp', gs.preview_hunk,
         { desc = 'Preview git hunk' })
-      vim.keymap.set('n', '<leader>hb', function() gs.blame_line { full = true } end,
+      vim.keymap.set('n', '<leader>hb', function()
+          gs.blame_line({ full = true })
+        end,
         { desc = 'Open git blame for current line' })
-      vim.keymap.set('n', '<leader>tb', gs.toggle_current_line_blame,
-        { desc = 'Toggle git blame' })
+      vim.keymap.set('n', '<leader>gB', gs.blame,
+        { desc = 'Open git blame' })
       vim.keymap.set('n', '<leader>td', gs.toggle_deleted,
         { desc = 'Toggle deleted lines in git hunks' })
       vim.keymap.set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>',
