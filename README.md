@@ -143,7 +143,7 @@ When running the installer,
 | Normal    | `<space>;`      | Fuzzy search files                            |
 | Normal    | `<space>f`      | Grep for text in files                        |
 | Normal    | `<space>w`      | Grep list of occurrences of word under cursor |
-| Normal    | `<space>`       | Open/close file browser                       |
+| Normal    | `,`             | Open/close file browser                       |
 | Normal    | `<space>z`      | Fuzzy search spelling suggestions             |
 | Normal    | `<space>b`      | Fuzzy search buffers                          |
 | Normal    | `<space>h`      | Fuzzy search help tags                        |
