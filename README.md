@@ -5,10 +5,10 @@ My personal neovim configuration.
 1. Install neovim:
 ```bash
 # Linux
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-sudo rm -rf /opt/nvim-linux64
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin
 ```
 On Windows, run the MSI installer from the [latest
 release.](https://github.com/neovim/neovim/releases/latest/download/nvim-win64.msi).
@@ -37,12 +37,13 @@ choco install make cmake ripgrep
 
 4. Set up language servers:
 ```bash
-winget install pip  # Windows
+winget install pip  # Windows only
 pip3 install pyright ruff
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
 ```
-(Optional) Install Julia:
+(Optional) Install the Julia language server:
 ```bash
+# Install Julia
 curl -fsSL https://install.julialang.org | sh  # Linux
 winget install julia -s msstore  # Windows
 ```
