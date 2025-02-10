@@ -65,6 +65,11 @@ tar -xvf ltex-ls-16.0.0-linux-x64.tar.gz -C ~/bin
 rm ltex-ls-16.0.0-linux-x64.tar.gz
 sudo ln -s ~/bin/ltex-ls-16.0.0/bin/ltex-ls /usr/local/bin
 ```
+(Optional) Install the markdown language server:
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  # Install rust
+cargo install iwes
+```
 
 5. Place the following lines in `~./bashrc`:
 ```bash
