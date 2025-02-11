@@ -150,6 +150,16 @@ end, {
   desc = 'Toggle quickfix list',
 })
 
+-- Cycle through quickfix list items
+vim.keymap.set('n', ']q', ':cn<CR>', {
+  silent = true,
+  desc = 'Jump to next quickfix item',
+})
+vim.keymap.set('n', '[q', ':cp<CR>', {
+  silent = true,
+  desc = 'Jump to previous quickfix item',
+})
+
 -- Terminal related keybinds
 vim.keymap.set('n', '<leader>T', ':split | term<CR>', {
   silent = true,
@@ -185,7 +195,7 @@ vim.keymap.set('n', '<leader>gu', ':DiffviewOpen @{upstream}...HEAD<CR>', {
   silent = true,
   desc = 'Open git diff against upstream (branch point)'
 })
-vim.keymap.set('n', '<leader>gf', ':DiffviewFileHistory<CR>', {
+vim.keymap.set('n', '<leader>gf', ':DiffviewFileHistory %<CR>', {
   silent = true,
   desc = 'Open git diff view for history of file in current buffer'
 })
@@ -200,10 +210,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
-      { buffer = ev.buf, silent = true, desc = 'LSP go to declaration' })
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
       { buffer = ev.buf, silent = true, desc = 'LSP go to definition' })
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
+      { buffer = ev.buf, silent = true, desc = 'LSP go to declaration' })
     vim.keymap.set('n', 'K', vim.lsp.buf.hover,
       { buffer = ev.buf, silent = true, desc = 'LSP hover symbol' })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
@@ -223,10 +233,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
         require('live-rename').rename()
       end,
       { silent = true, desc = 'Rename LSP symbol' })
-    -- vim.keymap.set('n', '<leader>R', function()
-    --     require('live-rename').rename({ text = "", insert = true })
-    --   end,
-    --   { silent = true, desc = 'Rename LSP symbol' })
+    vim.keymap.set('n', '<leader>R', function()
+        require('live-rename').rename({ text = "", insert = true })
+      end,
+      { silent = true, desc = 'Rename LSP symbol, erasing the current name' })
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action,
       { buffer = ev.buf, silent = true, desc = 'LSP execute code action' })
     vim.keymap.set('n', 'gr', vim.lsp.buf.references,
@@ -234,7 +244,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>l', function()
       vim.lsp.buf.format { async = true }
     end, { buffer = ev.buf, silent = true, desc = 'LSP format buffer' })
-    vim.keymap.set('n', '<leader>s',
+    vim.keymap.set('n', '<leader>ss',
       ':Telescope lsp_dynamic_workspace_symbols theme=ivy<CR>',
       { buffer = ev.buf, silent = true, desc = 'Search LSP symbols' })
     vim.keymap.set('n', '[e', vim.diagnostic.goto_prev,

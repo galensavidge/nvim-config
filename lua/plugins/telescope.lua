@@ -4,30 +4,38 @@
 -- Set keybinds
 if vim.fn.has('windows') and not vim.fn.has('linux') then
   vim.keymap.set('n', '<leader>;', ':Telescope find_files<CR>',
-  { silent = true, desc = 'Search file names' })
+    { silent = true, desc = 'Search file names' })
 else
   vim.keymap.set('n', '<leader>;', function()
     require('telescope').extensions.smart_open.smart_open()
   end, { silent = true, desc = 'Search file names' })
 end
 
-vim.keymap.set('n', '<leader>R', ':Telescope resume<CR>',
-  { silent = true, desc = 'Resume last used telescope picker' })
+vim.keymap.set('n', '<leader>sR', ':Telescope resume<CR>', {
+  silent = true,
+  desc = 'Search resume (resume last used telescope picker)',
+})
 
-vim.keymap.set('n', '<leader>f', ':Telescope live_grep theme=ivy<CR>',
+vim.keymap.set('n', '<leader>gg', ':Telescope live_grep theme=ivy<CR>',
   { silent = true, desc = 'Search for text in files' })
 
-vim.keymap.set('n', '<leader>w', ':Telescope grep_string theme=ivy<CR>',
+vim.keymap.set('n', '<leader>gw', ':Telescope grep_string theme=ivy<CR>',
   { silent = true, desc = 'Grep word under cursor' })
 
-vim.keymap.set('n', '<leader>b', ':Telescope buffers theme=dropdown<CR>',
+vim.keymap.set('n', '<leader>sb', ':Telescope buffers theme=dropdown<CR>',
   { silent = true, desc = 'Search buffers' })
 
-vim.keymap.set('n', '<leader>km', ':Telescope keymaps theme=ivy<CR>',
+vim.keymap.set('n', '<leader>sk', ':Telescope keymaps theme=ivy<CR>',
   { silent = true, desc = 'Search keymaps' })
 
-vim.keymap.set('n', '<leader>h', ':Telescope help_tags<CR>',
+vim.keymap.set('n', '<leader>sh', ':Telescope help_tags<CR>',
   { silent = true, desc = 'Search help tags' })
+
+vim.keymap.set('n', '<leader>si', ':Telescope hierarchy incoming_calls<CR>',
+  { silent = true, desc = 'Search incoming calls' })
+
+vim.keymap.set('n', '<leader>so', ':Telescope hierarchy outgoing_calls<CR>',
+  { silent = true, desc = 'Search outgoing calls' })
 
 vim.keymap.set('n', '<leader>z',
   function()
@@ -42,21 +50,13 @@ vim.keymap.set('n', '<leader>u',
     require('telescope').extensions.undo.undo(themes.get_dropdown({}))
   end, { desc = 'Search undo tree' })
 
--- vim.keymap.set('n', '<leader>e', ':Telescope diagnostics<CR>',
---   { silent = true, desc = 'Search diagnostics' })
-
 vim.keymap.set('n', '<leader>gb', ':Telescope git_branches theme=dropdown<CR>',
   { silent = true, desc = 'Search git banches' })
 
 vim.keymap.set('n', '<leader>gc', ':Telescope git_bcommits<CR>',
   { silent = true, desc = 'Show commit history for current buffer' })
 
--- vim.keymap.set('n', '<leader>S',
---   function()
---     require('auto-session.session-lens').search_session()
---   end, { desc = 'Search sessions' })
-
-vim.keymap.set('n', '<leader>ts', ':Telescope builtin theme=get_ivy<CR>',
+vim.keymap.set('n', '<leader>st', ':Telescope builtin theme=get_ivy<CR>',
   { silent = true, desc = 'Search Telescope pickers' })
 
 return {
@@ -74,6 +74,9 @@ return {
 
       -- Undo tree
       require('telescope').load_extension('undo')
+
+      -- LSP call hierarchy
+      require("telescope").load_extension("hierarchy")
 
       local actions = require('telescope.actions')
       require('telescope').setup({
@@ -123,7 +126,7 @@ return {
     dependencies = { 'nvim-telescope/telescope.nvim' },
   },
 
-  { -- Smart-open (
+  { -- Smart-open (file search that learns your browsing habits)
     'danielfalk/smart-open.nvim',
     branch = '0.2.x',
     lazy = true,
@@ -141,5 +144,16 @@ return {
     'debugloop/telescope-undo.nvim',
     lazy = true,
     dependencies = { 'nvim-telescope/telescope.nvim' },
+  },
+
+  { -- Telescope-hierarchy (LSP call hierarchy)
+    'jmacadie/telescope-hierarchy.nvim',
+    lazy = true,
+    dependencies = {
+      {
+        'nvim-telescope/telescope.nvim',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+      },
+    },
   },
 }
