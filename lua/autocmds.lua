@@ -10,6 +10,13 @@ local function contains(table, element)
   return false
 end
 
+-- Overwrite formatting options for all languages
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
+  callback = function()
+    vim.opt.formatoptions = 'cqjanl'
+  end,
+})
+
 -- Request treesitter parser to update the syntax tree on text change
 vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave' }, {
   callback = function()
