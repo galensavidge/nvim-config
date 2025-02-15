@@ -10,8 +10,10 @@ local function contains(table, element)
   return false
 end
 
--- Overwrite formatting options for all languages
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
+-- Overwrite formatting options for all programming languages, plus markdown
+-- and RST
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'python', 'julia', 'c', 'h', 'cpp', 'markdown', 'rst' },
   callback = function()
     vim.opt.formatoptions = 'cqjanl'
   end,
