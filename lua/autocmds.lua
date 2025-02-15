@@ -198,3 +198,12 @@ vim.api.nvim_create_autocmd({ 'TermOpen', },
         { buffer = ev.buf, silent = true, desc = 'Quit terminal' })
     end,
   })
+
+-- Make <esc> close the command-line window
+vim.api.nvim_create_autocmd({ 'CmdWinEnter', },
+  {
+    callback = function(ev)
+      vim.keymap.set({ 'n' }, '<esc>', ':exit<CR>',
+        { buffer = ev.buf, silent = true, desc = 'Close command-line window' })
+    end,
+  })

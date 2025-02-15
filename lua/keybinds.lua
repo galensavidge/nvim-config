@@ -138,6 +138,17 @@ vim.keymap.set({ 'n', 'x' }, 'c', '"0c', { desc = 'Change' })
 vim.keymap.set('n', 'dd', '"0dd', { desc = 'Delete line' })
 vim.keymap.set('n', 'D', '"0D', { desc = 'Delete to end of line' })
 
+-- Open command mode editor window
+vim.keymap.set({ 'n', 'x' }, '<leader>:', 'q:', {
+  desc = 'Open command mode editor window',
+})
+vim.keymap.set({ 'n', 'x' }, '<leader>/', 'q/', {
+  desc = 'Open command mode editor window',
+})
+vim.keymap.set({ 'n', 'x' }, '<leader>?', 'q?', {
+  desc = 'Open command mode editor window',
+})
+
 -- Open clipboard history
 vim.keymap.set('n', '<leader>p', function()
   require('lazyclip').show_clipboard()
