@@ -181,6 +181,15 @@ When running the installer,
 | Normal    | `<space>q`      | Toggle quickfix list                          |
 | Normal    | `{[/]}q`        | Jump to {previous/next} quickfix list item    |
 
+### Command-Line Window
+
+| Mode      | Keys            | Action                                        |
+| --------- | --------------- | --------------------------------------------- |
+| Normal    | `<space>:`      | Open command-line window                      |
+| Normal    | `<space>/`      | Open command-line window (forward search)     |
+| Normal    | `<space>?`      | Open command-line window (reverse search)     |
+| Normal    | `<esc>`         | Close command-line window                     |
+
 ### Terminal
 
 | Mode      | Keys            | Action                                        |

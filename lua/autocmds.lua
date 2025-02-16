@@ -13,9 +13,9 @@ end
 -- Overwrite formatting options for all programming languages, plus markdown
 -- and RST
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'python', 'julia', 'c', 'h', 'cpp', 'markdown', 'rst' },
+  pattern = { 'lua', 'python', 'julia', 'c', 'h', 'cpp', 'markdown', 'rst' },
   callback = function()
-    vim.opt.formatoptions = 'cqjanl'
+    vim.opt_local.formatoptions = 'cqjnlr'
   end,
 })
 
