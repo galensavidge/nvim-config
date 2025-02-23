@@ -86,11 +86,6 @@ return {
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
 
-      -- By default, we choose providers for the cmdline based on the current
-      -- cmdtype You may disable cmdline completions by replacing this with an
-      -- empty table
-      cmdline = {},
-
       -- Minimum number of characters in the keyword to trigger all providers
       -- May also be `function(ctx: blink.cmp.Context): number`
       min_keyword_length = 0,

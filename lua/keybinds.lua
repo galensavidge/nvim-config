@@ -211,6 +211,17 @@ vim.keymap.set('n', '<leader>gf', ':DiffviewFileHistory %<CR>', {
   desc = 'Open git diff view for history of file in current buffer'
 })
 
+-- Remove the default K binding if no LSP server is attached.
+vim.keymap.set('n', 'K', '<nop>')
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'help ' },
+  callback = function()
+    vim.keymap.set('n', 'gd', 'K',
+      { silent = true, desc = 'Go to help tag' })
+  end
+})
+
 -- Use LspAttach autocommand to only map the following keys after the language
 -- server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
