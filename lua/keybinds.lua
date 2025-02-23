@@ -82,6 +82,24 @@ vim.keymap.set('n', '<A-l>', '<C-w>L', {
   desc = 'Move pane to the right'
 })
 
+-- Resize split panes
+vim.keymap.set({ 'n', 'x' }, '<C-Up>', '<C-w>+', {
+  silent = true,
+  desc = 'Increase size of horizontal split'
+})
+vim.keymap.set({ 'n', 'x' }, '<C-Down>', '<C-w>-', {
+  silent = true,
+  desc = 'Decrease size of horizontal split'
+})
+vim.keymap.set({ 'n', 'x' }, '<C-Left>', '<C-w><', {
+  silent = true,
+  desc = 'Decrease size of vertical split'
+})
+vim.keymap.set({ 'n', 'x' }, '<C-Right>', '<C-w>>', {
+  silent = true,
+  desc = 'Increase size of vertical split'
+})
+
 -- Shortcut for equally splitting window sizes
 vim.keymap.set({ 'n', 'x' }, '<A-=>', '<C-w>=', {
   silent = true,
