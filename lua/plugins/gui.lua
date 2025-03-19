@@ -1,7 +1,7 @@
 local current_signature = function()
   if not pcall(require, 'lsp_signature') then return end
-  local sig = require("lsp_signature").status_line(vim.o.columns * 2 / 3)
-  if vim.fn.mode() == "i" then
+  local sig = require('lsp_signature').status_line(vim.o.columns * 2 / 3)
+  if vim.fn.mode() == 'i' then
     return sig.label
   else
     return ""
@@ -9,20 +9,15 @@ local current_signature = function()
 end
 
 return {
-  { -- Ef-themes (color scheme)
-    'oonamo/ef-themes.nvim',
+  { -- Nightfall (color scheme)
+    '2giosangmitom/nightfall.nvim',
+    lazy = false,
     priority = 1000,
-    config = function()
-      require('ef-themes').setup({
-        dark = 'ef-tint',
-        modules = {
-          blink = true,
-          telescope = true,
-        },
-      })
-      vim.opt.background = 'dark'
-      vim.cmd('colorscheme ef-tint')
-    end
+    opts = {}, -- Add custom configuration here
+    config = function(_, opts)
+      require('nightfall').setup(opts)
+      vim.cmd('colorscheme nightfall') -- Choose from: nightfall, deeper-night, maron, nord
+    end,
   },
 
   { -- Lualine (status line)
@@ -42,7 +37,7 @@ return {
           lualine_z = { 'progress', 'location' }
         },
 
-        options = { theme = 'ef-tint', globalstatus = true },
+        options = { theme = 'nightfall', globalstatus = true },
         extensions = { 'quickfix', 'oil', 'nvim-dap-ui' },
       })
     end,
@@ -61,7 +56,7 @@ return {
           overlap = { borders = true, winbar = true },
           zindex = 10,
         },
-        hide = { only_win = false, },
+        hide = { cursorline = true, },
         render = function(props)
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
           if filename == '' then
