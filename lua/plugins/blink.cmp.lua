@@ -59,6 +59,20 @@ return {
       ['<C-h>'] = { 'snippet_backward', 'fallback' },
     },
 
+    cmdline = {
+      keymap = {
+        ['<CR>'] = { 'accept', 'fallback' },
+
+        ['<Tab>'] = { 'show', 'select_next', 'fallback' },
+        ['<S-Tab>'] = { 'show', 'select_prev', 'fallback' },
+
+        ['<Up>'] = { 'select_prev', 'fallback' },
+        ['<Down>'] = { 'select_next', 'fallback' },
+        ['<C-p>'] = { 'select_prev', 'fallback' },
+        ['<C-n>'] = { 'select_next', 'fallback' },
+      },
+    },
+
     appearance = {
       -- Sets the fallback highlight groups to nvim-cmp's highlight groups
       -- Useful for when your theme doesn't support blink.cmp
@@ -73,11 +87,15 @@ return {
       menu = {
         -- Don't automatically show the completion menu
         auto_show = false,
+        border = 'single',
       },
       documentation = {
         -- Controls whether the documentation window will automatically show
         -- when selecting a completion item
         auto_show = true,
+        window = {
+          border = 'single',
+        },
       },
     },
 
@@ -89,6 +107,16 @@ return {
       -- Minimum number of characters in the keyword to trigger all providers
       -- May also be `function(ctx: blink.cmp.Context): number`
       min_keyword_length = 0,
+
+      providers = {
+        path = {
+          opts = {
+            get_cwd = function(_)
+              return vim.fn.getcwd()
+            end,
+          },
+        },
+      },
     },
   },
   opts_extend = { 'sources.default' }

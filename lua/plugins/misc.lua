@@ -126,7 +126,6 @@ return {
     lazy = true,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
-      local lang_utils = require('treesj.langs.utils')
       require('treesj').setup({
         use_default_keymaps = false,
       })
