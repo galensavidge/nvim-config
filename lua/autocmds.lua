@@ -65,9 +65,22 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
   end,
 })
 
--- Set spell check
+-- Set spll check
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'html', 'markdown', 'text', 'rst', 'gitcommit' },
+  pattern = {
+    'html',
+    'markdown',
+    'text',
+    'rst',
+    'gitcommit',
+    'python',
+    'julia',
+    'h',
+    'c',
+    'cpp',
+    'toml',
+    'json',
+  },
   callback = function()
     vim.opt_local.spell = true
   end,
