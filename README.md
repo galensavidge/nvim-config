@@ -197,13 +197,13 @@ When running the installer,
 | Normal    | `<space>t`      | Open new terminal in current window           |
 | Normal    | `<space>T`      | Open new terminal in split                    |
 | N, X      | `<space><enter>`| Execute current line/selection in terminal    |
-| Normal    | `{[/]}c`        | {Previous/Next} git hunk                      |
 
 ### Git
 
 | Mode      | Keys            | Action                                        |
 | --------- | --------------- | --------------------------------------------- |
 | Normal    | `<space>go`     | Open git GUI                                  |
+| Normal    | `{[/]}c`        | {Previous/Next} git hunk                      |
 | O, X      | `ih`            | Select inner git hunk                         |
 | Normal    | `<space>hp`     | Preview git hunk                              |
 | Normal    | `<space>hs`     | Stage git hunk                                |
