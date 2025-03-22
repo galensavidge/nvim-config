@@ -206,19 +206,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Override <A-d> keyboard shotcut so it kills terminal buffers
-vim.api.nvim_create_autocmd({ 'TermOpen', },
-  {
-    callback = function(ev)
-      vim.keymap.set({ 'n', 'x', 'i' }, '<A-d>', ':bp | sp | bn | bd!<cr>',
-        { buffer = ev.buf, silent = true, desc = 'Quit terminal' })
-    end,
-  })
+vim.api.nvim_create_autocmd({ 'TermOpen', }, {
+  callback = function(ev)
+    vim.keymap.set({ 'n', 'x', 'i' }, '<A-d>', ':bp | sp | bn | bd!<cr>',
+      { buffer = ev.buf, silent = true, desc = 'Quit terminal' })
+  end,
+})
 
 -- Make <esc> close the command-line window
-vim.api.nvim_create_autocmd({ 'CmdWinEnter', },
-  {
-    callback = function(ev)
-      vim.keymap.set({ 'n' }, '<esc>', ':exit<CR>',
-        { buffer = ev.buf, silent = true, desc = 'Close command-line window' })
-    end,
-  })
+vim.api.nvim_create_autocmd({ 'CmdWinEnter', }, {
+  callback = function(ev)
+    vim.keymap.set({ 'n' }, '<esc>', ':exit<CR>',
+      { buffer = ev.buf, silent = true, desc = 'Close command-line window' })
+  end,
+})
