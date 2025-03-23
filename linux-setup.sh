@@ -16,6 +16,7 @@ pipx install basedpyright ruff
 # Set up Python debugger.
 mkdir ~/.virtualenvs
 cd ~/.virtualenvs
+rm -rf debugpy
 python -m venv debugpy
 debugpy/bin/python -m pip install debugpy
 cd -
@@ -25,7 +26,7 @@ if which julia; then
     echo "Julia found!"
 else
     echo "Julia not found in PATH, installing..."
-    # curl -fsSL https://install.julialang.org | sh
+    curl -fsSL https://install.julialang.org | sh
 fi
 
 julia -e 'using Pkg; Pkg.add("LanguageServer")'
