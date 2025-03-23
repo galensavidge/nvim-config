@@ -1,20 +1,21 @@
 # Neovim Config
+
 My personal neovim configuration.
 
 ## Installation
-1. Install neovim:
-```bash
-# Linux
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin
+
+### Linux
+
+1.  Clone the repo into the neovim settings folder (typically `~/.config/nvim`).
+2.  Run the install script.
+
+``` bash
+./.config/nvim/linux-setup.sh
 ```
-On Windows, run the MSI installer from the [latest
-release.](https://github.com/neovim/neovim/releases/latest/download/nvim-win64.msi).
 
 (Optional) Install neovide:
-```bash
+
+``` bash
 mkdir -p ~/bin/appimages
 cd ~/bin/appimages
 curl -LO https://github.com/neovide/neovide/releases/latest/download/neovide.AppImage
@@ -22,87 +23,45 @@ chmod +x neovide.AppImage
 ln -s ~/bin/appimages/neovide.AppImage /usr/local/bin
 ```
 
-2. Clone the repo into the neovim settings folder (linux: `~/.config/nvim`,
-   Windows: `~/AppData/Local/nvim/`).
-
-3. Install required packages:
-```bash
-# Linux
-sudo apt-get update
-sudo apt-get install ripgrep xclip clangd python3-venv markdown cmake gcc
-
-# Windows
-choco install make cmake ripgrep
-```
-
-4. Set up language servers:
-```bash
-winget install pip  # Windows only
-pip3 install pyright ruff
-sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
-```
-(Optional) Install the Julia language server:
-```bash
-# Install Julia
-curl -fsSL https://install.julialang.org | sh  # Linux
-winget install julia -s msstore  # Windows
-```
-Then in the Julia REPL package manager:
-```julia
-add LanguageServer
-```
-(Optional) Install lua-language-server:
-```bash
-curl -LO https://github.com/LuaLS/lua-language-server/releases/download/3.9.3/lua-language-server-3.9.3-linux-x64.tar.gz
-mkdir ~/bin/lua-language-server
-tar -xzf lua-language-server-3.9.3-linux-x64.tar.gz -C ~/bin/lua-language-server
-rm lua-language-server-3.9.3-linux-x64.tar.gz
-sudo ln -s ~/bin/lua-language-server/bin/lua-lanauge-server /usr/local/bin
-```
 (Optional) Install LaTeX (and RST) language server (not currently enabled):
-```bash
+
+``` bash
 curl -LO https://github.com/valentjn/ltex-ls/releases/download/16.0.0/ltex-ls-16.0.0-linux-x64.tar.gz
 tar -xvf ltex-ls-16.0.0-linux-x64.tar.gz -C ~/bin
 rm ltex-ls-16.0.0-linux-x64.tar.gz
 sudo ln -s ~/bin/ltex-ls-16.0.0/bin/ltex-ls /usr/local/bin
 ```
+
 (Optional) Install the markdown language server:
-```bash
+
+``` bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  # Install rust
 cargo install iwes
 ```
 
-5. Place the following lines in `~./bashrc`:
-```bash
+(Optional) Place the following lines in `~./bashrc`:
+
+``` bash
 alias v='nvim'
 ```
+
 Or, for neovide:
-```bash
+
+``` bash
 alias v='neovide.AppImage'
 ```
 
-6. Set up debuggers:
-```bash
-cd ~
-mkdir .virtualenvs
-cd .virtualenvs
-python -m venv debugpy
-debugpy/bin/python -m pip install debugpy
-```
-
-## Font
-Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraMono.zip)
-
-## Windows Setup
+### Windows
 
 Consider setting this in `$profile`, which better matches the default behavior
 of bash:
+
 ```
 Set-PSReadLineOption -EditMode Emacs
 ```
 
 [Chocolatey](https://chocolatey.org/install#individual) must be installed for
-the setup instructions above.
+the setup instructions below.
 
 C++ build tools must be installed before installing and building plugins. To do
 so, install [VS Build
@@ -113,6 +72,31 @@ When running the installer,
   Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\Llvm\x64\bin'`
   to `$profile`.
 
+1.  Run the MSI installer from the [latest
+    release](https://github.com/neovim/neovim/releases/latest/download/nvim-win64.msi).
+
+1.  Clone the repo into the neovim settings folder (`~/AppData/Local/nvim/`).
+2.  Install required packages:
+
+```bash
+# Windows
+choco install make cmake ripgrep
+```
+
+3.  Set up language servers:
+
+``` bash
+winget install pip
+pip install basedpyright ruff
+
+# Install Julia
+winget install julia -s msstore
+julia -e 'using Pkg; Pkg.add("LanguageServer")'
+```
+
+## Font
+
+Fira Mono: [FiraMono Download](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraMono.zip)
 ## Keybinds
 
 ### Movement

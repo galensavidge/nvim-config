@@ -230,15 +230,16 @@ vim.keymap.set('n', '<leader>gf', ':DiffviewFileHistory %<CR>', {
 })
 
 -- Remove the default K binding if no LSP server is attached.
-vim.keymap.set('n', 'K', '<nop>')
-
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'help ' },
-  callback = function()
-    vim.keymap.set('n', 'gd', 'K',
-      { silent = true, desc = 'Go to help tag' })
+vim.keymap.set('n', 'K', function()
+  local winid = require('ufo').peekFoldedLinesUnderCursor()
+  if not winid then
+    if #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
+      vim.lsp.buf.hover()
+    elseif vim.bo.filetype == 'help' then
+      vim.api.nvim_feedkeys('K', 'n', false)
+    end
   end
-})
+end, { silent = true, desc = 'Peek fold, LSP hover symbol, or go to help tag' })
 
 -- Use LspAttach autocommand to only map the following keys after the language
 -- server attaches to the current buffer
@@ -254,8 +255,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       { buffer = ev.buf, silent = true, desc = 'LSP go to definition' })
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
       { buffer = ev.buf, silent = true, desc = 'LSP go to declaration' })
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover,
-      { buffer = ev.buf, silent = true, desc = 'LSP hover symbol' })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
       { buffer = ev.buf, silent = true, desc = 'LSP go to implementation' })
     -- vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help,

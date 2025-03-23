@@ -41,8 +41,8 @@ return {
         }
       })
 
-      -- Set up pyright for Python code analysis
-      lsp.pyright.setup({
+      -- Set up basedpyright for Python code analysis
+      lsp.basedpyright.setup({
         capabilities = capabilities,
         settings = {},
       })
