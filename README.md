@@ -39,7 +39,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh  # Install rust
 cargo install iwes
 ```
 
-(Optional) Place the following lines in `~./bashrc`:
+(Optional) Place the following line in `~./bashrc`:
 
 ``` bash
 alias v='nvim'

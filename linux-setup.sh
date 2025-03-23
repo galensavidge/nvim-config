@@ -8,7 +8,7 @@ ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin
 
 # Install required packages.
 sudo apt-get update
-sudo apt-get install ripgrep xclip clangd python3-venv markdown cmake gcc
+sudo apt-get install ripgrep xclip clangd python3-venv markdown cmake gcc pipx
 
 # Install Python language servers.
 pipx install basedpyright ruff
