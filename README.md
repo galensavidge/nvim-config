@@ -87,7 +87,7 @@ choco install make cmake ripgrep
 
 ``` bash
 winget install pip
-pip install basedpyright ruff
+pip install pyright ruff
 
 # Install Julia
 winget install julia -s msstore

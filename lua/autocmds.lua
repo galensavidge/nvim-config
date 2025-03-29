@@ -176,7 +176,7 @@ vim.api.nvim_create_autocmd('CursorHold', {
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function()
     local bufnr = vim.fn.bufnr()
-    local clients = vim.lsp.buf_get_clients()
+    local clients = vim.lsp.get_clients({ bufnr = bufnr })
     for _, client in ipairs(clients) do
       if client.server_capabilities.documentHighlightProvider then
         vim.api.nvim_create_autocmd({ 'CursorHold' }, {

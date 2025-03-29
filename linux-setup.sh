@@ -11,7 +11,7 @@ sudo apt-get update
 sudo apt-get install ripgrep xclip clangd python3-venv markdown cmake gcc pipx
 
 # Install Python language servers.
-pipx install basedpyright ruff
+pipx install pyright ruff
 
 # Set up Python debugger.
 mkdir ~/.virtualenvs
