@@ -33,11 +33,11 @@ vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave' }, {
 })
 
 -- Highlight yanked text
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    require('vim.highlight').on_yank()
-  end,
-})
+-- vim.api.nvim_create_autocmd('TextYankPost', {
+--   callback = function()
+--     require('vim.highlight').on_yank()
+--   end,
+-- })
 
 -- Only show the cursorline and relative line numbers in the active window
 vim.api.nvim_create_autocmd({ 'WinEnter', 'BufNew' }, {

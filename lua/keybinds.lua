@@ -324,7 +324,7 @@ vim.keymap.set('n', '<leader>dx', function()
   require('dap').terminate()
 end, { desc = 'Stop debugger' })
 vim.keymap.set('n', '<leader>du', function()
-  require('dapui').toggle()
+  require('dap-view').toggle()
 end, { desc = 'Toggle debugger UI' })
 
 -- File browser
