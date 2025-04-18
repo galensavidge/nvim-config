@@ -1,3 +1,5 @@
+local vs = require('vscode')
+
 -- Move vertically by visual line (gets around super long lines)
 vim.keymap.set({ 'n', 'x', 'o' }, 'j', 'gj', { silent = true })
 vim.keymap.set({ 'n', 'x', 'o' }, 'k', 'gk', { silent = true })
@@ -13,13 +15,6 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'gs', '<Plug>(leap-from-window)')
 vim.keymap.set({ 'n', 'o' }, 'gS', function()
   require('leap.remote').action()
 end)
-
--- -- Undo inside visual selection only
--- vim.keymap.set({ 'v' }, 'u', function()
---   require('select-undo').undo_selection('partial')
--- end, { desc = 'Undo within visual selection' })
--- vim.keymap.set({ 'x' }, 'gu', 'u', { silent = true })
--- vim.keymap.set({ 'x' }, 'gU', 'U', { silent = true })
 
 -- Keep automatically inserted indentation when switching back to normal mode
 vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })
@@ -38,24 +33,24 @@ vim.keymap.set('n', '<A-i>', require('bufjump').forward, {
 
 -- Split panes
 vim.keymap.set('n', '<A-s>', function()
-  require('vscode').action('workbench.action.splitEditorDown')
+  vs.action('workbench.action.splitEditorDown')
 end, { silent = true, desc = 'Split horizontal' })
 vim.keymap.set('n', '<A-v>', function()
-  require('vscode').action('workbench.action.splitEditor')
+  vs.action('workbench.action.splitEditor')
 end, { silent = true, desc = 'Split vertical' })
 
 -- Move between panes to left/bottom/top/right
 vim.keymap.set('n', '<C-h>', function()
-  require('vscode').action('workbench.action.focusLeftGroup')
+  vs.action('workbench.action.focusLeftGroup')
 end, { silent = true, desc = 'Move to pane to the left' })
 vim.keymap.set('n', '<C-j>', function()
-  require('vscode').action('workbench.action.focusBelowGroup')
+  vs.action('workbench.action.focusBelowGroup')
 end, { silent = true, desc = 'Move to pane below' })
 vim.keymap.set('n', '<C-k>', function()
-  require('vscode').action('workbench.action.focusAboveGroup')
+  vs.action('workbench.action.focusAboveGroup')
 end, { silent = true, desc = 'Move to pane above' })
 vim.keymap.set('n', '<C-l>', function()
-  require('vscode').action('workbench.action.focusRightGroup')
+  vs.action('workbench.action.focusRightGroup')
 end, { silent = true, desc = 'Move to pane to the right' })
 
 -- Move split panes to left/bottom/top/right
@@ -102,7 +97,7 @@ end, { silent = true, desc = 'Move to pane to the right' })
 
 -- Close pane
 vim.keymap.set({ 'n', 'x' }, '<C-c>', function()
-  require('vscode').action('workbench.action.closeActiveEditor')
+  vs.action('workbench.action.closeGroup')
 end, { silent = true, desc = 'Close split' })
 
 -- Delete buffer
@@ -113,27 +108,19 @@ end, { silent = true, desc = 'Close split' })
 
 -- Save all and quit neovim
 vim.keymap.set({ 'n' }, 'ZZ', function()
-  require('vscode').action('saveAll')
-  require('vscode').action('workbench.action.quit')
-end, { silent = true, desc = 'Save all buffers and quit' })
+  vs.action('saveAll')
+  vs.action('workbench.action.quit')
+end, { silent = true, desc = 'Save all files and quit' })
 
 -- Tab navigation
--- vim.keymap.set('n', '<A-t>', ':tabnew<cr>', {
---   silent = true,
---   desc = 'New tab'
--- })
--- vim.keymap.set('n', '<A-c>', ':tabclose<cr>', {
---   silent = true,
---   desc = 'Close tab'
--- })
--- vim.keymap.set('n', 'gt', ':tabnext<cr>', {
---   silent = true,
---   desc = 'Next tab'
--- })
--- vim.keymap.set('n', 'gT', ':tabprevious<cr>', {
---   silent = true,
---   desc = 'Next tab'
--- })
+vim.keymap.set('n', '<A-t>', ':tabnew<cr>', {
+  silent = true,
+  desc = 'New tab'
+})
+vim.keymap.set('n', '<A-c>', ':tabclose<cr>', {
+  silent = true,
+  desc = 'Close tab'
+})
 
 -- Cut keybinds
 vim.keymap.set({ 'n', 'x' }, 'm', 'd', { desc = 'Cut' })
@@ -150,15 +137,15 @@ vim.keymap.set('n', 'dd', '"0dd', { desc = 'Delete line' })
 vim.keymap.set('n', 'D', '"0D', { desc = 'Delete to end of line' })
 
 -- Open command mode editor window
-vim.keymap.set({ 'n', 'x' }, '<leader>:', 'q:', {
-  desc = 'Open command mode editor window',
-})
-vim.keymap.set({ 'n', 'x' }, '<leader>/', 'q/', {
-  desc = 'Open command mode editor window',
-})
-vim.keymap.set({ 'n', 'x' }, '<leader>?', 'q?', {
-  desc = 'Open command mode editor window',
-})
+-- vim.keymap.set({ 'n', 'x' }, '<leader>:', 'q:', {
+--   desc = 'Open command mode editor window',
+-- })
+-- vim.keymap.set({ 'n', 'x' }, '<leader>/', 'q/', {
+--   desc = 'Open command mode editor window',
+-- })
+-- vim.keymap.set({ 'n', 'x' }, '<leader>?', 'q?', {
+--   desc = 'Open command mode editor window',
+-- })
 
 -- Open clipboard history
 -- vim.keymap.set('n', '<leader>p', function()
@@ -166,11 +153,11 @@ vim.keymap.set({ 'n', 'x' }, '<leader>?', 'q?', {
 -- end, { desc = 'Open clipboard history' })
 
 -- Open quickfix list
--- vim.keymap.set('n', '<leader>q', function()
---   require('quicker').toggle()
--- end, {
---   desc = 'Toggle quickfix list',
--- })
+vim.keymap.set('n', '<leader>q', function()
+  require('quicker').toggle()
+end, {
+  desc = 'Toggle quickfix list',
+})
 
 -- Cycle through quickfix list items
 vim.keymap.set('n', ']q', ':cn<CR>', {
@@ -205,7 +192,7 @@ vim.keymap.set('n', '[q', ':cp<CR>', {
 -- Git integration
 vim.keymap.set('n', '<leader>go',
   function()
-    require('vscode').action('workbench.view.scm')
+    vs.action('workbench.view.scm')
   end, { silent = true, desc = 'Open git UI page' })
 
 -- vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', {
@@ -220,20 +207,18 @@ vim.keymap.set('n', '<leader>go',
 -- })
 
 vim.keymap.set('n', '<leader>hs', function()
-  require('vscode').action('git.stage')
+  vs.action('git.stage')
 end, { silent = true, desc = 'Stage git hunk' })
 
+-- LSP integration
 vim.keymap.set('n', 'K', function()
-  require('vscode').action('editor.action.showHover')
+  vs.action('editor.action.showHover')
 end, { silent = true, desc = 'LSP hover symbol' })
 
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
-  --   { buffer = ev.buf, silent = true, desc = 'LSP go to definition' })
-  -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
-  --   { buffer = ev.buf, silent = true, desc = 'LSP go to declaration' })
-  -- vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
-  --   { buffer = ev.buf, silent = true, desc = 'LSP go to implementation' })
+vim.keymap.set('n', 'gd', function()
+  vs.action('editor.action.revealDefinition')
+end, { silent = true, desc = 'LSP go to definition' })
+
   -- vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help,
   --   { buffer = ev.buf, silent = true, desc = 'LSP signature help' })
   -- vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
@@ -245,18 +230,14 @@ end, { silent = true, desc = 'LSP hover symbol' })
   -- end, { buffer = ev.buf, silent = true, desc = 'LSP list workspace folders' })
   -- vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition,
   --   { buffer = ev.buf, silent = true, desc = 'LSP go to type definition' })
-  vim.keymap.set('n', '<leader>rn', function()
-      require('vscode').action('editor.action.rename')
-    end,
-    { silent = true, desc = 'Rename LSP symbol' })
-  -- vim.keymap.set('n', '<leader>R', function()
-  --     require('live-rename').rename({ text = "", insert = true })
-  --   end,
-  --   { silent = true, desc = 'Rename LSP symbol, erasing the current name' })
+vim.keymap.set('n', '<leader>rn', function()
+  vs.action('editor.action.rename')
+end, { silent = true, desc = 'Rename LSP symbol' })
   -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action,
   --   { buffer = ev.buf, silent = true, desc = 'LSP execute code action' })
-  -- vim.keymap.set('n', 'gr', vim.lsp.buf.references,
-  --   { buffer = ev.buf, silent = true, desc = 'LSP go to references' })
+vim.keymap.set('n', 'gr', function()
+  vs.action('references-view.findReferences')
+end, { silent = true, desc = 'LSP go to references' })
   -- vim.keymap.set('n', '<leader>l', function()
   --   vim.lsp.buf.format { async = true }
   -- end, { buffer = ev.buf, silent = true, desc = 'LSP format buffer' })
@@ -266,6 +247,11 @@ end, { silent = true, desc = 'LSP hover symbol' })
   --   { buffer = ev.buf, silent = true, desc = 'Go to next LSP diagnostic' })
   -- vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float,
   --     { buffer = ev.buf, silent = true, desc = 'Open LSP diagnostic' })
+
+--  Open fuzzy finder
+vim.keymap.set('n', '<leader>;', function()
+  vs.action('workbench.action.quickOpen')
+end, { silent = true, desc = 'Fuzzy search files' })
 
 -- Debugger
 -- vim.keymap.set('n', '<leader>db', function()
