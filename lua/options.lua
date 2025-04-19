@@ -7,8 +7,17 @@ opt.breakindent = true
 opt.breakindentopt = 'shift:2'
 opt.clipboard = 'unnamedplus' -- Use system clipboard by default
 opt.colorcolumn = '80'
-opt.diffopt = 'internal,filler,closeoff,linematch:60'
+opt.diffopt = {
+  'internal',
+  'filler',
+  'closeoff',
+  'context:12',
+  'algorithm:histogram',
+  'linematch:200',
+  'indent-heuristic',
+}
 opt.expandtab = true
+opt.fillchars = { diff = '╱' }
 opt.foldcolumn = '0' -- Set to '1' to show folds by the number column.
 opt.foldenable = true
 opt.foldlevel = 99
