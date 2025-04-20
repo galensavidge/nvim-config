@@ -1,0 +1,34 @@
+{
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "julia.symbolCacheDownload": true,
+    "julia.enableTelemetry": false,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "editor.fontSize": 12,
+    "debug.console.fontSize": 12,
+    "terminal.integrated.fontSize": 12,
+    "chat.editor.fontSize": 12,
+    "markdown.preview.fontSize": 12,
+    "keyboard.dispatch": "keyCode",
+    "window.customMenuBarAltFocus": false,
+    "window.enableMenuBarMnemonics": false,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.autohide": true,
+    "editor.autoClosingBrackets": "never",
+    "editor.bracketPairColorization.enabled": false,
+    "catppuccin.bracketMode": "neovim",
+    "editor.autoSurround": "never",
+    "editor.wordWrap": "on",
+    "editor.wrappingIndent": "deepIndent",
+    "editor.scrollBeyondLastColumn": 0,
+    "editor.smoothScrolling": true,
+    "editor.minimap.enabled": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.inlineSuggest.enabled": false,
+    "editor.suggest.preview": true,
+    "vscode-neovim.NVIM_APPNAME": "nvim-vscode"
+}
