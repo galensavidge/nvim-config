@@ -127,20 +127,20 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
 })
 
 -- Markdown LSP server
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'markdown',
-  callback = function(ev)
-    vim.lsp.start({
-      name = 'iwes',
-      cmd = { 'iwes' },
-
-      -- Set the "root directory" to the parent directory of the file in the
-      -- current buffer (`ev.buf`) that contains "index.md". Files that share a
-      -- root directory will reuse the connection to the same LSP server.
-      root_dir = vim.fs.root(ev.buf, { 'index.md' })
-    })
-  end,
-})
+-- vim.api.nvim_create_autocmd('FileType', {
+--   pattern = 'markdown',
+--   callback = function(ev)
+--     vim.lsp.start({
+--       name = 'iwes',
+--       cmd = { 'iwes' },
+--
+--       -- Set the "root directory" to the parent directory of the file in the
+--       -- current buffer (`ev.buf`) that contains "index.md". Files that share a
+--       -- root directory will reuse the connection to the same LSP server.
+--       root_dir = vim.fs.root(ev.buf, { 'index.md' })
+--     })
+--   end,
+-- })
 
 -- Make sure the auto-formatter doesn't override bindings like gq
 vim.api.nvim_create_autocmd('LspAttach', {
