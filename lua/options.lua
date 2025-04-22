@@ -36,7 +36,7 @@ opt.relativenumber = true
 opt.scrolloff = 5
 opt.selection = 'old'
 opt.sessionoptions = 'blank,buffers,curdir,help,tabpages,winsize,winpos,terminal,localoptions'
-if vim.fn.has('windows') and not vim.fn.has('linux') then
+if vim.fn.has('win32') then
   opt.shell = '\"C:/Program Files/PowerShell/7/pwsh.exe\"'
 end
 opt.shiftround = true

@@ -2,7 +2,7 @@
 -- Includes fuzzy finders for a variety of different things.
 
 -- Set keybinds
-if vim.fn.has('windows') and not vim.fn.has('linux') then
+if vim.fn.has('win32') then
   vim.keymap.set('n', '<leader>;', ':Telescope find_files<CR>',
     { silent = true, desc = 'Search file names' })
 else
@@ -121,8 +121,7 @@ return {
   { -- Telescope-fzf-native (better fuzzy finder)
     'nvim-telescope/telescope-fzf-native.nvim',
     lazy = true,
-    build =
-    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    build = 'make',
     dependencies = { 'nvim-telescope/telescope.nvim' },
   },
 
@@ -131,7 +130,7 @@ return {
     branch = '0.2.x',
     lazy = true,
     config = function()
-      if vim.fn.has('windows') and not vim.fn.has('linux') then
+    if vim.fn.has('win32') then
         -- vim.g.sqlite_clib_path = 'sqlite3/sqlite3.dll'
       else
         require('telescope').load_extension('smart_open')
