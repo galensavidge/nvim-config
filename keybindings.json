@@ -1,29 +1,287 @@
 // Place your key bindings in this file to override the defaults
 [
-    { "key": "alt+a", "command": "vscode-neovim.send", "args": "<a-a>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+b", "command": "vscode-neovim.send", "args": "<a-b>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+c", "command": "vscode-neovim.send", "args": "<a-c>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+d", "command": "vscode-neovim.send", "args": "<a-d>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+e", "command": "vscode-neovim.send", "args": "<a-e>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+f", "command": "vscode-neovim.send", "args": "<a-f>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+g", "command": "vscode-neovim.send", "args": "<a-g>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+h", "command": "vscode-neovim.send", "args": "<a-h>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+i", "command": "vscode-neovim.send", "args": "<a-i>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+j", "command": "vscode-neovim.send", "args": "<a-j>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+k", "command": "vscode-neovim.send", "args": "<a-k>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+l", "command": "vscode-neovim.send", "args": "<a-l>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+m", "command": "vscode-neovim.send", "args": "<a-m>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+n", "command": "vscode-neovim.send", "args": "<a-n>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+o", "command": "vscode-neovim.send", "args": "<a-o>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+p", "command": "vscode-neovim.send", "args": "<a-p>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+q", "command": "vscode-neovim.send", "args": "<a-q>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+r", "command": "vscode-neovim.send", "args": "<a-r>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+s", "command": "vscode-neovim.send", "args": "<a-s>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+t", "command": "vscode-neovim.send", "args": "<a-t>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+u", "command": "vscode-neovim.send", "args": "<a-u>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+v", "command": "vscode-neovim.send", "args": "<a-v>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+w", "command": "vscode-neovim.send", "args": "<a-w>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+x", "command": "vscode-neovim.send", "args": "<a-x>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+y", "command": "vscode-neovim.send", "args": "<a-y>", "when": "editorTextFocus && neovim.init" },
-    { "key": "alt+z", "command": "vscode-neovim.send", "args": "<a-z>", "when": "editorTextFocus && neovim.init" },
+    {
+        "key": "alt+a",
+        "command": "vscode-neovim.send",
+        "args": "<a-a>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+b",
+        "command": "vscode-neovim.send",
+        "args": "<a-b>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+c",
+        "command": "vscode-neovim.send",
+        "args": "<a-c>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+d",
+        "command": "vscode-neovim.send",
+        "args": "<a-d>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+e",
+        "command": "vscode-neovim.send",
+        "args": "<a-e>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+f",
+        "command": "vscode-neovim.send",
+        "args": "<a-f>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+g",
+        "command": "vscode-neovim.send",
+        "args": "<a-g>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+h",
+        "command": "vscode-neovim.send",
+        "args": "<a-h>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+i",
+        "command": "vscode-neovim.send",
+        "args": "<a-i>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+j",
+        "command": "vscode-neovim.send",
+        "args": "<a-j>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+k",
+        "command": "vscode-neovim.send",
+        "args": "<a-k>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+l",
+        "command": "vscode-neovim.send",
+        "args": "<a-l>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+m",
+        "command": "vscode-neovim.send",
+        "args": "<a-m>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+n",
+        "command": "vscode-neovim.send",
+        "args": "<a-n>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+o",
+        "command": "vscode-neovim.send",
+        "args": "<a-o>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+p",
+        "command": "vscode-neovim.send",
+        "args": "<a-p>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+q",
+        "command": "vscode-neovim.send",
+        "args": "<a-q>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+r",
+        "command": "vscode-neovim.send",
+        "args": "<a-r>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+s",
+        "command": "vscode-neovim.send",
+        "args": "<a-s>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+t",
+        "command": "vscode-neovim.send",
+        "args": "<a-t>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+u",
+        "command": "vscode-neovim.send",
+        "args": "<a-u>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+v",
+        "command": "vscode-neovim.send",
+        "args": "<a-v>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+w",
+        "command": "vscode-neovim.send",
+        "args": "<a-w>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+x",
+        "command": "vscode-neovim.send",
+        "args": "<a-x>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+y",
+        "command": "vscode-neovim.send",
+        "args": "<a-y>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "alt+z",
+        "command": "vscode-neovim.send",
+        "args": "<a-z>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
+        "key": "m",
+        "command": "filesExplorer.cut",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+    },
+    {
+        "key": "x",
+        "command": "-filesExplorer.cut",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+    },
+    {
+        "key": "ctrl+r",
+        "command": "workbench.files.action.refreshFilesExplorer",
+        "when": "filesExplorerFocus && !explorerFindProviderActive && !inputFocus"
+    },
+    {
+        "key": "shift+r",
+        "command": "-workbench.files.action.refreshFilesExplorer",
+        "when": "filesExplorerFocus && !explorerFindProviderActive && !inputFocus"
+    },
+    {
+        "key": "ctrl+,",
+        "command": "workbench.action.closeSidebar",
+        "when": "sideBarFocus"
+    },
+    {
+        "key": "ctrl+,",
+        "command": "workbench.action.focusSideBar",
+        "when": "!sideBarFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+left",
+        "command": "-workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.focusRightGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+right",
+        "command": "-workbench.action.focusRightGroup"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.focusAboveGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+up",
+        "command": "-workbench.action.focusAboveGroup"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.focusBelowGroup"
+    },
+    {
+        "key": "ctrl+k ctrl+down",
+        "command": "-workbench.action.focusBelowGroup"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+;",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "tab",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "tab",
+        "command": "-editor.action.inlineSuggest.commit",
+        "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    },
+    {
+        "key": "enter",
+        "command": "acceptSelectedSuggestion",
+        "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "tab",
+        "command": "-acceptSelectedSuggestion",
+        "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "enter",
+        "command": "-acceptSelectedSuggestion",
+        "when": "acceptSuggestionOnEnter && suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
+    },
+    {
+        "key": "tab",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "shift+tab",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus || suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+    },
+    {
+        "key": "tab",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen && neovim.mode != 'cmdline'"
+    },
+    {
+        "key": "shift+tab",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen && neovim.mode != 'cmdline'"
+    },
+    {
+        "key": "ctrl+c",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+    }
 ]

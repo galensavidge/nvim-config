@@ -46,16 +46,6 @@ return {
     end,
   },
 
-  { -- Bufjump (jump backward and forward through buffers in jump list)
-    'kwkarlwang/bufjump.nvim',
-    config = function()
-      require('bufjump').setup({
-        forward_key = false,
-        backward_key = false,
-      })
-    end
-  },
-
   { -- Boole.nvim (toggle more things with C-a/C-x)
     'nat-418/boole.nvim',
     config = function()

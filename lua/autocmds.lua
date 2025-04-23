@@ -22,50 +22,11 @@ vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave' }, {
   end,
 })
 
--- Only show the cursorline and relative line numbers in the active window
-vim.api.nvim_create_autocmd({ 'WinEnter', 'BufNew' }, {
-  callback = function()
-    if vim.opt_local.number:get() == true then
-      vim.opt_local.cursorline = true
-      vim.opt_local.relativenumber = true
-    end
-  end,
-})
-vim.api.nvim_create_autocmd('WinLeave', {
-  callback = function()
-    if vim.opt_local.number:get() == true then
-      vim.opt_local.cursorline = false
-      vim.opt_local.relativenumber = false
-    end
-  end,
-})
-
 -- Set highlighting for certain words
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
   callback = function()
     vim.cmd('syntax match Todo /TODO/')
     vim.cmd('syntax match Done /DONE/')
-  end,
-})
-
--- Set spll check
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = {
-    'html',
-    'markdown',
-    'text',
-    'rst',
-    'gitcommit',
-    'python',
-    'julia',
-    'h',
-    'c',
-    'cpp',
-    'toml',
-    'json',
-  },
-  callback = function()
-    vim.opt_local.spell = true
   end,
 })
 
@@ -113,13 +74,5 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufNew' }, {
 vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function()
     vim.api.nvim_command('silent! exe "%s/\r$//"')
-  end,
-})
-
--- Make <esc> close the command-line window
-vim.api.nvim_create_autocmd({ 'CmdWinEnter', }, {
-  callback = function(ev)
-    vim.keymap.set({ 'n' }, '<esc>', ':exit<CR>',
-      { buffer = ev.buf, silent = true, desc = 'Close command-line window' })
   end,
 })
