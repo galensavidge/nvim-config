@@ -157,6 +157,12 @@
         "when": "editorTextFocus && neovim.init"
     },
     {
+        "key": "tab",
+        "command": "vscode-neovim.send",
+        "args": "<tab>",
+        "when": "editorTextFocus && neovim.init"
+    },
+    {
         "key": "m",
         "command": "filesExplorer.cut",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"

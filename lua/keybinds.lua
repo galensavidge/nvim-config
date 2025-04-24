@@ -91,7 +91,7 @@ end, { silent = true, desc = 'Move to pane to the right' })
 --   desc = 'Split window sizes equally'
 -- })
 
--- Save all and quit 
+-- Save all and quit
 vim.keymap.set({ 'n' }, 'ZZ', function()
   vs.action('saveAll')
   vs.action('workbench.action.quit')
@@ -212,11 +212,13 @@ end, { silent = true, desc = 'LSP format buffer' })
 --     { buffer = ev.buf, silent = true, desc = 'Open LSP diagnostic' })
 
 -- Show suggestions
-vim.keymap.set('x', '<tab>', function()
+vim.keymap.set('i', '<tab>', function()
   if has_words_before() then
     vs.action('editor.action.triggerSuggest')
   else
-    vim.fn.feedkeys('<tab>')
+    local key = vim.api.nvim_replace_termcodes('<tab>', true, false,
+      true)
+    vim.api.nvim_feedkeys(key, 'n', false)
   end
 end, { silent = true, desc = 'Show suggestions' })
 
@@ -227,9 +229,9 @@ end, { silent = true, desc = 'Fuzzy search files' })
 
 -- File browser
 vim.keymap.set('n', ',', function()
-  vs.action('workbench.action.focusSideBar')
-end,
-{ silent = true, desc = 'Open current file directory' })
+    vs.action('workbench.action.focusSideBar')
+  end,
+  { silent = true, desc = 'Open current file directory' })
 
 -- Debugger
 -- vim.keymap.set('n', '<leader>db', function()
