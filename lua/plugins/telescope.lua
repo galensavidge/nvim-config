@@ -2,7 +2,7 @@
 -- Includes fuzzy finders for a variety of different things.
 
 -- Set keybinds
-if vim.fn.has('win32') then
+if vim.fn.has('win32') and not vim.fn.has('linux') then
   vim.keymap.set('n', '<leader>;', ':Telescope find_files<CR>',
     { silent = true, desc = 'Search file names' })
 else
@@ -130,7 +130,7 @@ return {
     branch = '0.2.x',
     lazy = true,
     config = function()
-    if vim.fn.has('win32') then
+    if vim.fn.has('win32') and not vim.fn.has('linux') then
         -- vim.g.sqlite_clib_path = 'sqlite3/sqlite3.dll'
       else
         require('telescope').load_extension('smart_open')

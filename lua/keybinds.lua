@@ -14,13 +14,6 @@ vim.keymap.set({ 'n', 'o' }, 'gS', function()
   require('leap.remote').action()
 end)
 
--- -- Undo inside visual selection only
--- vim.keymap.set({ 'v' }, 'u', function()
---   require('select-undo').undo_selection('partial')
--- end, { desc = 'Undo within visual selection' })
--- vim.keymap.set({ 'x' }, 'gu', 'u', { silent = true })
--- vim.keymap.set({ 'x' }, 'gU', 'U', { silent = true })
-
 -- Keep automatically inserted indentation when switching back to normal mode
 vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })
 vim.keymap.set('n', 'O', 'Ox<backspace>', { silent = true })
@@ -199,6 +192,24 @@ vim.keymap.set('n', '<leader>t', ':term<CR>', {
   desc = 'Open terminal'
 })
 vim.keymap.set('t', '<esc>', '<C-\\><C-n>')
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'python',
+  callback = function()
+    vim.keymap.set('n', '<leader>r', function()
+      local fname = vim.api.nvim_buf_get_name(0)
+      require('send-to-terminal').terminal_send_cmd('python ' .. fname)
+    end, { silent = true, desc = 'Run the current Python file' })
+  end
+})
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'julia',
+  callback = function()
+    vim.keymap.set('n', '<leader>r', function()
+      local fname = vim.api.nvim_buf_get_name(0)
+      require('send-to-terminal').terminal_send_cmd('include("' .. fname .. '")')
+    end, { silent = true, desc = 'Run the current Julia file' })
+  end
+})
 
 -- Project wide search and replace
 vim.keymap.set({ 'n', 'x' }, '<leader>re', function()
