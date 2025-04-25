@@ -142,7 +142,7 @@ end, { silent = true, desc = 'Open terminal' })
 
 -- Project wide search and replace
 vim.keymap.set({ 'n', 'x' }, '<leader>re', function()
-    vs.action('editor.action.startFindReplaceAction')
+    vs.action('workbench.action.findInFiles')
   end,
   { silent = true, desc = 'Open find and replace' })
 
@@ -196,18 +196,21 @@ end, { silent = true, desc = 'LSP go to definition' })
 vim.keymap.set('n', '<leader>rn', function()
   vs.action('editor.action.rename')
 end, { silent = true, desc = 'Rename LSP symbol' })
--- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action,
---   { buffer = ev.buf, silent = true, desc = 'LSP execute code action' })
+vim.keymap.set('n', '<leader>ca', function()
+  vs.action('editor.action.quickFix')
+end, { silent = true, desc = 'LSP execute code action' })
 vim.keymap.set('n', 'gr', function()
   vs.action('references-view.findReferences')
 end, { silent = true, desc = 'LSP go to references' })
 vim.keymap.set('n', '<leader>l', function()
   vs.action('editor.action.format')
 end, { silent = true, desc = 'LSP format buffer' })
--- vim.keymap.set('n', '[e', vim.diagnostic.goto_prev,
---   { buffer = ev.buf, silent = true, desc = 'Go to previous LSP diagnostic' })
--- vim.keymap.set('n', ']e', vim.diagnostic.goto_next,
---   { buffer = ev.buf, silent = true, desc = 'Go to next LSP diagnostic' })
+vim.keymap.set('n', '[e', function()
+  vs.action('editor.action.marker.prev')
+end, { silent = true, desc = 'Go to previous LSP diagnostic' })
+vim.keymap.set('n', ']e', function()
+  vs.action('editor.action.marker.next')
+end, { silent = true, desc = 'Go to next LSP diagnostic' })
 -- vim.keymap.set('n', '<leader>E', vim.diagnostic.open_float,
 --     { buffer = ev.buf, silent = true, desc = 'Open LSP diagnostic' })
 
@@ -229,7 +232,7 @@ end, { silent = true, desc = 'Fuzzy search files' })
 
 -- File browser
 vim.keymap.set('n', ',', function()
-    vs.action('workbench.action.focusSideBar')
+    vs.action('workbench.view.explorer')
   end,
   { silent = true, desc = 'Open current file directory' })
 

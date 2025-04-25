@@ -58,4 +58,22 @@
     "editor.autoClosingQuotes": "never",
     "editor.suggest.localityBonus": true,
     "editor.suggest.matchOnWordStartOnly": false,
+    "editor.rulers": [
+        79
+    ],
+    "[python]": {
+        "editor.rulers": [
+            79
+        ]
+    },
+    "[julia]": {
+        "editor.rulers": [
+            92
+        ]
+    },
+    "terminal.external.windowsExec": "pwsh.exe",
+    "terminal.integrated.allowChords": false,
+    "terminal.external.linuxExec": "bash",
+    "terminal.integrated.fontLigatures.enabled": true,
+    "terminal.integrated.smoothScrolling": true
 }
