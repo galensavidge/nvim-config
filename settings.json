@@ -53,27 +53,27 @@
     "gitlens.codeLens.enabled": false,
     "editor.lineNumbers": "relative",
     "editor.inlineSuggest.suppressSuggestions": true,
-    "editor.suggest.snippetsPreventQuickSuggestions": true,
     "editor.autoClosingComments": "never",
     "editor.autoClosingQuotes": "never",
     "editor.suggest.localityBonus": true,
     "editor.suggest.matchOnWordStartOnly": false,
     "editor.rulers": [
-        79
+        80
     ],
     "[python]": {
         "editor.rulers": [
-            79
+            80
         ]
     },
     "[julia]": {
         "editor.rulers": [
-            92
+            93
         ]
     },
     "terminal.external.windowsExec": "pwsh.exe",
     "terminal.integrated.allowChords": false,
     "terminal.external.linuxExec": "bash",
     "terminal.integrated.fontLigatures.enabled": true,
-    "terminal.integrated.smoothScrolling": true
+    "terminal.integrated.smoothScrolling": true,
+    "editor.quickSuggestionsDelay": 1000000000
 }
