@@ -36,18 +36,14 @@ vim.keymap.set('n', '<A-v>', function()
 end, { silent = true, desc = 'Split vertical' })
 
 -- Move between panes to left/bottom/top/right
-vim.keymap.set('n', '<C-h>', function()
-  vs.action('workbench.action.focusLeftGroup')
-end, { silent = true, desc = 'Move to pane to the left' })
-vim.keymap.set('n', '<C-j>', function()
-  vs.action('workbench.action.focusBelowGroup')
-end, { silent = true, desc = 'Move to pane below' })
-vim.keymap.set('n', '<C-k>', function()
-  vs.action('workbench.action.focusAboveGroup')
-end, { silent = true, desc = 'Move to pane above' })
-vim.keymap.set('n', '<C-l>', function()
-  vs.action('workbench.action.focusRightGroup')
-end, { silent = true, desc = 'Move to pane to the right' })
+vim.keymap.set('n', '<C-h>', '<C-w>h',
+  { silent = true, desc = 'Move to pane to the left' })
+vim.keymap.set('n', '<C-j>', '<C-w>j',
+  { silent = true, desc = 'Move to pane below' })
+vim.keymap.set('n', '<C-k>', '<C-w>k',
+  { silent = true, desc = 'Move to pane above' })
+vim.keymap.set('n', '<C-l>', '<C-w>l',
+  { silent = true, desc = 'Move to pane to the right' })
 
 -- Move split panes to left/bottom/top/right
 -- vim.keymap.set('n', '<A-h>', '<C-w>H', {
@@ -182,17 +178,9 @@ vim.keymap.set('n', 'gd', function()
   vs.action('editor.action.revealDefinition')
 end, { silent = true, desc = 'LSP go to definition' })
 
--- vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help,
---   { buffer = ev.buf, silent = true, desc = 'LSP signature help' })
--- vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
---   { buffer = ev.buf, silent = true, desc = 'LSP add workspace folder' })
--- vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,
---   { buffer = ev.buf, silent = true, desc = 'LSP remove workspace folder' })
--- vim.keymap.set('n', '<leader>wl', function()
---   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
--- end, { buffer = ev.buf, silent = true, desc = 'LSP list workspace folders' })
--- vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition,
---   { buffer = ev.buf, silent = true, desc = 'LSP go to type definition' })
+vim.keymap.set('i', '<C-h>', function()
+  vs.action('editor.action.triggerParameterHints')
+end, { silent = true, desc = 'Open LSP signature help' })
 vim.keymap.set('n', '<leader>rn', function()
   vs.action('editor.action.rename')
 end, { silent = true, desc = 'Rename LSP symbol' })

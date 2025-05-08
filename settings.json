@@ -75,5 +75,21 @@
     "terminal.external.linuxExec": "bash",
     "terminal.integrated.fontLigatures.enabled": true,
     "terminal.integrated.smoothScrolling": true,
-    "editor.quickSuggestionsDelay": 1000000000
+    "editor.quickSuggestionsDelay": 1000000000,
+    "editor.scrollbar.verticalScrollbarSize": 8,
+    "workbench.colorCustomizations": {
+        "editorOverviewRuler.border": "#0000",
+        "editorOverviewRuler.background": "#0000",
+        "editorOverviewRuler.errorForeground": "#0000",
+        "editorOverviewRuler.warningForeground": "#0000",
+        "editorOverviewRuler.infoForeground": "#0000",
+        "editorOverviewRuler.bracketMatchForeground": "#0000",
+        "editorOverviewRuler.findMatchForeground": "#0000",
+        "editorOverviewRuler.wordHighlightForeground": "#0000",
+        "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
+        "editorOverviewRuler.wordHighlightTextForeground": "#0000",
+        "editorOverviewRuler.selectionHighlightForeground": "#0000",
+        "editorOverviewRuler.commentForeground": "#0000",
+        "editorOverviewRuler.rangeHighlightForeground": "#0000",
+    }
 }
