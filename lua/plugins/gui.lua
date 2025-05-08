@@ -27,9 +27,22 @@ return {
       'bwpge/lualine-pretty-path',
     },
     config = function()
+      local dmode_enabled = false
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'DebugModeChanged',
+        callback = function(args)
+          dmode_enabled = args.data.enabled
+        end
+      })
       require('lualine').setup({
         sections = {
-          lualine_a = { 'mode' },
+          lualine_a = {
+            {
+              'mode',
+              fmt = function(str) return dmode_enabled and 'DEBUG' or str end,
+              -- color = function(tb) return dmode_enabled and 'dCursor' or tb end,
+            },
+          },
           lualine_b = { 'pretty_path' },
           lualine_c = { 'branch', 'diff', 'diagnostics' },
           lualine_x = { current_signature },

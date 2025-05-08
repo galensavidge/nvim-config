@@ -121,7 +121,7 @@ return {
     end,
   },
 
-  { -- Treesj (add annotations like docstrings based on treesitter context)
+  { -- Treesj
     'Wansmer/treesj',
     lazy = true,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },

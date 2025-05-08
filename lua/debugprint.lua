@@ -13,19 +13,19 @@ end
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'julia' },
   callback = function(ev)
-    vim.keymap.set({ 'n' }, '<leader>dp', function()
+    vim.keymap.set({ 'n' }, '<leader>P', function()
         local word = vim.fn.expand('<cword>')
         julia_debug_comment(ev, word)
       end,
       { buffer = ev.buf, silent = true, desc = 'Add debug print message' })
 
-    vim.keymap.set({ 'n' }, '<leader>dP', function()
-        local word = vim.fn.expand('<cWORD>')
-        julia_debug_comment(ev, word)
-      end,
-      { buffer = ev.buf, silent = true, desc = 'Add debug print message' })
+    -- vim.keymap.set({ 'n' }, '<leader>dP', function()
+    --     local word = vim.fn.expand('<cWORD>')
+    --     julia_debug_comment(ev, word)
+    --   end,
+    --   { buffer = ev.buf, silent = true, desc = 'Add debug print message' })
 
-    vim.keymap.set({ 'x' }, '<leader>dp', function()
+    vim.keymap.set({ 'x' }, '<leader>P', function()
         local word = table.concat(vim.fn.getregion(vim.fn.getpos('v'), vim.fn.getpos('.')), ' ')
         julia_debug_comment(ev, word)
         vim.api.nvim_input('<esc>')
@@ -47,19 +47,19 @@ end
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'python' },
   callback = function(ev)
-    vim.keymap.set({ 'n' }, '<leader>dp', function()
+    vim.keymap.set({ 'n' }, '<leader>P', function()
         local word = vim.fn.expand('<cword>')
         python_debug_comment(ev, word)
       end,
       { buffer = ev.buf, silent = true, desc = 'Add debug print message' })
 
-    vim.keymap.set({ 'n' }, '<leader>dP', function()
-        local word = vim.fn.expand('<cWORD>')
-        python_debug_comment(ev, word)
-      end,
-      { buffer = ev.buf, silent = true, desc = 'Add debug print message' })
+    -- vim.keymap.set({ 'n' }, '<leader>dP', function()
+    --     local word = vim.fn.expand('<cWORD>')
+    --     python_debug_comment(ev, word)
+    --   end,
+    --   { buffer = ev.buf, silent = true, desc = 'Add debug print message' })
 
-    vim.keymap.set({ 'x' }, '<leader>dp', function()
+    vim.keymap.set({ 'x' }, '<leader>P', function()
         local word = table.concat(vim.fn.getregion(vim.fn.getpos('v'), vim.fn.getpos('.')), ' ')
         python_debug_comment(ev, word)
         vim.api.nvim_input('<esc>')

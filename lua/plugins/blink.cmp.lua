@@ -109,6 +109,9 @@ return {
       min_keyword_length = 0,
 
       providers = {
+        lsp = {
+          fallbacks = {}
+        },
         path = {
           opts = {
             get_cwd = function(_)

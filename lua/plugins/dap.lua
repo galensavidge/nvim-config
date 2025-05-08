@@ -5,7 +5,6 @@ return {
   {
     'mfussenegger/nvim-dap',
     dependencies = {
-      'igorlfs/nvim-dap-view',
       'mfussenegger/nvim-dap-python',
       'nvim-neotest/nvim-nio',
       'kdheepak/nvim-dap-julia',
@@ -22,20 +21,13 @@ return {
 
       -- Julia debugging
       require('nvim-dap-julia').setup()
-
-      -- Open and close UI automatically
-      dap.listeners.before.attach.dapui_config = function()
-        require('dap-view').open()
-      end
-      dap.listeners.before.launch.dapui_config = function()
-        require('dap-view').open()
-      end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        require('dap-view').close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        require('dap-view').close()
-      end
     end,
+  },
+  { -- debugmaster.nvim (adds debug mode)
+    "miroshQa/debugmaster.nvim",
+    dependencies = {
+      'mfussenegger/nvim-dap',
+    },
+    lazy = true,
   },
 }

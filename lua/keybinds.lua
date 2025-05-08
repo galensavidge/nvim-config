@@ -306,43 +306,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Debugger
-vim.keymap.set('n', '<leader>db', function()
-  require('dap').toggle_breakpoint()
-end, { desc = 'Toggle breakpoint on current line' })
-vim.keymap.set('n', '<leader>dB', function()
-  return require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
-end, { desc = 'Set conditional breakpoint on current line' })
-vim.keymap.set('n', '<leader>dc', function()
-  require('dap').continue()
-end, { desc = 'Start/continue debugger' })
-vim.keymap.set('n', '<leader>di', function()
-  require('dap').step_into()
-end, { desc = 'Debugger step into' })
-vim.keymap.set('n', '<leader>do', function()
-  require('dap').step_over()
-end, { desc = 'Debugger step over' })
-vim.keymap.set('n', '<leader>dO', function()
-  require('dap').step_out()
-end, { desc = 'Debugger step out' })
-vim.keymap.set('n', '<leader>dr', function()
-  require('dap').repl.toggle()
-end, { desc = 'Debugger toggle REPL' })
-vim.keymap.set('n', '<leader>dl', function()
-  require('dap').run_last()
-end, { desc = 'Debugger run last' })
-vim.keymap.set('n', '<leader>dx', function()
-  require('dap').terminate()
-end, { desc = 'Stop debugger' })
-vim.keymap.set('n', '<leader>du', function()
-  require('dap-view').toggle()
-end, { desc = 'Toggle debugger UI' })
+vim.keymap.set({ 'n', 'x' }, '<leader>d', function()
+  require('debugmaster').mode.toggle()
+end, { desc = 'Toggle debug mode' })
 
 -- File browser
 vim.keymap.set('n', ',', function()
-    require('oil').open()
-  end,
-  { silent = true, desc = 'Open current file directory' })
+  require('oil').open()
+end, { silent = true, desc = 'Open current file directory' })
 
 -- Create new file from the path under the cursor
 vim.keymap.set('n', '<leader>nf', function()
