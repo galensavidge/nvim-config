@@ -327,5 +327,10 @@
         "command": "vscode-neovim.send",
         "args": "<c-u>",
         "when": "editorTextFocus && neovim.init && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "space g",
+        "command": "workbench.scm.focus",
+        "when": "!inputFocus"
     }
 ]

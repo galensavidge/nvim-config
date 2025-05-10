@@ -128,15 +128,29 @@ end, { silent = true, desc = 'Open terminal' })
 
 -- Project wide search and replace
 vim.keymap.set({ 'n', 'x' }, '<leader>re', function()
-    vs.action('workbench.action.findInFiles')
-  end,
-  { silent = true, desc = 'Open find and replace' })
+  vs.action('workbench.action.findInFiles')
+end, { silent = true, desc = 'Open find and replace' })
 
 -- Git integration
-vim.keymap.set('n', '<leader>go',
-  function()
-    vs.action('workbench.view.scm')
-  end, { silent = true, desc = 'Open git UI page' })
+vim.keymap.set('n', '<leader>go', function()
+  vs.action('workbench.view.scm')
+end, { silent = true, desc = 'Open git UI page' })
+
+vim.keymap.set('n', ']c', function()
+  vs.action('workbench.action.editor.nextChange')
+end, { silent = true, desc = 'Go to next git hunk' })
+
+vim.keymap.set('n', '[c', function()
+  vs.action('workbench.action.editor.previousChange')
+end, { silent = true, desc = 'Go to previous git hunk' })
+
+vim.keymap.set('n', ']v', function()
+  vs.action('editor.action.dirtydiff.next')
+end, { silent = true, desc = 'Preview next git hunk' })
+
+vim.keymap.set('n', '[v', function()
+  vs.action('editor.action.dirtydiff.previous')
+end, { silent = true, desc = 'Preview previous git hunk' })
 
 -- vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', {
 --   silent = true,
@@ -153,8 +167,8 @@ vim.keymap.set('x', '<leader>hs', function()
   vs.action('git.stageSelectedRanges')
 end, { silent = true, desc = 'Stage selected range in git' })
 vim.keymap.set('n', '<leader>hS', function()
-  vs.action('git.stageChanges')
-end, { silent = true, desc = 'Stage file in git' })
+  vs.action('git.stage')
+end, { silent = true, desc = 'Stage the current file in git' })
 vim.keymap.set('x', '<leader>hr', function()
   vs.action('git.revertSelectedRanges')
 end, { silent = true, desc = 'Revert selected range in git' })

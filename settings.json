@@ -105,5 +105,6 @@
     "terminal.integrated.defaultProfile.linux": "bash",
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "editor.fontFamily": "'FiraMono Nerd Font Regular'"
+    "editor.fontFamily": "'FiraMono Nerd Font Regular'",
+    "git.suggestSmartCommit": false
 }
