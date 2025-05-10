@@ -233,6 +233,11 @@
         "command": "workbench.action.quickOpen"
     },
     {
+        "key": "space ;",
+        "command": "workbench.action.quickOpen",
+        "when": "!inputFocus"
+    },
+    {
         "key": "ctrl+p",
         "command": "-workbench.action.quickOpen"
     },
@@ -283,7 +288,8 @@
     },
     {
         "key": "ctrl+c",
-        "command": "workbench.action.closeActiveEditor"
+        "command": "workbench.action.closeActiveEditor",
+        "when": "!inputFocus || editorFocus"
     },
     {
         "key": "ctrl+i",

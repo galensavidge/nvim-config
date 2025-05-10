@@ -102,5 +102,8 @@
     "workbench.editor.editorActionsLocation": "hidden",
     "workbench.navigationControl.enabled": false,
     "extensions.ignoreRecommendations": true,
-    "terminal.integrated.defaultProfile.linux": "bash"
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.fontFamily": "'FiraMono Nerd Font Regular'"
 }

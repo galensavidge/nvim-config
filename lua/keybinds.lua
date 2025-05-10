@@ -35,16 +35,6 @@ vim.keymap.set('n', '<A-v>', function()
   vs.action('workbench.action.splitEditor')
 end, { silent = true, desc = 'Split vertical' })
 
--- Move between panes to left/bottom/top/right
-vim.keymap.set('n', '<C-h>', '<C-w>h',
-  { silent = true, desc = 'Move to pane to the left' })
-vim.keymap.set('n', '<C-j>', '<C-w>j',
-  { silent = true, desc = 'Move to pane below' })
-vim.keymap.set('n', '<C-k>', '<C-w>k',
-  { silent = true, desc = 'Move to pane above' })
-vim.keymap.set('n', '<C-l>', '<C-w>l',
-  { silent = true, desc = 'Move to pane to the right' })
-
 -- Move split panes to left/bottom/top/right
 -- vim.keymap.set('n', '<A-h>', '<C-w>H', {
 --   silent = true,
@@ -178,9 +168,9 @@ vim.keymap.set('n', 'gd', function()
   vs.action('editor.action.revealDefinition')
 end, { silent = true, desc = 'LSP go to definition' })
 
-vim.keymap.set('i', '<C-h>', function()
-  vs.action('editor.action.triggerParameterHints')
-end, { silent = true, desc = 'Open LSP signature help' })
+-- vim.keymap.set('i', '<C-h>', function()
+--   vs.action('editor.action.triggerParameterHints')
+-- end, { silent = true, desc = 'Open LSP signature help' })
 vim.keymap.set('n', '<leader>rn', function()
   vs.action('editor.action.rename')
 end, { silent = true, desc = 'Rename LSP symbol' })
@@ -225,9 +215,13 @@ end, { silent = true, desc = 'Open command pallate' })
 
 -- File browser
 vim.keymap.set('n', ',', function()
-    vs.action('workbench.view.explorer')
-  end,
-  { silent = true, desc = 'Open current file directory' })
+  vs.action('workbench.view.explorer')
+end, { silent = true, desc = 'Open current file directory' })
+
+-- Grep in project files
+vim.keymap.set('n', '<leader>gg', function()
+  vs.action('workbench.view.search')
+end, { silent = true, desc = 'Grep (find and replace) in project files' })
 
 -- Debugger
 -- vim.keymap.set('n', '<leader>db', function()

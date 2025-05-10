@@ -27,18 +27,6 @@ return {
     end
   },
 
-  { -- Trim (automatically trim newlines and whitespace)
-    'cappyzawa/trim.nvim',
-    config = function()
-      require('trim').setup({
-        trim_on_write = true,
-        trim_trailing = true,
-        trim_last_line = true,
-        trim_first_line = false,
-      })
-    end,
-  },
-
   { -- Hlsearch (automatically remove search highlights)
     'nvimdev/hlsearch.nvim',
     config = function()
@@ -69,14 +57,14 @@ return {
     end
   },
 
-  { -- Faster.nvim (disable features on big files)
-    'pteroctopus/faster.nvim',
-    config = function()
-      require('faster').setup({})
-    end,
-  },
+  -- { -- Faster.nvim (disable features on big files)
+  --   'pteroctopus/faster.nvim',
+  --   config = function()
+  --     require('faster').setup({})
+  --   end,
+  -- },
 
-  { -- Treesj (add annotations like docstrings based on treesitter context)
+  { -- Treesj
     'Wansmer/treesj',
     lazy = true,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
