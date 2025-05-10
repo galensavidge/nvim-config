@@ -184,24 +184,14 @@
     },
     {
         "key": "ctrl+,",
-        "command": "workbench.action.focusSideBar",
-        "when": "!sideBarFocus"
-    },
-    {
-        "key": ",",
-        "command": "workbench.action.focusSideBar",
-        "when": "!sideBarFocus && !textFocus"
-    },
-    {
-        "key": "ctrl+,",
         "command": "workbench.action.closeSidebar",
         "when": "sideBarFocus"
     },
     {
-        "key": ",",
-        "command": "workbench.action.closeSidebar",
-        "when": "sideBarFocus && !textFocus"
-    }
+        "key": "ctrl+,",
+        "command": "workbench.action.focusSideBar",
+        "when": "!sideBarFocus"
+    },
     {
         "key": "ctrl+h",
         "command": "workbench.action.focusLeftGroup"
@@ -304,9 +294,5 @@
         "key": "space shift+;",
         "command": "workbench.action.showCommands",
         "when": "!inputFocus"
-    },
-    {
-        "key": "ctrl+,",
-        "command": "-workbench.action.openSettings"
-    },
+    }
 ]
