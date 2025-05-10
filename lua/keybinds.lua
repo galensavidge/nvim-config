@@ -218,6 +218,11 @@ vim.keymap.set('n', '<leader>;', function()
   vs.action('workbench.action.quickOpen')
 end, { silent = true, desc = 'Fuzzy search files' })
 
+--  Open vscode command pallate
+vim.keymap.set('n', '<leader>:', function()
+  vs.action('workbench.action.showCommands')
+end, { silent = true, desc = 'Open command pallate' })
+
 -- File browser
 vim.keymap.set('n', ',', function()
     vs.action('workbench.view.explorer')

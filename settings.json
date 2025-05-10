@@ -48,7 +48,8 @@
     },
     "workbench.settings.applyToAllProfiles": [
         "editor.quickSuggestions",
-        "editor.suggestOnTriggerCharacters"
+        "editor.suggestOnTriggerCharacters",
+        "terminal.integrated.defaultLocation"
     ],
     "gitlens.codeLens.enabled": false,
     "editor.lineNumbers": "relative",
@@ -91,5 +92,15 @@
         "editorOverviewRuler.selectionHighlightForeground": "#0000",
         "editorOverviewRuler.commentForeground": "#0000",
         "editorOverviewRuler.rangeHighlightForeground": "#0000",
-    }
+    },
+    "terminal.integrated.defaultLocation": "editor",
+    "workbench.editor.showTabs": "none",
+    "workbench.editor.enablePreview": false,
+    "workbench.activityBar.location": "hidden",
+    "chat.commandCenter.enabled": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.editor.editorActionsLocation": "hidden",
+    "workbench.navigationControl.enabled": false,
+    "extensions.ignoreRecommendations": true,
+    "terminal.integrated.defaultProfile.linux": "bash"
 }
