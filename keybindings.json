@@ -188,6 +188,11 @@
         "when": "sideBarFocus"
     },
     {
+        "key": ",",
+        "command": "workbench.action.closeSidebar",
+        "when": "sideBarFocus && !inputFocus"
+    },
+    {
         "key": "ctrl+,",
         "command": "workbench.action.focusSideBar",
         "when": "!sideBarFocus"
@@ -300,5 +305,27 @@
         "key": "space shift+;",
         "command": "workbench.action.showCommands",
         "when": "!inputFocus"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-vscode-neovim.ctrl-d",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.d && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "vscode-neovim.send",
+        "args": "<c-d>",
+        "when": "editorTextFocus && neovim.init && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "-vscode-neovim.ctrl-u",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.d && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "vscode-neovim.send",
+        "args": "<c-u>",
+        "when": "editorTextFocus && neovim.init && editorLangId not in 'neovim.editorLangIdExclusions'"
     }
 ]
