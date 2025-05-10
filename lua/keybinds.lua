@@ -123,8 +123,8 @@ vim.keymap.set('n', '[q', ':cp<CR>', {
 --   desc = 'Open terminal in split'
 -- })
 vim.keymap.set('n', '<leader>t', function()
-  vs.action('terminal.focus')
-end, { silent = true, desc = 'Open terminal' })
+  vs.action('workbench.action.terminal.new')
+end, { silent = true, desc = 'Open new terminal' })
 
 -- Project wide search and replace
 vim.keymap.set({ 'n', 'x' }, '<leader>re', function()

@@ -3,7 +3,11 @@
         "asvetliakov.vscode-neovim": 1
     },
     "terminal.integrated.commandsToSkipShell": [
-        "language-julia.interrupt"
+        "language-julia.interrupt",
+        "workbench.action.focusLeftGroup",
+        "workbench.action.focusRightGroup",
+        "workbench.action.focusAboveGroup",
+        "workbench.action.focusBelowGroup"
     ],
     "julia.symbolCacheDownload": true,
     "julia.enableTelemetry": false,
@@ -106,5 +110,6 @@
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
     "editor.fontFamily": "'FiraMono Nerd Font Regular'",
-    "git.suggestSmartCommit": false
+    "git.suggestSmartCommit": false,
+    "git.confirmSync": false
 }
