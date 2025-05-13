@@ -35,63 +35,35 @@ vim.keymap.set('n', '<A-v>', function()
   vs.action('workbench.action.splitEditor')
 end, { silent = true, desc = 'Split vertical' })
 
--- Move split panes to left/bottom/top/right
--- vim.keymap.set('n', '<A-h>', '<C-w>H', {
---   silent = true,
---   desc = 'Move pane to the left'
--- })
--- vim.keymap.set('n', '<A-j>', '<C-w>J', {
---   silent = true,
---   desc = 'Move pane down'
--- })
--- vim.keymap.set('n', '<A-k>', '<C-w>K', {
---   silent = true,
---   desc = 'Move pane up'
--- })
--- vim.keymap.set('n', '<A-l>', '<C-w>L', {
---   silent = true,
---   desc = 'Move pane to the right'
--- })
-
 -- Resize split panes
--- vim.keymap.set({ 'n', 'x' }, '<C-Up>', '<C-w>+', {
---   silent = true,
---   desc = 'Increase size of horizontal split'
--- })
--- vim.keymap.set({ 'n', 'x' }, '<C-Down>', '<C-w>-', {
---   silent = true,
---   desc = 'Decrease size of horizontal split'
--- })
--- vim.keymap.set({ 'n', 'x' }, '<C-Left>', '<C-w><', {
---   silent = true,
---   desc = 'Decrease size of vertical split'
--- })
--- vim.keymap.set({ 'n', 'x' }, '<C-Right>', '<C-w>>', {
---   silent = true,
---   desc = 'Increase size of vertical split'
--- })
+vim.keymap.set({ 'n', 'x' }, '<C-Up>', '<C-w>+', {
+  silent = true,
+  desc = 'Increase size of horizontal split'
+})
+vim.keymap.set({ 'n', 'x' }, '<C-Down>', '<C-w>-', {
+  silent = true,
+  desc = 'Decrease size of horizontal split'
+})
+vim.keymap.set({ 'n', 'x' }, '<C-Left>', '<C-w><', {
+  silent = true,
+  desc = 'Decrease size of vertical split'
+})
+vim.keymap.set({ 'n', 'x' }, '<C-Right>', '<C-w>>', {
+  silent = true,
+  desc = 'Increase size of vertical split'
+})
 
 -- Shortcut for equally splitting window sizes
--- vim.keymap.set({ 'n', 'x' }, '<A-=>', '<C-w>=', {
---   silent = true,
---   desc = 'Split window sizes equally'
--- })
+vim.keymap.set({ 'n', 'x' }, '<A-=>', '<C-w>=', {
+  silent = true,
+  desc = 'Split window sizes equally'
+})
 
 -- Save all and quit
 vim.keymap.set({ 'n' }, 'ZZ', function()
   vs.action('saveAll')
-  vs.action('workbench.action.quit')
+  vs.action('workbench.action.closeWindow')
 end, { silent = true, desc = 'Save all files and quit' })
-
--- Tab navigation
-vim.keymap.set('n', '<A-t>', ':tabnew<cr>', {
-  silent = true,
-  desc = 'New tab'
-})
-vim.keymap.set('n', '<A-c>', ':tabclose<cr>', {
-  silent = true,
-  desc = 'Close tab'
-})
 
 -- Cut keybinds
 vim.keymap.set({ 'n', 'x' }, 'm', 'd', { desc = 'Cut' })
@@ -116,6 +88,26 @@ vim.keymap.set('n', '[q', ':cp<CR>', {
   silent = true,
   desc = 'Jump to previous quickfix item',
 })
+
+-- Folds
+vim.keymap.set('n', 'zf', function()
+  vs.action('editor.fold')
+end, { silent = true, desc = 'Fold' })
+vim.keymap.set('n', 'zF', function()
+  vs.action('editor.foldRecursively')
+end, { silent = true, desc = 'Fold recursively' })
+vim.keymap.set('n', 'zo', function()
+  vs.action('editor.unfold')
+end, { silent = true, desc = 'Unfold' })
+vim.keymap.set('n', 'zO', function()
+  vs.action('editor.unfoldRecursively')
+end, { silent = true, desc = 'Unfold recursively' })
+vim.keymap.set('n', 'zM', function()
+  vs.action('editor.foldAll')
+end, { silent = true, desc = 'Fold all' })
+vim.keymap.set('n', 'zR', function()
+  vs.action('editor.unfoldAll')
+end, { silent = true, desc = 'Unfold all' })
 
 -- Terminal related keybinds
 -- vim.keymap.set('n', '<leader>T', ':split | term<CR>', {
@@ -238,9 +230,9 @@ vim.keymap.set('n', '<leader>gg', function()
 end, { silent = true, desc = 'Grep (find and replace) in project files' })
 
 -- Debugger
--- vim.keymap.set('n', '<leader>db', function()
---   require('dap').toggle_breakpoint()
--- end, { desc = 'Toggle breakpoint on current line' })
+vim.keymap.set('n', '<leader>db', function()
+  vs.action('editor.debug.action.toggleBreakpoint')
+end, { desc = 'Toggle breakpoint on current line' })
 -- vim.keymap.set('n', '<leader>dB', function()
 --   return require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
 -- end, { desc = 'Set conditional breakpoint on current line' })
