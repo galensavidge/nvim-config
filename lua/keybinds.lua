@@ -110,10 +110,6 @@ vim.keymap.set('n', 'zR', function()
 end, { silent = true, desc = 'Unfold all' })
 
 -- Terminal related keybinds
--- vim.keymap.set('n', '<leader>T', ':split | term<CR>', {
---   silent = true,
---   desc = 'Open terminal in split'
--- })
 vim.keymap.set('n', '<leader>t', function()
   vs.action('workbench.action.terminal.new')
 end, { silent = true, desc = 'Open new terminal' })
@@ -233,33 +229,39 @@ end, { silent = true, desc = 'Grep (find and replace) in project files' })
 vim.keymap.set('n', '<leader>db', function()
   vs.action('editor.debug.action.toggleBreakpoint')
 end, { desc = 'Toggle breakpoint on current line' })
--- vim.keymap.set('n', '<leader>dB', function()
---   return require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
--- end, { desc = 'Set conditional breakpoint on current line' })
--- vim.keymap.set('n', '<leader>dc', function()
---   require('dap').continue()
--- end, { desc = 'Start/continue debugger' })
--- vim.keymap.set('n', '<leader>di', function()
---   require('dap').step_into()
--- end, { desc = 'Debugger step into' })
--- vim.keymap.set('n', '<leader>do', function()
---   require('dap').step_over()
--- end, { desc = 'Debugger step over' })
--- vim.keymap.set('n', '<leader>dO', function()
---   require('dap').step_out()
--- end, { desc = 'Debugger step out' })
--- vim.keymap.set('n', '<leader>dr', function()
---   require('dap').repl.toggle()
--- end, { desc = 'Debugger toggle REPL' })
+
+vim.keymap.set('n', '<leader>dB', function()
+  vs.action('editor.debug.action.conditionalBreakpoint')
+end, { desc = 'Set conditional breakpoint on current line' })
+
+vim.keymap.set('n', '<leader>dc', function()
+  vs.action('workbench.action.debug.start')
+  vs.action('workbench.action.debug.continue')
+end, { desc = 'Start/continue debugger' })
+
+vim.keymap.set('n', '<leader>di', function()
+  vs.action('workbench.action.debug.stepInto')
+end, { desc = 'Debugger step into' })
+
+vim.keymap.set('n', '<leader>do', function()
+  vs.action('workbench.action.debug.stepOver')
+end, { desc = 'Debugger step over' })
+
+vim.keymap.set('n', '<leader>dO', function()
+  vs.action('workbench.action.debug.stepOut')
+end, { desc = 'Debugger step out' })
+
+vim.keymap.set('n', '<leader>dr', function()
+  vs.action('workbench.debug.action.toggleRepl')
+end, { desc = 'Debugger toggle REPL' })
+
 -- vim.keymap.set('n', '<leader>dl', function()
 --   require('dap').run_last()
 -- end, { desc = 'Debugger run last' })
--- vim.keymap.set('n', '<leader>dx', function()
---   require('dap').terminate()
--- end, { desc = 'Stop debugger' })
--- vim.keymap.set('n', '<leader>du', function()
---   require('dap-view').toggle()
--- end, { desc = 'Toggle debugger UI' })
+
+vim.keymap.set('n', '<leader>dx', function()
+  vs.action('workbench.action.debug.stop')
+end, { desc = 'Stop debugger' })
 
 -- Create new file from the path under the cursor
 -- vim.keymap.set('n', '<leader>nf', function()
