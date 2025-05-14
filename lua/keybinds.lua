@@ -90,10 +90,13 @@ vim.keymap.set('n', '[q', ':cp<CR>', {
 })
 
 -- Folds
-vim.keymap.set('n', 'zf', function()
+vim.keymap.set('x', 'zf', function()
+  vs.action('editor.createFoldingRangeFromSelection')
+end, { silent = true, desc = 'Create fold from visual selection' })
+vim.keymap.set('n', 'zc', function()
   vs.action('editor.fold')
 end, { silent = true, desc = 'Fold' })
-vim.keymap.set('n', 'zF', function()
+vim.keymap.set('n', 'zC', function()
   vs.action('editor.foldRecursively')
 end, { silent = true, desc = 'Fold recursively' })
 vim.keymap.set('n', 'zo', function()
