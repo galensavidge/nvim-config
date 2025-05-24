@@ -332,5 +332,15 @@
         "key": "space g",
         "command": "workbench.scm.focus",
         "when": "!inputFocus"
+    },
+    {
+        "key": "shift+z shift+z",
+        "command": "workbench.action.closeWindow",
+        "when": "!inputFocus"
+    },
+    {
+        "key": ";",
+        "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty && !inputFocus"
     }
 ]

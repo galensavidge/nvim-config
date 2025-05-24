@@ -22,6 +22,10 @@ vim.keymap.set({ 'n', 'o' }, 'gS', function()
   require('leap.remote').action()
 end)
 
+-- Disable some vscode-nvim default keybinds
+vim.keymap.del({ 'n', 'x' }, 'gq')
+vim.keymap.del('n', 'gqq')
+
 -- Keep automatically inserted indentation when switching back to normal mode
 vim.keymap.set('n', 'o', 'ox<backspace>', { silent = true })
 vim.keymap.set('n', 'O', 'Ox<backspace>', { silent = true })
@@ -117,6 +121,10 @@ vim.keymap.set('n', '<leader>t', function()
   vs.action('workbench.action.terminal.new')
 end, { silent = true, desc = 'Open new terminal' })
 
+vim.keymap.set({ 'n', 'x' }, '<leader><enter>', function()
+  vs.action('workbench.action.terminal.runSelectedText')
+end, { silent = true, desc = 'Run selected text in terminal' })
+
 -- Project wide search and replace
 vim.keymap.set({ 'n', 'x' }, '<leader>re', function()
   vs.action('workbench.action.findInFiles')
@@ -207,6 +215,11 @@ vim.keymap.set('i', '<tab>', function()
     vim.api.nvim_feedkeys(key, 'n', false)
   end
 end, { silent = true, desc = 'Show suggestions' })
+
+-- Open picker for recent files
+vim.keymap.set('n', ';', function()
+  vs.action('workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup')
+end, { silent = true, desc = 'Open recent file picker' })
 
 --  Open fuzzy finder
 vim.keymap.set('n', '<leader>;', function()
