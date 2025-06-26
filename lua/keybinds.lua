@@ -58,9 +58,9 @@ vim.keymap.set({ 'n', 'x' }, '<C-Right>', '<C-w>>', {
 })
 
 -- Shortcut for equally splitting window sizes
-vim.keymap.set({ 'n', 'x' }, '<A-=>', '<C-w>=', {
-  silent = true,
-  desc = 'Split window sizes equally'
+vim.keymap.set({ 'n', 'x' }, '<A-=>', function()
+  vs.action('workbench.action.evenEditorWidths')
+end, { silent = true, desc = 'Split window sizes equally'
 })
 
 -- Save all and quit
@@ -82,6 +82,8 @@ vim.keymap.set({ 'n', 'x' }, 'x', '"0x', { desc = 'Delete character' })
 vim.keymap.set({ 'n', 'x' }, 'c', '"0c', { desc = 'Change' })
 vim.keymap.set('n', 'dd', '"0dd', { desc = 'Delete line' })
 vim.keymap.set('n', 'D', '"0D', { desc = 'Delete to end of line' })
+vim.keymap.set('n', 'cc', '"0cc', { desc = 'Change line' })
+vim.keymap.set('n', 'C', '"0C', { desc = 'Change to end of line' })
 
 -- Cycle through quickfix list items
 vim.keymap.set('n', ']q', ':cn<CR>', {

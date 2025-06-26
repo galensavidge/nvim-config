@@ -342,5 +342,9 @@
         "key": ";",
         "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
         "when": "!activeEditorGroupEmpty && !inputFocus"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.createTerminalEditor"
     }
 ]
