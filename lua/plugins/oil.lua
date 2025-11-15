@@ -88,12 +88,7 @@ return {
     end,
   },
   {
-    "refractalize/oil-git-status.nvim",
-
-    dependencies = {
-      "stevearc/oil.nvim",
-    },
-
-    config = true,
-  },
+    "benomahony/oil-git.nvim",
+    dependencies = { "stevearc/oil.nvim" },
+  }
 }

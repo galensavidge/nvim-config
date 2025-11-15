@@ -7,8 +7,8 @@ sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin
 
 # Install required packages.
-sudo apt-get update
-sudo apt-get install ripgrep xclip clangd python3-venv markdown cmake gcc pipx
+sudo apt update
+sudo apt install ripgrep xclip clangd python3-venv markdown cmake gcc pipx
 
 # Install Python language servers.
 pipx install pyright ruff
@@ -29,7 +29,7 @@ else
     curl -fsSL https://install.julialang.org | sh
 fi
 
-julia -e 'using Pkg; Pkg.add("LanguageServer")'
+julia -e 'using Pkg; Pkg.add("LanguageServer"); Pkg.add("SymbolServer"); Pkg.add("StaticLint")'
 
 # Install Lua language server.
 sudo rm -rf ~/bin/lua-language-server

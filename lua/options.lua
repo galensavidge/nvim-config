@@ -36,7 +36,7 @@ opt.relativenumber = true
 opt.scrolloff = 5
 opt.selection = 'old'
 opt.sessionoptions = 'blank,buffers,curdir,help,tabpages,winsize,winpos,terminal,localoptions'
-if vim.fn.has('win32') == 1 and vim.fn.has('linux') == 0 then
+if vim.g.windows then
   opt.shell = '\"C:/Program Files/PowerShell/7/pwsh.exe\"'
 end
 opt.shiftround = true
@@ -44,7 +44,7 @@ opt.shiftwidth = 0 -- Use value of tabstop
 opt.showmode = false
 opt.signcolumn = 'yes'
 opt.spell = false
-if vim.fn.has('win32') == 1 and vim.fn.has('linux') == 0 then
+if vim.g.windows then
   vim.cmd('set spellfile=~/AppData/Local/nvim/spell/en.utf-8.add')
 else
   vim.cmd('set spellfile=~/.config/nvim/spell/en.utf-8.add')

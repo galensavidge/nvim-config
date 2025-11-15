@@ -5,11 +5,10 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
     config = function()
-      local lsp = require('lspconfig')
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       -- Set up lua-lanaguage-server
-      require('lspconfig').lua_ls.setup({
+      vim.lsp.config('lua_ls', {
         on_init = function(client)
           local path = client.workspace_folders[1].name
           if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
@@ -40,32 +39,29 @@ return {
           Lua = {}
         }
       })
+      vim.lsp.enable('lua_ls')
 
       -- Set up pyright for Python code analysis
-      lsp.pyright.setup({
+      vim.lsp.config('pyright', {
         capabilities = capabilities,
         settings = {},
       })
+      vim.lsp.enable('pyright')
 
       -- Ruff for Python linting and formatting
-      local ruff_config = lsp.ruff.config_def
-      ruff_config.cmd = { 'ruff', 'server', '--preview' }
-      ruff_config.default_config.cmd = { 'ruff', 'server', '--preview' }
-
-      local configs = require('lspconfig.configs')
-      configs.custom_ruff = ruff_config
-      lsp.custom_ruff.setup(ruff_config)
+      vim.lsp.enable('ruff')
 
       -- Set up clangd for C/++ code analysis
-      lsp.clangd.setup({ capabilities = capabilities })
+      vim.lsp.config('clangd', { capabilities = capabilities })
+      vim.lsp.enable('clangd')
 
       -- Set up julials for Julia code analysis
-      lsp.julials.setup({
-        capabilities = capabilities,
-      })
+      vim.lsp.config('julials', { capabilities = capabilities })
+      vim.lsp.enable('julials')
 
       -- Set up ltex-ls for LaTeX, RST, and others
-      -- require('lspconfig').ltex.setup({ capabilities = capabilities })
+      -- vim.lsp.config('ltex', { capabilities = capabilities })
+      -- vim.lsp.enable('ltex')
     end,
   },
 
