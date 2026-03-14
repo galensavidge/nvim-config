@@ -42,11 +42,11 @@ return {
       vim.lsp.enable('lua_ls')
 
       -- Set up pyright for Python code analysis
-      vim.lsp.config('pyright', {
+      vim.lsp.config('ty', {
         capabilities = capabilities,
         settings = {},
       })
-      vim.lsp.enable('pyright')
+      vim.lsp.enable('ty')
 
       -- Ruff for Python linting and formatting
       vim.lsp.enable('ruff')

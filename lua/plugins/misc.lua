@@ -3,7 +3,7 @@
 return {
 
   { -- Leap (motion to move anywhere on the screen)
-    'ggandor/leap.nvim',
+    url='https://codeberg.org/andyg/leap.nvim',
     dependencies = { 'tpope/vim-repeat' },
     config = function()
       -- Define equivalence classes for brackets and quotes, in addition to
